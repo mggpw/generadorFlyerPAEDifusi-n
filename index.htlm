@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diseñador de Flyers - Políticas y Administración de la Educación (UNTREF)</title>
+  
+  <!-- Tailwind CSS para diseño ágil y premium -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- html2canvas para la descarga directa en alta calidad -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <!-- Lucide Icons para simbología elegante -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Cargamos la tipografía corporativa LATO desde Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
+  <style>
+    /* Aplicamos Lato como la fuente global y definitiva */
+    body, .font-lato {
+      font-family: 'Lato', 'Calibri', 'Segoe UI', system-ui, sans-serif;
+    }
+    
+    .font-lato-light {
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+    }
+
+    .font-lato-regular {
+      font-family: 'Lato', sans-serif;
+      font-weight: 400;
+    }
+
+    .font-lato-bold {
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+    }
+
+    .font-lato-black {
+      font-family: 'Lato', sans-serif;
+      font-weight: 900;
+    }
+
+    /* Estilo de textura sutil */
+    .bg-dots {
+      background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
+      background-size: 15px 15px;
+    }
+
+    /* Estilo de textura elegante para el diseño de Vanguardia e Inspiración */
+    .bg-grid-elegant {
+      background-size: 30px 30px;
+      background-image: linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+    }
+  </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col font-lato">
+
+  <!-- Header -->
+  <header class="border-b border-slate-800 bg-slate-950/90 backdrop-blur px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between sticky top-0 z-50 gap-3">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-lg bg-[#ab163f] flex items-center justify-center font-bold text-white text-xl shadow-lg shadow-[#ab163f]/20">A</div>
+      <div>
+        <h1 class="font-bold text-base tracking-wide uppercase text-white font-lato-bold">Diseñador de Flyers PAE</h1>
+        <p class="text-xs text-slate-400">Políticas y Administración de la Educación • UNTREF</p>
+      </div>
+    </div>
+    <div class="flex items-center gap-2">
+      <span class="text-xs px-2.5 py-1 rounded-full bg-[#ab163f]/20 text-[#f29fc5] border border-[#ab163f]/30 font-semibold flex items-center gap-1.5">
+        <span class="w-2.5 h-2.5 rounded-full bg-[#f29fc5] animate-pulse"></span> Tipografía Lato & Colores Oficiales
+      </span>
+    </div>
+  </header>
+
+  <main class="flex-1 lg:grid lg:grid-cols-12 overflow-hidden">
+    <!-- Panel de control (Izquierda) -->
+    <section class="lg:col-span-5 p-6 bg-slate-950 border-r border-slate-800 overflow-y-auto max-h-[calc(100vh-73px)] space-y-6">
+      
+      <!-- Selector de plantilla (7 opciones premium) -->
+      <div>
+        <h2 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-2">
+          <i data-lucide="layout-template" class="w-4 h-4 text-[#ab163f]"></i> Elegir Plantilla Base (7 Variantes)
+        </h2>
+        <div class="grid grid-cols-2 gap-2">
+          <button onclick="setTemplate('warm')" id="btn-warm" class="p-2.5 rounded-lg border-2 border-slate-800 bg-slate-900 text-slate-400 flex flex-col items-center justify-center gap-0.5 transition text-center hover:bg-slate-800">
+            <span class="text-xs font-bold">1. Cálida (Humanista)</span>
+            <span class="text-[9px] text-slate-500">(Ref. 6.jpg)</span>
+          </button>
+          <button onclick="setTemplate('modern')" id="btn-modern" class="p-2.5 rounded-lg border-2 border-slate-800 bg-slate-900 text-slate-400 flex flex-col items-center justify-center gap-0.5 transition text-center hover:bg-slate-800">
+            <span class="text-xs font-bold">2. Líneas Tecnológicas</span>
+            <span class="text-[9px] text-slate-500">(Ref. 7.png)</span>
+          </button>
+          <button onclick="setTemplate('clean')" id="btn-clean" class="p-2.5 rounded-lg border-2 border-slate-800 bg-slate-900 text-slate-400 flex flex-col items-center justify-center gap-0.5 transition text-center hover:bg-slate-800">
+            <span class="text-xs font-bold">3. Clara Institucional</span>
+            <span class="text-[9px] text-slate-500">(Ref. d3.png)</span>
+          </button>
+          <button onclick="setTemplate('vanguard')" id="btn-vanguard" class="p-2.5 rounded-lg border-2 border-slate-800 bg-slate-900 text-slate-400 flex flex-col items-center justify-center gap-0.5 transition text-center hover:bg-slate-800">
+            <span class="text-xs font-bold text-sky-400">4. Vanguardia (Azul/Bordó)</span>
+            <span class="text-[9px] text-slate-500">(Gran Impacto)</span>
+          </button>
+          <button onclick="setTemplate('inspiration')" id="btn-inspiration" class="p-2.5 rounded-lg border-2 border-slate-800 bg-slate-900 text-slate-400 flex flex-col items-center justify-center gap-0.5 transition text-center hover:bg-slate-800">
+            <span class="text-xs font-bold text-sky-400">5. Inspiración Azul</span>
+            <span class="text-[9px] text-slate-500">(Doble Columna)</span>
+          </button>
+          <button onclick="setTemplate('specializations')" id="btn-specializations" class="p-2.5 rounded-lg border-2 border-slate-800 bg-slate-900 text-slate-400 flex flex-col items-center justify-center gap-0.5 transition text-center hover:bg-slate-800">
+            <span class="text-xs font-bold text-rose-400 flex items-center justify-center gap-1">
+              <i data-lucide="award" class="w-3.5 h-3.5 text-rose-400"></i> 6. Solo Especialidades
+            </span>
+            <span class="text-[9px] text-slate-500">(Elegante / Sin Maestrías)</span>
+          </button>
+          <button onclick="setTemplate('masters')" id="btn-masters" class="p-2.5 col-span-2 rounded-lg border-2 border-[#ab163f] bg-[#ab163f]/10 text-white flex flex-col items-center justify-center gap-0.5 transition text-center hover:bg-[#ab163f]/20">
+            <span class="text-xs font-bold text-sky-300 flex items-center justify-center gap-1">
+              <i data-lucide="graduation-cap" class="w-4 h-4 text-sky-300"></i> 7. Solo Maestrías
+            </span>
+            <span class="text-[9px] text-slate-300">(Brillante de Alta Gama / Sin Especializaciones)</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Ajustes Typográficos y de Espaciado -->
+      <div class="border border-slate-800 p-4 rounded-xl bg-slate-900/60 space-y-4">
+        <h2 class="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
+          <i data-lucide="sliders" class="w-4 h-4 text-sky-400"></i> Ajustes de Visualización (Evita cortes)
+        </h2>
+        
+        <div class="space-y-3">
+          <!-- Selector de variante de Lato -->
+          <div>
+            <label class="block text-xs font-medium text-slate-400 mb-1">Peso de la Fuente Lato</label>
+            <select id="select-font-variant" onchange="changeFontVariant(this.value)" class="w-full bg-slate-950 border border-slate-800 rounded px-2 py-1.5 text-xs text-white focus:outline-none focus:ring-1 focus:ring-[#ab163f]">
+              <option value="font-lato-regular">Lato Regular (Elegante y Limpia)</option>
+              <option value="font-lato-bold" selected>Lato Bold (Fuerte e Impactante)</option>
+              <option value="font-lato-black">Lato Black (Pesada para Marketing)</option>
+            </select>
+          </div>
+
+          <!-- Slider tamaño de título -->
+          <div>
+            <div class="flex justify-between text-xs mb-1">
+              <span class="text-slate-400">Tamaño del Título</span>
+              <span id="val-title-size" class="text-slate-200 font-bold">18px</span>
+            </div>
+            <input type="range" id="slider-title-size" min="14" max="24" value="18" oninput="updateStyle('title-size', this.value)" class="w-full h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-[#ab163f]">
+          </div>
+
+          <!-- Slider tamaño de listas -->
+          <div>
+            <div class="flex justify-between text-xs mb-1">
+              <span class="text-slate-400">Tamaño de Carreras</span>
+              <span id="val-list-size" class="text-slate-200 font-bold">10px</span>
+            </div>
+            <input type="range" id="slider-list-size" min="8" max="13" value="10" oninput="updateStyle('list-size', this.value)" class="w-full h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-[#ab163f]">
+          </div>
+
+          <!-- Slider tamaño de botones de abajo -->
+          <div>
+            <div class="flex justify-between text-xs mb-1">
+              <span class="text-slate-400">Tamaño Botones de Pie</span>
+              <span id="val-badge-size" class="text-slate-200 font-bold">9px</span>
+            </div>
+            <input type="range" id="slider-badge-size" min="7" max="11" value="9" oninput="updateStyle('badge-size', this.value)" class="w-full h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-[#ab163f]">
+          </div>
+
+          <!-- Slider relleno interno del flyer -->
+          <div>
+            <div class="flex justify-between text-xs mb-1">
+              <span class="text-slate-400">Espaciado Interno (Padding)</span>
+              <span id="val-padding" class="text-slate-200 font-bold">Ajustado (p-5)</span>
+            </div>
+            <input type="range" id="slider-padding" min="3" max="7" value="5" oninput="updateStyle('padding', this.value)" class="w-full h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-[#ab163f]">
+          </div>
+        </div>
+      </div>
+
+      <!-- Formulario de textos -->
+      <div class="space-y-4">
+        <h2 class="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-2 border-b border-slate-800 pb-2">
+          <i data-lucide="file-edit" class="w-4 h-4 text-[#ab163f]"></i> Editar Contenido del Flyer
+        </h2>
+
+        <div>
+          <label class="block text-xs font-medium text-slate-400 mb-1">Frase Convocante (Storytelling)</label>
+          <input type="text" id="input-hook" oninput="updateText('hook', this.value)" value="Detrás de cada aula transformada hay una historia de liderazgo. Escribí la tuya." class="w-full bg-slate-900 border border-slate-800 rounded px-3 py-2 text-sm text-[#f29fc5] focus:outline-none focus:ring-1 focus:ring-[#c26087]">
+        </div>
+
+        <div>
+          <label class="block text-xs font-medium text-slate-400 mb-1">Nombre del Programa</label>
+          <input type="text" id="input-program" oninput="updateText('program', this.value)" value="Política y Administración de la Educación" class="w-full bg-slate-900 border border-slate-800 rounded px-3 py-2 text-sm text-white focus:outline-none focus:ring-1 focus:ring-[#ab163f]">
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-medium text-slate-400 mb-1">Tag Superior</label>
+            <input type="text" id="input-tag" oninput="updateText('tag', this.value)" value="Inscripciones Abiertas" class="w-full bg-slate-900 border border-slate-800 rounded px-3 py-2 text-sm text-white focus:outline-none focus:ring-1 focus:ring-[#ab163f]">
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-slate-400 mb-1">Marca Institucional</label>
+            <input type="text" id="input-institution" oninput="updateText('institution', this.value)" value="UNTREF" class="w-full bg-slate-900 border border-slate-800 rounded px-3 py-2 text-sm text-white focus:outline-none focus:ring-1 focus:ring-[#ab163f]">
+          </div>
+        </div>
+
+        <!-- Bloque de Posgrados -->
+        <div class="border border-slate-800 p-3 rounded-lg bg-slate-900/40 space-y-3">
+          <div class="text-xs font-bold text-[#f29fc5] flex items-center gap-1.5 uppercase" id="form-header-m">
+            <span class="w-1.5 h-1.5 bg-[#f29fc5] rounded-full" id="form-bullet-m"></span> Maestrías
+          </div>
+          <div class="space-y-2">
+            <input type="text" id="input-m1" oninput="updateText('m1', this.value)" value="Planeamiento y Gestión de la Educación" class="w-full bg-slate-900 border border-slate-800 rounded px-2.5 py-1.5 text-xs text-white">
+            <input type="text" id="input-m2" oninput="updateText('m2', this.value)" value="Gestión y Evaluación de la Educación" class="w-full bg-slate-900 border border-slate-800 rounded px-2.5 py-1.5 text-xs text-white">
+          </div>
+
+          <div class="text-xs font-bold text-[#c26087] flex items-center gap-1.5 uppercase pt-1" id="form-header-e">
+            <span class="w-1.5 h-1.5 bg-[#c26087] rounded-full" id="form-bullet-e"></span> Especializaciones (Ocultas en Diseño 7)
+          </div>
+          <div class="space-y-2">
+            <label class="block text-[10px] text-slate-400">Especialización 1</label>
+            <input type="text" id="input-e1" oninput="updateText('e1', this.value)" value="Gestión y Docencia para la Educación Superior" class="w-full bg-slate-900 border border-slate-800 rounded px-2.5 py-1.5 text-xs text-white">
+            
+            <label class="block text-[10px] text-slate-400 mt-1">Especialización 2</label>
+            <input type="text" id="input-e2" oninput="updateText('e2', this.value)" value="Gestión y Evaluación de Instituciones Educativas" class="w-full bg-slate-900 border border-slate-800 rounded px-2.5 py-1.5 text-xs text-white">
+            
+            <label class="block text-[10px] text-slate-400 mt-1">Especialización 3</label>
+            <input type="text" id="input-e3" oninput="updateText('e3', this.value)" value="Planeamiento y Gestión de la Educación" class="w-full bg-slate-900 border border-slate-800 rounded px-2.5 py-1.5 text-xs text-white">
+          </div>
+        </div>
+
+        <!-- Enlace del Sitio Web Configurable -->
+        <div class="border border-slate-800 p-3 rounded-lg bg-slate-900/40 space-y-3">
+          <div class="text-xs font-bold text-sky-400 flex items-center gap-1.5 uppercase">
+            <span class="w-1.5 h-1.5 bg-sky-500 rounded-full"></span> Enlace de Redirección (Clicable)
+          </div>
+          <div>
+            <label class="block text-[10px] font-medium text-slate-400 mb-1">Texto Principal</label>
+            <input type="text" id="input-web-text-1" oninput="updateWebLabel('label', this.value)" value="Más Información" class="w-full bg-slate-900 border border-slate-800 rounded px-2.5 py-1 text-xs text-white">
+          </div>
+          <div>
+            <label class="block text-[10px] font-medium text-slate-400 mb-1">Subtexto / URL Visible</label>
+            <input type="text" id="input-web-text-2" oninput="updateWebLabel('sub', this.value)" value="SITIO WEB" class="w-full bg-slate-900 border border-slate-800 rounded px-2.5 py-1 text-xs text-white">
+          </div>
+          <div>
+            <label class="block text-[10px] font-medium text-slate-400 mb-1">URL Destino (href)</label>
+            <input type="text" id="input-web-url" oninput="updateWebUrl(this.value)" value="https://mggpw.github.io/UNTREF_PAE/" class="w-full bg-slate-900 border border-slate-800 rounded px-2.5 py-1 text-xs text-sky-300">
+          </div>
+        </div>
+
+        <!-- Reunión informativa -->
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-medium text-slate-400 mb-1">Fecha Reunión</label>
+            <input type="text" id="input-meeting-date" oninput="updateText('meeting-date', this.value)" value="Jueves 26 de Febrero" class="w-full bg-slate-900 border border-slate-800 rounded px-3 py-2 text-sm text-white focus:outline-none focus:ring-1 focus:ring-[#ab163f]">
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-slate-400 mb-1">Hora Reunión</label>
+            <input type="text" id="input-meeting-time" oninput="updateText('meeting-time', this.value)" value="18 hs." class="w-full bg-slate-900 border border-slate-800 rounded px-3 py-2 text-sm text-white focus:outline-none focus:ring-1 focus:ring-[#ab163f]">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-medium text-slate-400 mb-1">Email de Contacto</label>
+          <input type="email" id="input-email" oninput="updateText('email', this.value)" value="pae@untref.edu.ar" class="w-full bg-slate-900 border border-slate-800 rounded px-3 py-2 text-sm text-white focus:outline-none focus:ring-1 focus:ring-[#ab163f]">
+        </div>
+      </div>
+
+      <!-- Configuración Visual de Imagen de Fondo -->
+      <div class="space-y-3">
+        <h2 class="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-2 border-b border-slate-800 pb-2">
+          <i data-lucide="image" class="w-4 h-4 text-[#ab163f]"></i> Imagen de Fondo (Plantilla Cálida/Clara/Inspiración)
+        </h2>
+        <div>
+          <div class="grid grid-cols-2 gap-2">
+            <button onclick="setBgImage('students')" class="px-3 py-2 rounded bg-slate-800 hover:bg-slate-700 text-xs text-slate-200 transition font-semibold">Estudiantes posgrado</button>
+            <button onclick="setBgImage('classroom')" class="px-3 py-2 rounded bg-slate-800 hover:bg-slate-700 text-xs text-slate-200 transition font-semibold">Aula / Biblioteca</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Acciones de Descarga -->
+      <div class="pt-4 space-y-3 border-t border-slate-800">
+        <button onclick="exportFlyer(event)" class="w-full bg-[#ab163f] hover:bg-[#c26087] active:scale-[0.98] transition-all text-white font-bold py-3.5 px-4 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-[#ab163f]/30">
+          <i data-lucide="download" class="w-5 h-5"></i> Descargar Imagen PNG (1080x1080)
+        </button>
+        <button onclick="copySocialCopy()" class="w-full bg-slate-800 hover:bg-slate-700 active:scale-[0.98] transition-all text-slate-200 text-xs py-2.5 px-3 rounded-lg flex items-center justify-center gap-2">
+          <i data-lucide="copy" class="w-4 h-4"></i> Copiar Copy para Post (Instagram/FB)
+        </button>
+      </div>
+
+    </section>
+
+    <!-- Canvas de Visualización del Flyer (Derecha) -->
+    <section class="lg:col-span-7 p-6 bg-slate-900 flex flex-col items-center justify-center overflow-y-auto max-h-[calc(100vh-73px)]">
+      
+      <!-- Contenedor del Flyer (Proporciones 1:1, Simula 1080x1080px en escala responsive con un borde institucional bordó que incluye la firma UNTREF vertical) -->
+      <div id="flyer-canvas" class="relative w-[520px] h-[520px] bg-[#ab163f] p-4 pr-11 shadow-2xl flex flex-col justify-between overflow-hidden transition-all duration-300 select-none">
+        
+        <!-- Borde derecho con la firma UNTREF vertical en blanco (según image_36daa4.png). 
+             Ubicada exactamente donde se inicia el recuadro (esquina inferior derecha) y con la tipografía oficial Lato. -->
+        <div class="absolute right-0 bottom-4 w-11 h-20 flex items-center justify-center pointer-events-none z-30">
+          <div class="text-white font-lato-black tracking-[0.25em] text-[13px] leading-none border-b-[2.5px] border-white pb-1" style="transform: rotate(-90deg); white-space: nowrap; transform-origin: center;">UNTREF</div>
+        </div>
+
+        <!-- Contenedor Interno -->
+        <div id="flyer-inner" class="relative w-full h-full bg-slate-950 flex flex-col justify-between p-5 overflow-hidden transition-all duration-300 font-lato-bold">
+          
+          <!-- Elementos flotantes de decoración según la plantilla seleccionada -->
+          <div id="decorations-layer" class="absolute inset-0 pointer-events-none z-0">
+            <!-- Modelo Warm: Imagen de fondo con overlay -->
+            <div id="dec-warm-bg" class="absolute inset-0 bg-cover bg-center opacity-30 mix-blend-luminosity" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1000&auto=format&fit=crop');"></div>
+            <div id="dec-warm-overlay" class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-slate-950/50"></div>
+
+            <!-- Modelo Modern: Patrón azul geométrico de líneas diagonales de 7.png -->
+            <div id="dec-modern-bg" class="hidden absolute inset-0 bg-[#07162c] bg-dots">
+              <div class="absolute bottom-0 right-0 w-80 h-80 opacity-25 transform translate-x-10 translate-y-10">
+                <svg viewBox="0 0 100 100" fill="none" stroke="white" stroke-width="1.5" class="w-full h-full">
+                  <line x1="100" y1="0" x2="0" y2="100" />
+                  <line x1="100" y1="15" x2="15" y2="100" />
+                  <line x1="100" y1="30" x2="30" y2="100" />
+                  <line x1="100" y1="45" x2="45" y2="100" />
+                  <line x1="100" y1="60" x2="60" y2="100" />
+                  <line x1="100" y1="75" x2="75" y2="100" />
+                </svg>
+              </div>
+            </div>
+
+            <!-- Modelo Clean: Minimalismo blanco -->
+            <div id="dec-clean-bg" class="hidden absolute inset-0 bg-white bg-dots"></div>
+
+            <!-- Modelo Vanguard: Gradiente dinámico azul zafiro/bordó de gran impacto con textura cuadriculada -->
+            <div id="dec-vanguard-bg" class="hidden absolute inset-0 bg-gradient-to-br from-[#121c2e] via-[#090e18] to-[#1e050d] bg-grid-elegant">
+              <div class="absolute top-1/4 right-1/4 w-72 h-72 bg-sky-500/10 rounded-full filter blur-[80px]"></div>
+              <div class="absolute bottom-1/4 left-1/4 w-60 h-60 bg-[#ab163f]/20 rounded-full filter blur-[60px]"></div>
+            </div>
+
+            <!-- Modelo Inspiración Educativa: Rediseñado con degradado Zafiro y Azul profundo y texturas -->
+            <div id="dec-inspiration-bg" class="hidden absolute inset-0 bg-gradient-to-tr from-[#0c1b33] via-[#081225] to-[#1e050d]">
+              <div class="absolute inset-0 bg-grid-elegant opacity-25"></div>
+              <div class="absolute top-0 right-0 w-96 h-96 bg-sky-500/5 rounded-full filter blur-[100px] transform translate-x-20 -translate-y-20"></div>
+              <!-- Franja diagonal bordó integrada armónicamente -->
+              <div class="absolute -bottom-16 -left-16 w-36 h-36 bg-[#ab163f]/15 rounded-lg transform rotate-45 border border-[#ab163f]/30"></div>
+            </div>
+
+            <!-- Modelo Especialidades Exclusivo (Diseño 6): Rediseñado, ahora con un azul zafiro cobalto profundo y bordó, elegante y no contrastante, similar a la 7ma -->
+            <div id="dec-specializations-bg" class="hidden absolute inset-0 bg-gradient-to-br from-[#030a1e] via-[#091021] to-[#1c040d] bg-grid-elegant">
+              <!-- Halo de iluminación muy suave en rosa/bordó para dar legibilidad premium sin estridencias -->
+              <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_10%,rgba(194,96,135,0.12),transparent_65%)] pointer-events-none"></div>
+              <div class="absolute top-10 left-10 w-48 h-48 bg-[#c26087]/10 rounded-full filter blur-3xl"></div>
+              <div class="absolute bottom-10 right-10 w-48 h-48 bg-[#ab163f]/15 rounded-full filter blur-3xl"></div>
+            </div>
+
+            <!-- Modelo Maestrías Exclusivo (Diseño 7): Azul zafiro real profundo, sumamente luminoso y de gran valor académico -->
+            <div id="dec-masters-bg" class="hidden absolute inset-0 bg-gradient-to-tr from-[#020617] via-[#0b1b3d] to-[#1e050d] bg-grid-elegant">
+              <!-- Destellos radiales elegantes en bordó y celeste -->
+              <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(171,22,63,0.3),transparent_70%)] pointer-events-none"></div>
+              <div class="absolute -top-10 left-1/4 w-72 h-72 bg-blue-500/20 rounded-full filter blur-3xl"></div>
+            </div>
+          </div>
+
+          <!-- CONTENIDO SUPERIOR: Cabecera e Identificación del programa + LOGO UNTREF -->
+          <div class="relative z-10 space-y-1 select-text flex justify-between items-start gap-4">
+            <div class="flex-1 space-y-0.5">
+              <div class="flex items-center justify-between">
+                <!-- El botón de inscripciones abiertas siempre usa #f29fc5 (según directriz) -->
+                <span id="flyer-tag" class="text-[8.5px] font-black tracking-widest uppercase bg-[#f29fc5] text-[#ab163f] px-2.5 py-0.5 rounded shadow-sm">Inscripciones Abiertas</span>
+              </div>
+              
+              <h3 id="flyer-header" class="text-[9px] font-bold tracking-wider text-[#f29fc5] uppercase mt-1">Programa en</h3>
+              <h1 id="flyer-title" class="text-[18px] font-black text-white leading-tight tracking-tight max-w-[95%] transition-all">Política y Administración de la Educación</h1>
+              
+              <!-- Frase de Impacto Convocante (Para plantillas Vanguardia, Inspiración y Especialidades) -->
+              <p id="flyer-hook" class="hidden text-[10px] text-[#f29fc5] font-semibold italic mt-1 border-l-2 border-[#c26087] pl-2 max-w-[90%]">
+                Detrás de cada aula transformada hay una historia de liderazgo. Escribí la tuya.
+              </p>
+            </div>
+
+            <!-- Logo UNTREF Vectorial Premium -->
+            <div id="untref-svg-logo" class="flex flex-col items-end text-white transition-all duration-300 shrink-0">
+              <svg viewBox="0 0 160 38" class="h-5 w-auto" fill="currentColor" id="logo-svg-element">
+                <text x="5" y="24" font-family="'Lato', sans-serif" font-weight="900" font-size="22" letter-spacing="0.05em">UNTREF</text>
+                <rect x="5" y="27" width="145" height="1.5" fill="currentColor" />
+                <text x="5" y="34" font-family="'Lato', sans-serif" font-weight="700" font-size="5.5" letter-spacing="0.01em">UNIVERSIDAD NACIONAL DE TRES DE FEBRERO</text>
+              </svg>
+            </div>
+          </div>
+
+          <!-- CONTENIDO CENTRAL: Oferta académica (Maestrías y Especializaciones) -->
+          <div class="relative z-10 grid grid-cols-12 gap-3 my-auto items-center w-full">
+            
+            <!-- Contenedor de Carreras -->
+            <div id="flyer-careers" class="col-span-12 space-y-2 w-full">
+              <!-- Maestrías -->
+              <div class="space-y-0.5" id="block-maestrías">
+                <div class="flex items-center gap-1.5" id="header-container-m">
+                  <div class="h-1.5 w-1.5 rounded-full bg-[#f29fc5]" id="bullet-color-1"></div>
+                  <h2 id="title-maestrías" class="text-[10.5px] font-bold uppercase tracking-wider text-slate-300">Maestrías</h2>
+                </div>
+                <ul class="space-y-0.5 pl-3 list-disc list-inside text-white/90 font-lato-regular" id="list-m">
+                  <li id="flyer-m1" class="text-[10px] font-medium leading-tight">Planeamiento y Gestión de la Educación</li>
+                  <li id="flyer-m2" class="text-[10px] font-medium leading-tight">Gestión y Evaluación de la Educación</li>
+                </ul>
+              </div>
+
+              <!-- Especializaciones -->
+              <div class="space-y-0.5" id="block-especializaciones">
+                <div class="flex items-center gap-1.5" id="header-container-e">
+                  <div class="h-1.5 w-1.5 rounded-full bg-[#c26087]" id="bullet-color-2"></div>
+                  <h2 id="title-especializaciones" class="text-[10.5px] font-bold uppercase tracking-wider text-slate-300">Especializaciones</h2>
+                </div>
+                <ul class="space-y-0.5 pl-3 list-disc list-inside text-white/90 font-lato-regular" id="list-e">
+                  <li id="flyer-e1" class="text-[10px] font-medium leading-tight">Gestión y Docencia para la Educación Superior</li>
+                  <li id="flyer-e2" class="text-[10px] font-medium leading-tight">Gestión y Evaluación de Instituciones Educativas</li>
+                  <li id="flyer-e3" class="text-[10px] font-medium leading-tight">Planeamiento y Gestión de la Educación</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Foto flotante opcional (exclusivo para Modelo Clean) -->
+            <div id="flyer-photo-box" class="hidden col-span-5 relative h-24 rounded-xl overflow-hidden border border-slate-200 shadow-md">
+              <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1000&auto=format&fit=crop');"></div>
+            </div>
+
+          </div>
+
+          <!-- CONTENIDO INFERIOR: Reunión Informativa, Sitio Web y Contacto (Diseño horizontal ultra-compacto, colores definidos e inmutables) -->
+          <div class="relative z-10 grid grid-cols-3 gap-1.5 pt-1.5 border-t border-white/10 w-full shrink-0" id="flyer-footer-border">
+            
+            <!-- Cápsula de Reunión Informativa (Columna 1: #ab163f) -->
+            <div id="badge-meeting" style="background-color: #ab163f;" class="flex items-center gap-1.5 text-white p-1.5 rounded-lg shadow-md shrink-0 min-w-0 text-left">
+              <i data-lucide="calendar" class="w-4 h-4 shrink-0 text-white stroke-[2.5]" id="icon-meeting"></i>
+              <div class="min-w-0">
+                <p class="text-[6px] font-bold uppercase tracking-wider leading-none text-rose-200">Reunión Informativa</p>
+                <p class="text-[8px] font-black leading-tight mt-0.5 truncate">
+                  <span id="flyer-meeting-date">Jueves 26 Feb</span> • <span id="flyer-meeting-time">18 hs.</span>
+                </p>
+              </div>
+            </div>
+
+            <!-- Cápsula Interactiva de Sitio Web (Columna 2: #c26087) -->
+            <a href="https://mggpw.github.io/UNTREF_PAE/" target="_blank" id="badge-website" style="background-color: #c26087;" class="flex items-center gap-1.5 text-white p-1.5 rounded-lg shadow-md shrink-0 min-w-0 text-left cursor-pointer pointer-events-auto z-20">
+              <i data-lucide="globe" class="w-4 h-4 shrink-0 text-white stroke-[2.5]" id="icon-website"></i>
+              <div class="min-w-0">
+                <p id="flyer-web-text-1" class="text-[6px] font-bold uppercase tracking-wider leading-none text-rose-100">Más Información</p>
+                <p id="flyer-web-text-2" class="text-[8px] font-black leading-tight mt-0.5 truncate">SITIO WEB</p>
+              </div>
+            </a>
+
+            <!-- Cápsula de Contacto (Columna 3: #f29fc5) -->
+            <div id="badge-contact" style="background-color: #f29fc5;" class="flex items-center gap-1.5 text-[#ab163f] p-1.5 rounded-lg shadow-md shrink-0 min-w-0 text-left">
+              <i data-lucide="mail" class="w-4 h-4 shrink-0 text-[#ab163f]" id="icon-contact"></i>
+              <div class="min-w-0">
+                <p class="text-[6px] font-bold uppercase tracking-wider leading-none text-[#ab163f]/80">Consultas</p>
+                <p id="flyer-email" class="text-[8px] font-black leading-tight mt-0.5 truncate">pae@untref.edu.ar</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Logo UNTREF Lateral Blanco (Oculto, reemplazado por la firma del marco) -->
+          <div id="untref-watermark" class="absolute right-0 bottom-12 origin-bottom-right rotate-270 translate-x-[15px] -translate-y-[10px] select-none pointer-events-none opacity-0">
+            <span id="txt-watermark" class="text-[8px] font-bold tracking-[0.2em] text-white/30 uppercase">UNTREF</span>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Tips de Diseño debajo del Canvas -->
+      <div class="mt-4 max-w-[500px] text-center text-xs text-slate-400 space-y-1">
+        <p><i class="inline-block w-2 h-2 rounded-full bg-[#f29fc5] mr-1.5"></i> Diseñado enteramente con tipografía corporativa <strong>Lato</strong>.</p>
+        <p>Los botones inferiores conservan estrictamente la paleta <strong>Bordó/Rosa</strong> en las 7 plantillas.</p>
+      </div>
+
+    </section>
+  </main>
+
+  <script>
+    // Inicializar Iconos Lucide
+    lucide.createIcons();
+
+    // Estado global de la app
+    let currentTemplate = 'masters';
+    
+    // Imágenes de fondo simuladas de Unsplash
+    const bgImages = {
+      students: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1000&auto=format&fit=crop',
+      classroom: 'https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?q=80&w=1000&auto=format&fit=crop'
+    };
+
+    // Actualiza textos en tiempo real en el flyer
+    function updateText(fieldId, value) {
+      const target = document.getElementById(`flyer-${fieldId}`);
+      if (target) {
+        target.innerText = value;
+      }
+    }
+
+    // Actualiza etiquetas de Sitio Web de forma separada
+    function updateWebLabel(part, value) {
+      const target = document.getElementById(`flyer-web-text-${part === 'label' ? '1' : '2'}`);
+      if (target) {
+        target.innerText = value;
+      }
+    }
+
+    // Actualiza la URL de destino clicable
+    function updateWebUrl(value) {
+      const badge = document.getElementById('badge-website');
+      if (badge) {
+        badge.href = value;
+      }
+    }
+
+    // Cambiar la variante de la fuente Lato en el canvas
+    function changeFontVariant(className) {
+      const innerCanvas = document.getElementById('flyer-inner');
+      if (innerCanvas) {
+        innerCanvas.classList.remove('font-lato-regular', 'font-lato-bold', 'font-lato-black');
+        innerCanvas.classList.add(className);
+      }
+    }
+
+    // Cambiar la imagen de fondo integrada
+    function setBgImage(type) {
+      const url = bgImages[type];
+      const warmBg = document.getElementById('dec-warm-bg');
+      const photoBox = document.getElementById('flyer-photo-box');
+      
+      if (warmBg) warmBg.style.backgroundImage = `url('${url}')`;
+      if (photoBox) {
+        photoBox.firstElementChild.style.backgroundImage = `url('${url}')`;
+      }
+    }
+
+    // Actualizar estilos tipográficos y de empaquetado en vivo
+    function updateStyle(styleType, value) {
+      const title = document.getElementById('flyer-title');
+      const listItems = [
+        document.getElementById('flyer-m1'),
+        document.getElementById('flyer-m2'),
+        document.getElementById('flyer-e1'),
+        document.getElementById('flyer-e2'),
+        document.getElementById('flyer-e3')
+      ];
+      const categoryTitles = [
+        document.getElementById('title-maestrías'),
+        document.getElementById('title-especializaciones')
+      ];
+      const innerCanvas = document.getElementById('flyer-inner');
+
+      if (styleType === 'title-size') {
+        if (title) title.style.fontSize = `${value}px`;
+        const valTitleSize = document.getElementById('val-title-size');
+        if (valTitleSize) valTitleSize.innerText = `${value}px`;
+      } 
+      else if (styleType === 'list-size') {
+        const sizeVal = parseFloat(value);
+        listItems.forEach(item => {
+          if (item) item.style.fontSize = `${sizeVal}px`;
+        });
+        categoryTitles.forEach(cat => {
+          if (cat) cat.style.fontSize = `${sizeVal + 0.5}px`;
+        });
+        const valListSize = document.getElementById('val-list-size');
+        if (valListSize) valListSize.innerText = `${sizeVal}px`;
+      } 
+      else if (styleType === 'badge-size') {
+        const sizeVal = parseFloat(value);
+        
+        // Ajustar fuentes de las cápsulas del pie respetando la tipografía Lato
+        const badgeMeeting = document.getElementById('badge-meeting');
+        const badgeWebsite = document.getElementById('badge-website');
+        const badgeContact = document.getElementById('badge-contact');
+        
+        if (badgeMeeting && badgeWebsite && badgeContact) {
+          const textElements = [badgeMeeting, badgeWebsite, badgeContact];
+          textElements.forEach(badge => {
+            const ps = badge.querySelectorAll('p');
+            if (ps.length >= 2) {
+              ps[0].style.fontSize = `${sizeVal - 3.5}px`;
+              ps[1].style.fontSize = `${sizeVal}px`;
+            }
+          });
+          
+          // Cambiar padding de los botones según la escala para que no se recorten
+          const padY = sizeVal < 8 ? '3px' : '5px';
+          const padX = sizeVal < 8 ? '4px' : '6px';
+          
+          badgeMeeting.style.padding = `${padY} ${padX}`;
+          badgeWebsite.style.padding = `${padY} ${padX}`;
+          badgeContact.style.padding = `${padY} ${padX}`;
+        }
+        
+        const valBadgeSize = document.getElementById('val-badge-size');
+        if (valBadgeSize) valBadgeSize.innerText = `${sizeVal}px`;
+      }
+      else if (styleType === 'padding') {
+        if (innerCanvas) innerCanvas.style.padding = `${value * 4}px`; // Mapeo de paddings Tailwind
+        let paddingLabel = "Compacto";
+        if (value == 3) paddingLabel = "Ultra Compacto (p-3)";
+        if (value == 4) paddingLabel = "Súper Ajustado (p-4)";
+        if (value == 5) paddingLabel = "Ajustado (p-5)";
+        if (value == 6) paddingLabel = "Normal (p-6)";
+        if (value == 7) paddingLabel = "Espacioso (p-7)";
+        const valPadding = document.getElementById('val-padding');
+        if (valPadding) valPadding.innerText = paddingLabel;
+      }
+    }
+
+    // Cambia entre las plantillas de diseño del panel
+    // Ajustado para garantizar que la frase inspiracional se mantenga estrictamente en una única línea
+    function setTemplate(styleName) {
+      currentTemplate = styleName;
+
+      // Actualizar estilo de selección visual en botones de plantilla (7 en total)
+      ['warm', 'modern', 'clean', 'vanguard', 'inspiration', 'specializations', 'masters'].forEach(s => {
+        const btn = document.getElementById(`btn-${s}`);
+        if (btn) {
+          if (s === styleName) {
+            btn.classList.add('border-[#ab163f]', 'bg-[#ab163f]/10', 'text-white');
+            btn.classList.remove('border-slate-800', 'bg-slate-900', 'text-slate-400');
+          } else {
+            btn.classList.remove('border-[#ab163f]', 'bg-[#ab163f]/10', 'text-white');
+            btn.classList.add('border-slate-800', 'bg-slate-900', 'text-slate-400');
+          }
+        }
+      });
+
+      // Elementos clave del Canvas para estilización dinámica
+      const innerCanvas = document.getElementById('flyer-inner');
+      const warmBg = document.getElementById('dec-warm-bg');
+      const warmOverlay = document.getElementById('dec-warm-overlay');
+      const modernBg = document.getElementById('dec-modern-bg');
+      const cleanBg = document.getElementById('dec-clean-bg');
+      const vanguardBg = document.getElementById('dec-vanguard-bg');
+      const inspirationBg = document.getElementById('dec-inspiration-bg');
+      const specializationsBg = document.getElementById('dec-specializations-bg');
+      const mastersBg = document.getElementById('dec-masters-bg');
+      
+      const tag = document.getElementById('flyer-tag');
+      const flyerTitle = document.getElementById('flyer-title');
+      const flyerHeader = document.getElementById('flyer-header');
+      const flyerHook = document.getElementById('flyer-hook');
+      const bullet1 = document.getElementById('bullet-color-1');
+      const bullet2 = document.getElementById('bullet-color-2');
+      const txtM = document.getElementById('title-maestrías');
+      const txtE = document.getElementById('title-especializaciones');
+      const watermark = document.getElementById('txt-watermark');
+      
+      const m1 = document.getElementById('flyer-m1');
+      const m2 = document.getElementById('flyer-m2');
+      const e1 = document.getElementById('flyer-e1');
+      const e2 = document.getElementById('flyer-e2');
+      const e3 = document.getElementById('flyer-e3');
+      
+      const careersContainer = document.getElementById('flyer-careers');
+      const photoBox = document.getElementById('flyer-photo-box');
+      const footerBorder = document.getElementById('flyer-footer-border');
+      const blockMaestrias = document.getElementById('block-maestrías');
+      const blockEspecializaciones = document.getElementById('block-especializaciones');
+      const listE = document.getElementById('list-e');
+      const listM = document.getElementById('list-m');
+      const headerE = document.getElementById('header-container-e');
+      const headerM = document.getElementById('header-container-m');
+      
+      const badgeMeeting = document.getElementById('badge-meeting');
+      const badgeWebsite = document.getElementById('badge-website');
+      const badgeContact = document.getElementById('badge-contact');
+      const untrefSvgContainer = document.getElementById('untref-svg-logo');
+
+      // Ocultar capas decorativas para resetearlas
+      if (warmBg) warmBg.classList.add('hidden');
+      if (warmOverlay) warmOverlay.classList.add('hidden');
+      if (modernBg) modernBg.classList.add('hidden');
+      if (cleanBg) cleanBg.classList.add('hidden');
+      if (vanguardBg) vanguardBg.classList.add('hidden');
+      if (inspirationBg) inspirationBg.classList.add('hidden');
+      if (specializationsBg) specializationsBg.classList.add('hidden');
+      if (mastersBg) mastersBg.classList.add('hidden');
+      if (photoBox) photoBox.classList.add('hidden');
+      if (flyerHook) flyerHook.classList.add('hidden');
+      
+      // Restablecer visibilidad por defecto
+      if (blockMaestrias) blockMaestrias.classList.remove('hidden');
+      if (blockEspecializaciones) blockEspecializaciones.classList.remove('hidden');
+      
+      // Reseteo de clases de carreras (se adaptará según el template)
+      if (careersContainer) careersContainer.className = "col-span-12 space-y-2 w-full";
+      if (listE) listE.className = "space-y-0.5 pl-3 list-disc list-inside text-white/90 font-lato-regular";
+      if (listM) listM.className = "space-y-0.5 pl-3 list-disc list-inside text-white/90 font-lato-regular";
+      if (headerE) headerE.className = "flex items-center gap-1.5";
+      if (headerM) headerM.className = "flex items-center gap-1.5";
+      if (e3) e3.classList.remove('hidden'); // e3 visible en casi todos
+
+      // Obtener los valores actuales de los sliders
+      const currentTitleSize = document.getElementById('slider-title-size').value;
+      const currentListSize = document.getElementById('slider-list-size').value;
+      const currentBadgeSize = document.getElementById('slider-badge-size').value;
+
+      // ----------------- PLANTILLA WARM (CÁLIDA) -----------------
+      if (styleName === 'warm') {
+        if (innerCanvas) innerCanvas.className = "relative w-full h-full bg-slate-950 flex flex-col justify-between p-5 overflow-hidden transition-all duration-300";
+        if (warmBg) warmBg.classList.remove('hidden');
+        if (warmOverlay) warmOverlay.classList.remove('hidden');
+        
+        if (tag) tag.className = "text-[8.5px] font-black tracking-widest uppercase bg-[#f29fc5] text-[#ab163f] px-2.5 py-0.5 rounded shadow-sm";
+        if (flyerTitle) flyerTitle.className = "text-[18px] font-black text-white leading-tight tracking-tight max-w-[95%]";
+        if (flyerHeader) flyerHeader.className = "text-[9px] font-bold tracking-wider text-[#f29fc5] uppercase mt-1";
+        
+        if (bullet1) bullet1.className = "h-1.5 w-1.5 rounded-full bg-[#f29fc5]";
+        if (bullet2) bullet2.className = "h-1.5 w-1.5 rounded-full bg-[#c26087]";
+        if (txtM) txtM.className = "text-[10.5px] font-bold uppercase tracking-wider text-slate-300";
+        if (txtE) txtE.className = "text-[10.5px] font-bold uppercase tracking-wider text-slate-300";
+        
+        if (m1) m1.className = "text-[10px] text-white/90 font-medium leading-tight";
+        if (m2) m2.className = "text-[10px] text-white/90 font-medium leading-tight";
+        if (e1) e1.className = "text-[10px] text-white/90 font-medium leading-tight";
+        if (e2) e2.className = "text-[10px] text-white/90 font-medium leading-tight";
+        if (e3) e3.className = "text-[10px] text-white/90 font-medium leading-tight";
+        
+        if (untrefSvgContainer) untrefSvgContainer.className = "flex flex-col items-end text-white transition-all duration-300 shrink-0";
+        
+      // ----------------- PLANTILLA MODERN (TECNOLÓGICA) -----------------
+      } else if (styleName === 'modern') {
+        if (innerCanvas) innerCanvas.className = "relative w-full h-full bg-[#07162c] flex flex-col justify-between p-5 overflow-hidden transition-all duration-300";
+        if (modernBg) modernBg.classList.remove('hidden');
+        
+        if (tag) tag.className = "text-[8.5px] font-black tracking-widest uppercase bg-[#f29fc5] text-[#ab163f] px-2.5 py-0.5 rounded shadow-sm";
+        if (flyerTitle) flyerTitle.className = "text-[18px] font-black text-white leading-tight tracking-tight max-w-[95%]";
+        if (flyerHeader) flyerHeader.className = "text-[9px] font-bold tracking-wider text-[#f29fc5] uppercase mt-1";
+        
+        if (bullet1) bullet1.className = "h-1.5 w-1.5 rounded-full bg-[#f29fc5]";
+        if (bullet2) bullet2.className = "h-1.5 w-1.5 rounded-full bg-[#c26087]";
+        if (txtM) txtM.className = "text-[10.5px] font-bold uppercase tracking-wider text-sky-200";
+        if (txtE) txtE.className = "text-[10.5px] font-bold uppercase tracking-wider text-sky-200";
+        
+        if (m1) m1.className = "text-[10px] text-white font-medium leading-tight";
+        if (m2) m2.className = "text-[10px] text-white font-medium leading-tight";
+        if (e1) e1.className = "text-[10px] text-white font-medium leading-tight";
+        if (e2) e2.className = "text-[10px] text-white font-medium leading-tight";
+        if (e3) e3.className = "text-[10px] text-white font-medium leading-tight";
+        
+        if (untrefSvgContainer) untrefSvgContainer.className = "flex flex-col items-end text-white transition-all duration-300 shrink-0";
+        
+      // ----------------- PLANTILLA CLEAN (INSTITUCIONAL) -----------------
+      } else if (styleName === 'clean') {
+        if (innerCanvas) innerCanvas.className = "relative w-full h-full bg-[#fafbfc] flex flex-col justify-between p-5 overflow-hidden transition-all duration-300";
+        if (cleanBg) cleanBg.classList.remove('hidden');
+        if (photoBox) photoBox.classList.remove('hidden');
+        if (careersContainer) careersContainer.className = "col-span-7 space-y-2";
+        if (e3) e3.classList.add('hidden'); // Ocultar e3 en clean para preservar espacio de la foto d3.png original
+        
+        if (tag) tag.className = "text-[8.5px] font-black tracking-widest uppercase bg-[#f29fc5] text-[#ab163f] px-2.5 py-0.5 rounded shadow-sm";
+        if (flyerTitle) flyerTitle.className = "text-[17px] font-black text-[#0a1526] leading-tight tracking-tight";
+        
+        // El tono se mantiene idéntico (#f29fc5) con un sombreado sutil para legibilidad óptima sobre fondo blanco
+        if (flyerHeader) flyerHeader.className = "text-[9px] font-bold tracking-wider text-[#f29fc5] drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.45)] uppercase mt-1";
+        
+        if (bullet1) bullet1.className = "h-1.5 w-1.5 rounded-full bg-[#ab163f]";
+        if (bullet2) bullet2.className = "h-1.5 w-1.5 rounded-full bg-[#c26087]";
+        if (txtM) txtM.className = "text-[10px] font-bold uppercase tracking-wider text-[#334155]";
+        if (txtE) txtE.className = "text-[10px] font-bold uppercase tracking-wider text-[#334155]";
+        
+        if (m1) m1.className = "text-[9.5px] text-[#475569] font-medium leading-tight";
+        if (m2) m2.className = "text-[9.5px] text-[#475569] font-medium leading-tight";
+        if (e1) e1.className = "text-[9.5px] text-[#475569] font-medium leading-tight";
+        if (e2) e2.className = "text-[9.5px] text-[#475569] font-medium leading-tight";
+        
+        if (untrefSvgContainer) untrefSvgContainer.className = "flex flex-col items-end text-[#ab163f] transition-all duration-300 shrink-0";
+        
+      // ----------------- PLANTILLA VANGUARDIA (AZUL/BORDÓ) -----------------
+      } else if (styleName === 'vanguard') {
+        if (innerCanvas) innerCanvas.className = "relative w-full h-full bg-slate-950 flex flex-col justify-between p-5 overflow-hidden transition-all duration-300";
+        if (vanguardBg) vanguardBg.classList.remove('hidden');
+        if (flyerHook) flyerHook.classList.remove('hidden');
+        if (careersContainer) careersContainer.className = "col-span-12 space-y-1.5 my-1";
+        
+        if (tag) tag.className = "text-[8.5px] font-black tracking-widest uppercase bg-[#f29fc5] text-[#ab163f] px-2.5 py-0.5 rounded shadow-sm";
+        if (flyerTitle) flyerTitle.className = "text-[18px] font-black text-white leading-tight tracking-tight max-w-[95%]";
+        if (flyerHeader) flyerHeader.className = "text-[9px] font-bold tracking-wider text-[#f29fc5] uppercase mt-1";
+        
+        // Garantizamos una sola línea fluida sin cortes
+        if (flyerHook) flyerHook.className = "text-[8.5px] whitespace-nowrap text-[#f29fc5] font-semibold italic mt-1 border-l-2 border-[#c26087] pl-2 max-w-[100%] overflow-hidden text-ellipsis";
+        
+        if (bullet1) bullet1.className = "h-1.5 w-1.5 rounded-full bg-[#f29fc5]";
+        if (bullet2) bullet2.className = "h-1.5 w-1.5 rounded-full bg-[#c26087]";
+        if (txtM) txtM.className = "text-[10.5px] font-bold uppercase tracking-wider text-slate-200";
+        if (txtE) txtE.className = "text-[10.5px] font-bold uppercase tracking-wider text-slate-200";
+        
+        if (m1) m1.className = "text-[10px] text-white font-medium leading-tight";
+        if (m2) m2.className = "text-[10px] text-white font-medium leading-tight";
+        if (e1) e1.className = "text-[10px] text-white font-medium leading-tight";
+        if (e2) e2.className = "text-[10px] text-white font-medium leading-tight";
+        if (e3) e3.className = "text-[10px] text-white font-medium leading-tight";
+        
+        if (untrefSvgContainer) untrefSvgContainer.className = "flex flex-col items-end text-white transition-all duration-300 shrink-0";
+        
+      // ----------------- PLANTILLA INSPIRACIÓN EDUCATIVA (DISEÑO 5 - AZUL PREMIUM) -----------------
+      } else if (styleName === 'inspiration') {
+        if (innerCanvas) innerCanvas.className = "relative w-full h-full bg-slate-950 flex flex-col justify-between p-5 overflow-hidden transition-all duration-300";
+        if (inspirationBg) inspirationBg.classList.remove('hidden');
+        if (flyerHook) flyerHook.classList.remove('hidden');
+        
+        // REDISEÑO: Doble columna académica simétrica para optimización de espacio y legibilidad
+        if (careersContainer) careersContainer.className = "col-span-12 grid grid-cols-2 gap-4 my-1 border-l-2 border-[#c26087]/30 pl-3";
+        
+        // Tag en Rosa e hilo convocante en una sola línea
+        if (tag) tag.className = "text-[8.5px] font-black tracking-widest uppercase bg-[#f29fc5] text-[#ab163f] px-2.5 py-0.5 rounded shadow-sm";
+        if (flyerTitle) flyerTitle.className = "text-[18px] font-black text-white leading-tight tracking-tight max-w-[95%]";
+        if (flyerHeader) flyerHeader.className = "text-[9px] font-bold tracking-wider text-[#f29fc5] uppercase mt-1";
+        
+        // Garantizamos una sola línea fluida sin cortes
+        if (flyerHook) flyerHook.className = "text-[8.5px] whitespace-nowrap text-[#f29fc5] font-semibold italic mt-1 border-l-2 border-[#c26087] pl-2 max-w-[100%] overflow-hidden text-ellipsis";
+        
+        if (bullet1) bullet1.className = "h-1.5 w-1.5 rounded-full bg-[#f29fc5]";
+        if (bullet2) bullet2.className = "h-1.5 w-1.5 rounded-full bg-[#c26087]";
+        if (txtM) txtM.className = "text-[10.5px] font-bold uppercase tracking-wider text-slate-100";
+        if (txtE) txtE.className = "text-[10.5px] font-bold uppercase tracking-wider text-slate-100";
+        
+        if (m1) m1.className = "text-[10px] text-white/90 font-medium leading-tight";
+        if (m2) m2.className = "text-[10px] text-white/90 font-medium leading-tight";
+        if (e1) e1.className = "text-[10px] text-white/90 font-medium leading-tight";
+        if (e2) e2.className = "text-[10px] text-white/90 font-medium leading-tight";
+        if (e3) e3.className = "text-[10px] text-white/90 font-medium leading-tight";
+        
+        if (untrefSvgContainer) untrefSvgContainer.className = "flex flex-col items-end text-white transition-all duration-300 shrink-0";
+
+      // ----------------- 6. PLANTILLA ENFOQUE ESPECIALIZACIONES (LIDERAZGO - DISEÑO 6) -----------------
+      } else if (styleName === 'specializations') {
+        if (innerCanvas) innerCanvas.className = "relative w-full h-full bg-[#0c1424] flex flex-col justify-between p-5 overflow-hidden transition-all duration-300";
+        if (specializationsBg) specializationsBg.classList.remove('hidden');
+        if (flyerHook) flyerHook.classList.remove('hidden');
+        if (blockMaestrias) blockMaestrias.classList.add('hidden'); // OCULTA POR COMPLETO LAS MAESTRÍAS
+        
+        // Formato de tarjetas premium y compactas para evitar desbordes
+        if (careersContainer) careersContainer.className = "col-span-12 space-y-1 my-auto w-full";
+        if (headerE) headerE.className = "flex items-center gap-1.5 mb-1 justify-center";
+        if (listE) listE.className = "grid grid-cols-1 gap-1 w-full";
+        
+        if (tag) tag.className = "text-[8.5px] font-black tracking-widest uppercase bg-[#f29fc5] text-[#ab163f] px-2.5 py-0.5 rounded shadow-sm";
+        if (flyerTitle) flyerTitle.className = "text-[17px] font-black text-white leading-tight tracking-tight max-w-[95%] text-center mx-auto";
+        if (flyerHeader) flyerHeader.className = "text-[8px] font-bold tracking-widest text-[#f29fc5] uppercase mt-0.5 text-center block w-full";
+        
+        // Ajustamos la frase motivacional en una única línea
+        if (flyerHook) flyerHook.className = "text-[8.5px] whitespace-nowrap text-[#f29fc5] font-semibold italic mt-1 text-center max-w-[100%] mx-auto bg-white/5 backdrop-blur-md py-1 px-2.5 rounded-lg border border-white/10 overflow-hidden text-ellipsis";
+        
+        if (txtE) txtE.className = "text-[10px] font-extrabold uppercase tracking-widest text-[#f29fc5] text-center";
+        
+        // Estilizar los 3 list items como tarjetas/boxes premium de marketing con fondo translúcido blanco brillante (Glassmorphism)
+        if (e1) e1.className = "text-[9px] font-bold text-white bg-white/10 backdrop-blur-md border border-white/10 border-l-4 border-l-[#c26087] px-3 py-1.5 rounded-lg shadow-md hover:from-white/20 transition-all text-left block w-full";
+        if (e2) e2.className = "text-[9px] font-bold text-white bg-white/10 backdrop-blur-md border border-white/10 border-l-4 border-l-[#c26087] px-3 py-1.5 rounded-lg shadow-md hover:from-white/20 transition-all text-left block w-full";
+        if (e3) e3.className = "text-[9px] font-bold text-white bg-white/10 backdrop-blur-md border border-white/10 border-l-4 border-l-[#c26087] px-3 py-1.5 rounded-lg shadow-md hover:from-white/20 transition-all text-left block w-full";
+        
+        if (untrefSvgContainer) untrefSvgContainer.className = "flex flex-col items-end text-white transition-all duration-300 shrink-0";
+
+      // ----------------- 7. PLANTILLA ENFOQUE MAESTRÍAS (EXCELENCIA E INVESTIGACIÓN - DISEÑO 7) -----------------
+      } else if (styleName === 'masters') {
+        if (innerCanvas) innerCanvas.className = "relative w-full h-full bg-[#030712] flex flex-col justify-between p-5 overflow-hidden transition-all duration-300";
+        if (mastersBg) mastersBg.classList.remove('hidden');
+        if (flyerHook) flyerHook.classList.remove('hidden');
+        if (blockEspecializaciones) blockEspecializaciones.classList.add('hidden'); // OCULTA POR COMPLETO LAS ESPECIALIZACIONES
+
+        // Diseño amplio de tarjetas horizontales para Maestrías (solo 2 items)
+        if (careersContainer) careersContainer.className = "col-span-12 space-y-2 my-auto w-full";
+        if (headerM) headerM.className = "flex items-center gap-1.5 mb-1.5 justify-center";
+        if (listM) listM.className = "grid grid-cols-1 gap-2.5 w-full";
+
+        if (tag) tag.className = "text-[8.5px] font-black tracking-widest uppercase bg-[#f29fc5] text-[#ab163f] px-2.5 py-0.5 rounded shadow-sm";
+        if (flyerTitle) flyerTitle.className = "text-[17px] font-black text-white leading-tight tracking-tight max-w-[95%] text-center mx-auto";
+        if (flyerHeader) flyerHeader.className = "text-[8px] font-bold tracking-widest text-[#f29fc5] uppercase mt-0.5 text-center block w-full";
+
+        // Ajustamos la frase motivacional en una única línea
+        if (flyerHook) flyerHook.className = "text-[8.5px] whitespace-nowrap text-[#f29fc5] font-semibold italic mt-1 text-center max-w-[100%] mx-auto bg-white/5 backdrop-blur-md py-1.5 px-3 rounded-lg border border-white/10 overflow-hidden text-ellipsis";
+
+        if (txtM) txtM.className = "text-[10px] font-extrabold uppercase tracking-widest text-[#ff7195] text-center";
+
+        // Estilizar los 2 list items como amplias tarjetas premium de marketing académico (Glassmorphism)
+        if (m1) m1.className = "text-[9.5px] font-extrabold text-white bg-white/10 backdrop-blur-md border border-white/10 border-l-4 border-l-[#ab163f] px-4 py-2.5 rounded-lg shadow-md hover:from-white/20 transition-all text-left block w-full leading-snug";
+        if (m2) m2.className = "text-[9.5px] font-extrabold text-white bg-white/10 backdrop-blur-md border border-white/10 border-l-4 border-l-[#ab163f] px-4 py-2.5 rounded-lg shadow-md hover:from-white/20 transition-all text-left block w-full leading-snug";
+
+        if (untrefSvgContainer) untrefSvgContainer.className = "flex flex-col items-end text-white transition-all duration-300 shrink-0";
+      }
+
+      // CONFIGURACIÓN DE COLORES INMUTABLES DE BOTONES (Directriz del usuario: #ab163f, #c26087, #f29fc5)
+      if (badgeMeeting) {
+        badgeMeeting.style.backgroundColor = '#ab163f';
+        badgeMeeting.style.color = '#ffffff';
+      }
+      if (badgeWebsite) {
+        badgeWebsite.style.backgroundColor = '#c26087';
+        badgeWebsite.style.color = '#ffffff';
+      }
+      if (badgeContact) {
+        badgeContact.style.backgroundColor = '#f29fc5';
+        badgeContact.style.color = '#ab163f';
+      }
+      if (tag) {
+        tag.style.backgroundColor = '#f29fc5';
+        tag.style.color = '#ab163f';
+      }
+
+      // Aplicar los ajustes tipográficos configurados en los sliders tras cambiar de plantilla
+      updateStyle('title-size', currentTitleSize);
+      updateStyle('list-size', currentListSize);
+      updateStyle('badge-size', currentBadgeSize);
+      updateStyle('padding', document.getElementById('slider-padding').value);
+    }
+
+    // Exportación utilizando html2canvas optimizada para hi-res (3x scale)
+    function exportFlyer(event) {
+      const button = event.currentTarget;
+      const originalText = button.innerHTML;
+      button.innerHTML = `<i class="animate-spin" data-lucide="loader-2"></i> Procesando Imagen...`;
+      lucide.createIcons();
+      
+      const element = document.getElementById('flyer-canvas');
+      
+      const options = {
+        scale: 3, 
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: null
+      };
+
+      setTimeout(() => {
+        html2canvas(element, options).then(canvas => {
+          const link = document.createElement('a');
+          link.download = `Flyer_PAE_UNTREF_${currentTemplate}.png`;
+          link.href = canvas.toDataURL('image/png');
+          link.click();
+          
+          button.innerHTML = originalText;
+          lucide.createIcons();
+        }).catch(err => {
+          console.error("Error al exportar:", err);
+          button.innerHTML = originalText;
+          lucide.createIcons();
+        });
+      }, 300);
+    }
+
+    // Copiar copy de publicación optimizado para redes sociales (Distingue inteligentemente entre maestrías y especialidades)
+    function copySocialCopy() {
+      const hook = document.getElementById('input-hook').value;
+      const program = document.getElementById('input-program').value;
+      const e1 = document.getElementById('input-e1').value;
+      const e2 = document.getElementById('input-e2').value;
+      const e3 = document.getElementById('input-e3').value;
+      const date = document.getElementById('input-meeting-date').value;
+      const time = document.getElementById('input-meeting-time').value;
+      const email = document.getElementById('input-email').value;
+      const url = document.getElementById('input-web-url').value;
+
+      let text = "";
+
+      if (currentTemplate === 'specializations') {
+        // Copy especializado enfocado únicamente en Especializaciones
+        text = `🎓 Convocatoria Abierta • Especializaciones de Posgrado UNTREF
+👉 "${hook}"
+
+Te invitamos a participar de la próxima reunión informativa para conocer en detalle nuestra oferta de posgrados profesionales en:
+🌟 ${program}
+
+📚 Especializaciones Académicas:
+• ${e1}
+• ${e2}
+• ${e3}
+
+📅 REUNIÓN INFORMATIVA:
+🗓️ ${date} a las ⏰ ${time}
+
+¡Es tu momento de dar el próximo paso en tu carrera profesional y de adquirir herramientas prácticas para el liderazgo del sistema educativo!
+
+🔗 Más Información SITIO WEB: ${url}
+📧 Consultas e Inscripción: ${email}
+
+#EspecializacionesUNTREF #PolíticasEducativas #GestiónEducativa #EducaciónSuperior #Educación #LiderazgoEducativo #Docencia #PlanificaciónEducativa #UNTREF`;
+      } else if (currentTemplate === 'masters') {
+        // Copy especializado enfocado únicamente en Maestrías (Diseño 7)
+        text = `🎓 Convocatoria Abierta • Maestrías de Excelencia UNTREF
+👉 "${hook}"
+
+Te invitamos a participar de la próxima reunión informativa para conocer en detalle nuestra oferta académica de maestrías en:
+🌟 ${program}
+
+📚 Maestrías en Educación:
+• ${m1}
+• ${m2}
+
+📅 REUNIÓN INFORMATIVA:
+🗓️ ${date} a las ⏰ ${time}
+
+¡Es tu momento de dar el próximo paso en tu carrera académica y de adquirir herramientas robustas de investigación y planificación para liderar la transformación del sistema educativo!
+
+🔗 Más Información SITIO WEB: ${url}
+📧 Consultas e Inscripción: ${email}
+
+#MaestriasUNTREF #InvestigacionEducativa #GestionEducativa #PlanificacionEducativa #PoliticasEducativas #UNTREF #Educacion`;
+      } else {
+        // Copy integral por defecto
+        text = `🎓 Convocatoria Abierta • Posgrados UNTREF
+👉 "${hook}"
+
+Te invitamos a participar de la próxima reunión informativa para conocer en detalle nuestra oferta de posgrado en:
+🌟 ${program}
+
+📚 Maestrías:
+• ${m1}
+• ${m2}
+
+📚 Especializaciones:
+• ${e1}
+• ${e2}
+• ${e3}
+
+📅 REUNIÓN INFORMATIVA:
+🗓️ ${date} a las ⏰ ${time}
+
+¡Es tu momento de dar el próximo paso en tu carrera profesional y académica en educación!
+
+🔗 Más Información SITIO WEB: ${url}
+📧 Consultas e Inscripción: ${email}
+
+#PosgradosUNTREF #PolíticasEducativas #GestiónEducativa #EducaciónSuperior #Educación #Maestría #Especialización #UNTREF`;
+      }
+
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand('copy');
+      } catch (err) {
+        console.error('No se pudo copiar de forma nativa', err);
+      }
+      document.body.removeChild(textarea);
+    }
+
+    // Carga inicial por defecto
+    window.onload = function() {
+      // Cargamos por defecto la nueva plantilla de Maestrías con enfoque de storytelling
+      setTemplate('masters');
+      // Forzar ajuste inicial para que los sliders se mapeen correctamente
+      updateStyle('title-size', 17);
+      updateStyle('list-size', 9.5);
+      updateStyle('badge-size', 8.5);
+      updateStyle('padding', 4);
+      changeFontVariant('font-lato-bold');
+    }
+  </script>
+</body>
+</html>
