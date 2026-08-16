@@ -29,19 +29,13 @@
         linear-gradient(to bottom, rgba(255,255,255,0.03) 1px,transparent 1px);
     }
     input[type=range] { accent-color:#ab163f; }
-    /* Botón toggle ON */
     .toggle-on  { background:#ab163f; border-color:#ab163f; color:#fff; }
-    /* Botón toggle OFF */
     .toggle-off { background:#1e293b; border-color:#334155; color:#94a3b8; }
-    /* Imagen de fondo seleccionada */
     .imgbtn-active { border-color:#ab163f !important; color:#fff !important; }
   </style>
 </head>
 <body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col font-lato">
  
-<!-- ══════════════════════════════════════════════════════════════
-     HEADER
-══════════════════════════════════════════════════════════════ -->
 <header class="border-b border-slate-800 bg-slate-950/90 backdrop-blur px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between sticky top-0 z-50 gap-3">
   <div class="flex items-center gap-3">
     <div class="w-10 h-10 rounded-lg bg-[#ab163f] flex items-center justify-center font-bold text-white text-xl shadow-lg shadow-[#ab163f]/20">A</div>
@@ -57,15 +51,13 @@
  
 <main class="flex-1 lg:grid lg:grid-cols-12 overflow-hidden">
  
-<!-- ══════════════════════════════════════════════════════════════
-     PANEL IZQUIERDO
-══════════════════════════════════════════════════════════════ -->
+<!-- PANEL IZQUIERDO -->
 <section class="lg:col-span-5 p-6 bg-slate-950 border-r border-slate-800 overflow-y-auto max-h-[calc(100vh-73px)] space-y-6">
  
   <!-- 1. SELECTOR DE PLANTILLA -->
   <div>
     <h2 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-2">
-      <i data-lucide="layout-template" class="w-4 h-4 text-[#ab163f]"></i> Elegir Plantilla Base (7 Variantes)
+      <i data-lucide="layout-template" class="w-4 h-4 text-[#ab163f]"></i> Elegir Plantilla Base (8 Variantes)
     </h2>
     <div class="grid grid-cols-2 gap-2">
       <button onclick="setTemplate('warm')"           id="btn-warm"           class="tpl-btn p-2.5 rounded-lg border-2 border-slate-800 bg-slate-900 text-slate-400 flex flex-col items-center justify-center gap-0.5 text-center hover:bg-slate-800 transition">
@@ -76,8 +68,6 @@
         <span class="text-xs font-bold">2. Líneas Tecnológicas</span>
         <span class="text-[9px] text-slate-500">(Ref. 7.png)</span>
       </button>
- 
- 
       <button onclick="setTemplate('inspiration')"    id="btn-inspiration"    class="tpl-btn p-2.5 rounded-lg border-2 border-slate-800 bg-slate-900 text-slate-400 flex flex-col items-center justify-center gap-0.5 text-center hover:bg-slate-800 transition">
         <span class="text-xs font-bold text-[#6ca8d8]">5. Inspiración Azul</span>
         <span class="text-[9px] text-slate-500">(Doble Columna)</span>
@@ -88,19 +78,73 @@
         </span>
         <span class="text-[9px] text-slate-500">(Elegante / Sin Maestrías)</span>
       </button>
-      <button onclick="setTemplate('masters')"        id="btn-masters"        class="tpl-btn p-2.5 col-span-2 rounded-lg border-2 border-[#ab163f] bg-[#ab163f]/10 text-white flex flex-col items-center justify-center gap-0.5 text-center hover:bg-[#ab163f]/20 transition">
+      <button onclick="setTemplate('masters')"        id="btn-masters"        class="tpl-btn p-2.5 rounded-lg border-2 border-slate-800 bg-slate-900 text-slate-400 flex flex-col items-center justify-center gap-0.5 text-center hover:bg-slate-800 transition">
         <span class="text-xs font-bold text-[#8bbbe1] flex items-center justify-center gap-1">
           <i data-lucide="graduation-cap" class="w-4 h-4 text-[#8bbbe1]"></i> 7. Solo Maestrías
         </span>
-        <span class="text-[9px] text-slate-300">(Brillante de Alta Gama / Sin Especializaciones)</span>
+        <span class="text-[9px] text-slate-300">(Sin Especializaciones)</span>
       </button>
+      <button onclick="setTemplate('single')"         id="btn-single"         class="tpl-btn p-2.5 rounded-lg border-2 border-[#ab163f] bg-[#ab163f]/10 text-white flex flex-col items-center justify-center gap-0.5 text-center hover:bg-[#ab163f]/20 transition">
+        <span class="text-xs font-bold text-[#f29fc5] flex items-center justify-center gap-1">
+          <i data-lucide="star" class="w-3.5 h-3.5 text-[#f29fc5]"></i> 8. Un Solo Programa
+        </span>
+        <span class="text-[9px] text-slate-300">(Nombre Grande · Badge · Jerarquía)</span>
+      </button>
+    </div>
+  </div>
+ 
+  <!-- SELECTOR DE POSGRADO (solo visible en plantilla 8) -->
+  <div id="panel-single-type" class="border border-[#ab163f]/40 p-4 rounded-xl bg-slate-900/80 space-y-3 hidden">
+    <h2 class="text-xs font-bold uppercase tracking-wider text-[#f29fc5] flex items-center gap-2">
+      <i data-lucide="graduation-cap" class="w-4 h-4 text-[#f29fc5]"></i> Elegir Posgrado (Plantilla 8)
+    </h2>
+ 
+    <!-- Tipo: Maestría / Especialización -->
+    <div>
+      <p class="text-[10px] text-slate-400 mb-1.5 font-semibold uppercase tracking-wider">Tipo de carrera</p>
+      <div class="grid grid-cols-2 gap-2">
+        <button id="type-btn-maestria" onclick="setSingleType('maestria')"
+          class="px-3 py-2 rounded-lg border-2 border-[#ab163f] bg-[#ab163f]/10 text-white text-xs font-bold transition">Maestría</button>
+        <button id="type-btn-especializacion" onclick="setSingleType('especializacion')"
+          class="px-3 py-2 rounded-lg border-2 border-slate-700 bg-slate-900 text-slate-400 text-xs font-bold transition hover:bg-slate-800">Especialización</button>
+      </div>
+    </div>
+ 
+    <!-- Selector de carrera específica -->
+    <div>
+      <p class="text-[10px] text-slate-400 mb-1.5 font-semibold uppercase tracking-wider">Nombre del posgrado</p>
+      <div class="space-y-1.5" id="single-career-options">
+        <!-- Maestrías -->
+        <div id="single-careers-maestrias" class="space-y-1.5">
+          <button id="sc-m1" onclick="selectSingleCareer('m1')"
+            class="w-full text-left text-[10.5px] px-3 py-2.5 rounded-lg border-2 border-[#ab163f] bg-[#ab163f]/10 text-white font-semibold transition leading-snug">
+            Políticas y Administración de la Educación
+          </button>
+          <button id="sc-m2" onclick="selectSingleCareer('m2')"
+            class="w-full text-left text-[10.5px] px-3 py-2.5 rounded-lg border-2 border-slate-700 bg-slate-900 text-slate-300 font-semibold transition hover:bg-slate-800 leading-snug">
+            Gestión y Evaluación de la Educación
+          </button>
+        </div>
+        <!-- Especializaciones -->
+        <div id="single-careers-especializaciones" class="space-y-1.5 hidden">
+          <button id="sc-e1" onclick="selectSingleCareer('e1')"
+            class="w-full text-left text-[10.5px] px-3 py-2.5 rounded-lg border-2 border-[#ab163f] bg-[#ab163f]/10 text-white font-semibold transition leading-snug">
+            Gestión y Evaluación de Instituciones Educativas
+          </button>
+          <button id="sc-e2" onclick="selectSingleCareer('e2')"
+            class="w-full text-left text-[10.5px] px-3 py-2.5 rounded-lg border-2 border-slate-700 bg-slate-900 text-slate-300 font-semibold transition hover:bg-slate-800 leading-snug">
+            Planeamiento y Gestión de la Educación
+          </button>
+        </div>
+      </div>
+      <p class="text-[9px] text-slate-500 mt-1.5">El nombre seleccionado aparece grande en el flyer.</p>
     </div>
   </div>
  
   <!-- 2. AJUSTES TIPOGRÁFICOS -->
   <div class="border border-slate-800 p-4 rounded-xl bg-slate-900/60 space-y-4">
     <h2 class="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
-      <i data-lucide="sliders" class="w-4 h-4 text-[#6ca8d8]"></i> Ajustes de Visualización (Evita cortes)
+      <i data-lucide="sliders" class="w-4 h-4 text-[#6ca8d8]"></i> Ajustes de Visualización
     </h2>
     <div class="space-y-3">
       <div>
@@ -129,7 +173,7 @@
       </div>
       <div>
         <div class="flex justify-between text-xs mb-1"><span class="text-slate-400">Tamaño Botones de Pie</span><span id="lbl-badge-size" class="text-slate-200 font-bold">9px</span></div>
-        <input type="range" id="sl-badge-size" min="7" max="11" value="9" oninput="applyBadgeSize(this.value)" class="w-full h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer">
+        <input type="range" id="sl-badge-size" min="7" max="16" value="9" oninput="applyBadgeSize(this.value)" class="w-full h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer">
       </div>
       <div>
         <div class="flex justify-between text-xs mb-1"><span class="text-slate-400">Espaciado Interno (Padding)</span><span id="lbl-padding" class="text-slate-200 font-bold">Ajustado (p-5)</span></div>
@@ -144,7 +188,6 @@
       <i data-lucide="file-edit" class="w-4 h-4 text-[#ab163f]"></i> Editar Contenido del Flyer
     </h2>
  
-    <!-- FRASE CONVOCANTE + visibilidad -->
     <div class="border border-slate-800 p-3 rounded-lg bg-slate-900/40 space-y-2">
       <div class="flex items-center justify-between">
         <span class="text-xs font-bold text-[#f29fc5] uppercase flex items-center gap-1.5">
@@ -155,7 +198,6 @@
           <i data-lucide="eye" class="w-3.5 h-3.5"></i> Visible
         </button>
       </div>
-      <!-- Dos opciones predefinidas como botones -->
       <div class="space-y-1.5">
         <button id="hook-btn-a" onclick="selectHook('a')"
           class="w-full text-left text-[10px] px-3 py-2 rounded-lg border-2 border-[#ab163f] bg-[#ab163f]/10 text-[#f29fc5] font-semibold transition">
@@ -168,7 +210,6 @@
       </div>
     </div>
  
-    <!-- TAG "Inscripciones Abiertas" + visibilidad -->
     <div class="border border-slate-800 p-3 rounded-lg bg-slate-900/40 space-y-2">
       <div class="flex items-center justify-between">
         <label class="text-xs font-bold text-slate-300 uppercase flex items-center gap-1.5">
@@ -189,7 +230,6 @@
         class="w-full bg-slate-900 border border-slate-800 rounded px-3 py-2 text-sm text-white focus:outline-none focus:ring-1 focus:ring-[#ab163f]">
     </div>
  
-    <!-- Maestrías / Especializaciones -->
     <div class="border border-slate-800 p-3 rounded-lg bg-slate-900/40 space-y-3">
       <div class="text-xs font-bold text-[#f29fc5] flex items-center gap-1.5 uppercase">
         <span class="w-1.5 h-1.5 bg-[#f29fc5] rounded-full"></span> Maestrías
@@ -199,7 +239,7 @@
         <input type="text" id="input-m2" oninput="syncEl('flyer-m2',this.value)" value="Gestión y Evaluación de la Educación"   class="w-full bg-slate-900 border border-slate-800 rounded px-2.5 py-1.5 text-xs text-white">
       </div>
       <div class="text-xs font-bold text-[#c26087] flex items-center gap-1.5 uppercase pt-1">
-        <span class="w-1.5 h-1.5 bg-[#c26087] rounded-full"></span> Especializaciones (Ocultas en Diseño 7)
+        <span class="w-1.5 h-1.5 bg-[#c26087] rounded-full"></span> Especializaciones
       </div>
       <div class="space-y-2">
         <label class="block text-[10px] text-slate-400">Especialización 1</label>
@@ -209,9 +249,6 @@
       </div>
     </div>
  
- 
- 
-    <!-- Reunión informativa -->
     <div class="border border-slate-800 p-3 rounded-lg bg-slate-900/40 space-y-3">
       <div class="flex items-center justify-between">
         <div class="text-xs font-bold text-[#f29fc5] flex items-center gap-1.5 uppercase">
@@ -240,7 +277,7 @@
     </div>
   </div>
  
-  <!-- 4. IMAGEN DE FONDO + OPACIDADES -->
+  <!-- 4. IMAGEN DE FONDO -->
   <div class="space-y-3">
     <h2 class="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-2 border-b border-slate-800 pb-2">
       <i data-lucide="image" class="w-4 h-4 text-[#ab163f]"></i> Imagen de Fondo
@@ -249,28 +286,21 @@
     <div class="grid grid-cols-2 gap-2">
       <button id="imgbtn-students"  onclick="setBgImage('students')"  class="imgbtn px-3 py-2 rounded border-2 border-slate-700 bg-slate-800 text-xs text-slate-200 transition font-semibold hover:bg-slate-700">📚 Estudiantes posgrado</button>
       <button id="imgbtn-classroom" onclick="setBgImage('classroom')" class="imgbtn px-3 py-2 rounded border-2 border-slate-700 bg-slate-800 text-xs text-slate-200 transition font-semibold hover:bg-slate-700">📝 Docente planificando</button>
- 
       <button id="imgbtn-planning"  onclick="setBgImage('planning')"  class="imgbtn px-3 py-2 rounded border-2 border-slate-700 bg-slate-800 text-xs text-slate-200 transition font-semibold hover:bg-slate-700">📋 Planificación / Gestión</button>
     </div>
-    <!-- Opacidad imagen -->
     <div>
       <div class="flex justify-between text-xs mb-1">
         <span class="text-slate-400">Opacidad de la imagen</span>
         <span id="lbl-bg-opacity" class="text-slate-200 font-bold">30%</span>
       </div>
-      <input type="range" id="sl-bg-opacity" min="5" max="85" value="30"
-        oninput="applyBgOpacity(this.value)"
-        class="w-full h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer">
+      <input type="range" id="sl-bg-opacity" min="5" max="85" value="30" oninput="applyBgOpacity(this.value)" class="w-full h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer">
     </div>
-    <!-- Opacidad overlay -->
     <div>
       <div class="flex justify-between text-xs mb-1">
-        <span class="text-slate-400">Opacidad del lienzo oscuro (overlay)</span>
+        <span class="text-slate-400">Opacidad del overlay oscuro</span>
         <span id="lbl-overlay-opacity" class="text-slate-200 font-bold">80%</span>
       </div>
-      <input type="range" id="sl-overlay-opacity" min="10" max="100" value="80"
-        oninput="applyOverlayOpacity(this.value)"
-        class="w-full h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer">
+      <input type="range" id="sl-overlay-opacity" min="10" max="100" value="80" oninput="applyOverlayOpacity(this.value)" class="w-full h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer">
       <p class="text-[9px] text-slate-500 mt-1">Menos overlay = imagen más visible.</p>
     </div>
   </div>
@@ -304,21 +334,16 @@
  
 </section>
  
-<!-- ══════════════════════════════════════════════════════════════
-     CANVAS DERECHO
-══════════════════════════════════════════════════════════════ -->
+<!-- CANVAS DERECHO -->
 <section class="lg:col-span-7 p-4 bg-slate-900 flex flex-col items-center justify-start overflow-y-auto max-h-[calc(100vh-73px)]">
  
-  <!-- Marco bordó exterior con firma UNTREF lateral — cuadrado 1:1 perfecto -->
-  <!-- Wrapper que escala el canvas para que entre siempre en pantalla -->
   <div id="canvas-scaler" style="transform-origin:top center; transition: transform 0.3s; margin-bottom: 8px;">
   <div id="flyer-canvas" class="relative bg-[#ab163f] shadow-2xl flex overflow-hidden select-none" style="width:520px;height:520px;">
  
-    <!-- Contenedor interno: margen uniforme 16px en los 4 lados -->
     <div id="flyer-inner" class="relative bg-slate-950 flex flex-col justify-between p-5 overflow-hidden font-lato-bold"
          style="margin:10px; flex:1;">
  
-      <!-- ── CAPA DE DECORACIONES (fondo) ─────────────────────── -->
+      <!-- CAPAS DE DECORACIONES -->
       <div id="decorations-layer" class="absolute inset-0 pointer-events-none z-0">
  
         <!-- WARM -->
@@ -341,8 +366,6 @@
           </div>
         </div>
  
- 
- 
         <!-- VANGUARD -->
         <div id="dec-vanguard-wrap" class="absolute inset-0 hidden bg-gradient-to-br from-[#12283e] via-[#091728] to-[#1e050d] bg-grid-elegant">
           <div class="absolute top-1/4 right-1/4 w-72 h-72 bg-[#29649b]/25 rounded-full filter blur-[80px]"></div>
@@ -361,24 +384,15 @@
  
         <!-- SPECIALIZATIONS -->
         <div id="dec-spec-wrap" class="absolute inset-0 hidden" style="background-color:#29649b;">
-          <!-- Sutil degradado oscuro en esquina superior izquierda para dar profundidad -->
           <div class="absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,rgba(0,0,0,0.35),transparent_55%)] pointer-events-none"></div>
-          <!-- Chevrons decorativos esquina inferior derecha -->
           <div class="absolute bottom-0 right-0 pointer-events-none" style="width:65%;height:80%;overflow:hidden;">
             <svg viewBox="0 0 400 420" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMaxYMax meet" style="width:100%;height:100%;opacity:0.97;">
-              <!-- Línea 1 - blanco, más exterior, brazos largos -->
               <polyline points="400,0  210,200 400,400" fill="none" stroke="#ffffff"  stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"/>
-              <!-- Línea 2 - azul claro #00a7e7 -->
               <polyline points="400,30 240,200 400,370" fill="none" stroke="#00a7e7"  stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter"/>
-              <!-- Línea 3 - azul medio #5c79bb -->
               <polyline points="400,58 268,200 400,342" fill="none" stroke="#5c79bb"  stroke-width="9"  stroke-linecap="butt" stroke-linejoin="miter"/>
-              <!-- Línea 4 - azul claro #00a7e7 -->
               <polyline points="400,84 294,200 400,316" fill="none" stroke="#00a7e7"  stroke-width="8"  stroke-linecap="butt" stroke-linejoin="miter"/>
-              <!-- Línea 5 - blanco -->
               <polyline points="400,108 318,200 400,292" fill="none" stroke="#ffffff"  stroke-width="7"  stroke-linecap="butt" stroke-linejoin="miter"/>
-              <!-- Línea 6 - azul medio #5c79bb -->
               <polyline points="400,130 340,200 400,270" fill="none" stroke="#5c79bb"  stroke-width="6"  stroke-linecap="butt" stroke-linejoin="miter"/>
-              <!-- Línea 7 - azul claro #00a7e7, más interior -->
               <polyline points="400,150 360,200 400,250" fill="none" stroke="#00a7e7"  stroke-width="5"  stroke-linecap="butt" stroke-linejoin="miter"/>
             </svg>
           </div>
@@ -387,54 +401,68 @@
         <!-- MASTERS -->
         <div id="dec-masters-wrap" class="absolute inset-0 hidden" style="background-color:#29649b;">
           <div class="absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,rgba(0,0,0,0.35),transparent_55%)] pointer-events-none"></div>
-          <!-- Chevrons decorativos esquina inferior derecha -->
           <div class="absolute bottom-0 right-0 pointer-events-none" style="width:65%;height:80%;overflow:hidden;">
             <svg viewBox="0 0 400 420" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMaxYMax meet" style="width:100%;height:100%;opacity:0.97;">
-              <!-- Línea 1 - blanco, más exterior, brazos largos -->
               <polyline points="400,0  210,200 400,400" fill="none" stroke="#ffffff"  stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"/>
-              <!-- Línea 2 - azul claro #00a7e7 -->
               <polyline points="400,30 240,200 400,370" fill="none" stroke="#00a7e7"  stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter"/>
-              <!-- Línea 3 - azul medio #5c79bb -->
               <polyline points="400,58 268,200 400,342" fill="none" stroke="#5c79bb"  stroke-width="9"  stroke-linecap="butt" stroke-linejoin="miter"/>
-              <!-- Línea 4 - azul claro #00a7e7 -->
               <polyline points="400,84 294,200 400,316" fill="none" stroke="#00a7e7"  stroke-width="8"  stroke-linecap="butt" stroke-linejoin="miter"/>
-              <!-- Línea 5 - blanco -->
               <polyline points="400,108 318,200 400,292" fill="none" stroke="#ffffff"  stroke-width="7"  stroke-linecap="butt" stroke-linejoin="miter"/>
-              <!-- Línea 6 - azul medio #5c79bb -->
               <polyline points="400,130 340,200 400,270" fill="none" stroke="#5c79bb"  stroke-width="6"  stroke-linecap="butt" stroke-linejoin="miter"/>
-              <!-- Línea 7 - azul claro #00a7e7, más interior -->
               <polyline points="400,150 360,200 400,250" fill="none" stroke="#00a7e7"  stroke-width="5"  stroke-linecap="butt" stroke-linejoin="miter"/>
             </svg>
           </div>
         </div>
+ 
+        <!-- SINGLE (Plantilla 8) — paleta bordó/rosa institucional -->
+        <div id="dec-single-wrap" class="absolute inset-0 hidden" style="background: linear-gradient(145deg, #1a0510 0%, #2d0a1a 45%, #1a0510 100%);">
+          <!-- Glow superior izquierdo bordó profundo -->
+          <div class="absolute pointer-events-none" style="top:-60px;left:-60px;width:320px;height:320px;background:radial-gradient(circle, rgba(171,22,63,0.35) 0%, transparent 70%);"></div>
+          <!-- Glow central rosa suave -->
+          <div class="absolute pointer-events-none" style="top:30%;left:10%;width:220px;height:220px;background:radial-gradient(circle, rgba(194,96,135,0.18) 0%, transparent 70%);"></div>
+          <!-- Glow inferior derecho -->
+          <div class="absolute pointer-events-none" style="bottom:-40px;right:10%;width:260px;height:260px;background:radial-gradient(circle, rgba(171,22,63,0.22) 0%, transparent 65%);"></div>
+          <!-- Chevrones con paleta bordó/rosa/nude -->
+          <div class="absolute bottom-0 right-0 pointer-events-none" style="width:62%;height:78%;overflow:hidden;">
+            <svg viewBox="0 0 400 420" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMaxYMax meet" style="width:100%;height:100%;">
+              <!-- exterior: blanco con baja opacidad -->
+              <polyline points="400,0  210,200 400,400" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"/>
+              <!-- rosa claro #f29fc5 -->
+              <polyline points="400,30 240,200 400,370" fill="none" stroke="#f29fc5" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" opacity="0.85"/>
+              <!-- bordó medio #c26087 -->
+              <polyline points="400,58 268,200 400,342" fill="none" stroke="#c26087" stroke-width="9"  stroke-linecap="butt" stroke-linejoin="miter" opacity="0.90"/>
+              <!-- bordó fuerte #ab163f -->
+              <polyline points="400,84 294,200 400,316" fill="none" stroke="#ab163f" stroke-width="8"  stroke-linecap="butt" stroke-linejoin="miter"/>
+              <!-- rosa claro de nuevo -->
+              <polyline points="400,108 318,200 400,292" fill="none" stroke="#f29fc5" stroke-width="7"  stroke-linecap="butt" stroke-linejoin="miter" opacity="0.70"/>
+              <!-- bordó medio -->
+              <polyline points="400,130 340,200 400,270" fill="none" stroke="#c26087" stroke-width="6"  stroke-linecap="butt" stroke-linejoin="miter" opacity="0.80"/>
+              <!-- bordó fuerte interior -->
+              <polyline points="400,150 360,200 400,250" fill="none" stroke="#ab163f" stroke-width="5"  stroke-linecap="butt" stroke-linejoin="miter" opacity="0.90"/>
+            </svg>
+          </div>
+          <!-- Línea sutil horizontal superior -->
+          <div class="absolute pointer-events-none" style="top:0;left:0;right:0;height:1px;background:linear-gradient(to right,rgba(194,96,135,0.4),transparent);"></div>
+        </div>
+ 
       </div>
-      <!-- ── FIN DECORACIONES ───────────────────────────────────── -->
+      <!-- FIN DECORACIONES -->
  
-      <!-- ── CABECERA ──────────────────────────────────────────── -->
-      <div class="relative z-10 flex justify-between items-start gap-4">
+      <!-- CABECERA ESTÁNDAR (oculta en plantilla 8) -->
+      <div id="header-standard" class="relative z-10 flex justify-between items-start gap-4">
         <div class="flex-1 space-y-0">
- 
-          <!-- Tag "Inscripciones Abiertas" -->
           <div id="flyer-tag-wrapper" class="mb-0.5">
             <span id="flyer-tag" style="background-color:#f29fc5;color:#ab163f;"
               class="text-[8.5px] font-black tracking-widest uppercase px-2.5 py-0.5 rounded shadow-sm">Inscripciones Abiertas</span>
           </div>
- 
-          <!-- "Programa de Posgrados en" — línea propia, siempre separada -->
           <h3 id="flyer-header" class="text-[16px] font-bold tracking-wider text-[#f29fc5] uppercase block leading-tight">Programa de Posgrados en</h3>
- 
-          <!-- Nombre del programa -->
           <h1 id="flyer-title" class="text-[18px] font-black text-white leading-tight tracking-tight max-w-[95%] mt-0.5">Políticas y Administración de la Educación</h1>
- 
-          <!-- Frase convocante -->
           <p id="flyer-hook" class="text-[8.5px] text-[#f29fc5] font-semibold italic border-l-2 border-[#c26087] pl-2 max-w-[95%] leading-snug" style="margin-top:24px;">
             Detrás de cada aula transformada hay una historia de liderazgo. Escribí la tuya.
           </p>
         </div>
- 
-        <!-- Logo UNTREF SVG oficial -->
         <div id="untref-svg-logo" class="flex flex-col items-end text-white shrink-0 pt-0.5">
-          <svg class="h-[37px] w-auto max-w-[138px] drop-shadow-sm" viewBox="49 49 471 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="UNTREF - Universidad Nacional de Tres de Febrero">
+          <svg class="h-[37px] w-auto max-w-[138px] drop-shadow-sm" viewBox="49 49 471 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="UNTREF">
             <defs>
               <clipPath id="clipPath20-untref" clipPathUnits="userSpaceOnUse">
                 <path d="M 0,195.368 H 412.491 V 0 H 0 Z"/>
@@ -455,14 +483,63 @@
           </svg>
         </div>
       </div>
-      <!-- ── FIN CABECERA ──────────────────────────────────────── -->
  
-      <!-- ── CONTENIDO CENTRAL ─────────────────────────────────── -->
+      <!-- ══ CABECERA PLANTILLA 8 (un solo programa) ══ -->
+      <div id="header-single" class="relative z-10 hidden">
+        <!-- Fila logo + badge -->
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">
+          <!-- Logo -->
+          <div style="color:#ffffff;">
+            <svg style="height:38px;width:auto;max-width:156px;" viewBox="49 49 471 280" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <clipPath id="clipPath20-single" clipPathUnits="userSpaceOnUse">
+                  <path d="M 0,195.368 H 412.491 V 0 H 0 Z"/>
+                </clipPath>
+              </defs>
+              <g transform="matrix(1.3333333,0,0,-1.3333333,0,260.49067)">
+                <path d="M 357.621,54.871 H 54.871 v 11.347 h 302.75 z" style="fill:currentColor;fill-opacity:1;fill-rule:nonzero;stroke:none"/>
+                <g clip-path="url(#clipPath20-single)">
+                  <g transform="translate(271.9521,85.627)">
+                    <path d="M 0,0 V 54.871 H 36.154 V 45.808 H 10.936 V 33.001 h 23.05 V 23.938 H 10.936 V 9.063 h 26.4 V 0 Z M 50.832,0 V 54.871 H 85.509 V 45.808 H 61.767 V 33.001 H 83.341 V 23.938 H 61.767 V 0 Z m -96.737,0 h -10.936 v 54.871 h 22.756 c 12.117,0 18.126,-5.517 18.126,-16.55 0,-8.669 -4.334,-13.004 -8.373,-14.383 L -15.071,0 h -11.92 l -8.078,21.771 h -10.836 z m 0,30.538 h 8.964 c 6.403,0 9.555,1.774 9.555,7.783 0,6.009 -3.152,7.782 -9.555,7.782 h -8.964 z m -45.907,15.171 h -13.89 v 9.162 h 38.813 v -9.162 h -13.89 V 0 H -91.812 Z M -158.11,0 v 54.871 h 12.905 l 18.126,-36.745 h 0.493 v 36.745 h 10.541 V 0 h -12.708 l -18.52,38.222 h -0.493 V 0 Z m -58.81,54.871 h 11.032 V 16.845 c 0,-6.304 3.152,-8.767 9.457,-8.767 6.306,0 9.556,2.463 9.556,8.767 v 38.026 h 10.935 V 16.845 c 0,-11.919 -7.289,-17.83 -20.491,-17.83 -13.2,0 -20.489,5.911 -20.489,17.929 z" style="fill:currentColor;fill-opacity:1;fill-rule:nonzero;stroke:none"/>
+                  </g>
+                </g>
+              </g>
+              <g class="untref-logo-sub" fill="currentColor">
+                <text x="73" y="240" font-size="33.95" letter-spacing="5.36">UNIVERSIDAD NACIONAL</text>
+                <text x="73" y="305" font-size="33.95" letter-spacing="5.36">DE TRES DE FEBRERO</text>
+              </g>
+            </svg>
+          </div>
+          <!-- Badge tipo (MAESTRÍA / ESPECIALIZACIÓN) -->
+          <div id="single-badge-type" style="background-color:#00a7e7;color:#ffffff;font-size:11px;font-weight:900;letter-spacing:0.12em;text-transform:uppercase;padding:6px 14px;border-radius:5px;white-space:nowrap;flex-shrink:0;border:none;">
+            MAESTRÍA
+          </div>
+        </div>
+        <!-- Tag Inscripciones Abiertas — igual a plantilla 1 -->
+        <div id="single-tag-wrapper" style="margin-bottom:6px;">
+          <span id="single-tag-text" style="background-color:#00a7e7;color:#ffffff;font-size:8.5px;font-weight:900;letter-spacing:0.14em;text-transform:uppercase;padding:2px 10px;border-radius:3px;display:inline-block;">
+            Inscripciones Abiertas
+          </span>
+        </div>
+        <!-- Nombre del programa — el protagonista -->
+        <h1 id="single-program-name" style="font-size:28px;font-weight:900;color:#ffffff;line-height:1.05;letter-spacing:-0.5px;max-width:78%;margin-bottom:14px;">
+          Gestión y Evaluación de Instituciones Educativas
+        </h1>
+        <!-- Frase convocante -->
+        <p id="single-hook" style="font-size:11px;font-weight:600;color:#f29fc5;font-style:italic;border-left:3px solid #c26087;padding-left:10px;line-height:1.45;max-width:72%;margin-bottom:0;">
+          Detrás de cada aula transformada hay una historia de liderazgo. Escribí la tuya.
+        </p>
  
+        <!-- Línea de programa completo — aparece justo antes de los iconos -->
+        <div id="single-program-context" style="margin-top:14px;padding-top:10px;border-top:1px solid rgba(194,96,135,0.25);">
+          <p style="font-size:13px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;color:#ffffff;margin-bottom:3px;">Programa de Posgrados en</p>
+          <p id="single-program-full" style="font-size:12px;font-weight:800;color:rgba(255,255,255,0.88);letter-spacing:0.01em;line-height:1.3;">Políticas y Administración de la Educación</p>
+        </div>
+      </div>
+ 
+      <!-- CONTENIDO CENTRAL -->
       <div class="relative z-10 grid grid-cols-12 gap-3 my-auto items-center w-full">
         <div id="flyer-careers" class="col-span-12 w-full" style="display:flex;flex-direction:column;gap:8px;">
- 
-          <!-- Maestrías -->
           <div class="space-y-0.5" id="block-maestrias">
             <div class="flex items-center gap-1.5" id="header-container-m">
               <div class="h-1.5 w-1.5 rounded-full bg-[#f29fc5]" id="bullet-color-1"></div>
@@ -473,8 +550,6 @@
               <li id="flyer-m2" class="text-[10px] font-medium leading-tight">Gestión y Evaluación de la Educación</li>
             </ul>
           </div>
- 
-          <!-- Especializaciones -->
           <div class="space-y-0.5" id="block-especializaciones">
             <div class="flex items-center gap-1.5" id="header-container-e">
               <div class="h-1.5 w-1.5 rounded-full bg-[#c26087]" id="bullet-color-2"></div>
@@ -486,63 +561,70 @@
             </ul>
           </div>
         </div>
- 
-        <!-- Foto box (solo plantilla Clean) -->
         <div id="flyer-photo-box" class="hidden col-span-5 relative h-24 rounded-xl overflow-hidden border border-slate-200 shadow-md">
           <div id="flyer-photo-inner" class="absolute inset-0 bg-cover bg-center" style="background-image:url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&fit=crop&auto=format');"></div>
         </div>
       </div>
-      <!-- ── FIN CONTENIDO CENTRAL ──────────────────────────────── -->
  
- 
-      <!-- ── FEATURES GRID — solo plantillas 6 y 7 ─────────────── -->
+      <!-- FEATURES GRID (plantillas 6, 7 y 8) -->
       <div id="block-features" class="relative z-10 hidden w-full" style="margin-bottom:6px;">
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:4px;width:100%;">
- 
+        <div id="features-grid-standard" style="display:grid;grid-template-columns:repeat(4,1fr);gap:4px;width:100%;">
           <div style="display:flex;flex-direction:column;align-items:center;gap:3px;background:rgba(255,255,255,0.10);border-radius:8px;padding:6px 4px;text-align:center;">
             <svg viewBox="0 0 24 24" fill="none" stroke="#f29fc5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;flex-shrink:0;"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/><polyline points="9,11 12,14 15,11"/></svg>
             <span style="font-size:7px;font-weight:700;color:#ffffff;line-height:1.3;">Acreditados<br>CONEAU</span>
           </div>
- 
           <div style="display:flex;flex-direction:column;align-items:center;gap:3px;background:rgba(255,255,255,0.10);border-radius:8px;padding:6px 4px;text-align:center;">
             <svg viewBox="0 0 24 24" fill="none" stroke="#f29fc5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;flex-shrink:0;"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
             <span style="font-size:7px;font-weight:700;color:#ffffff;line-height:1.3;">Presencial +<br>Remoto Sincrónico</span>
           </div>
- 
           <div style="display:flex;flex-direction:column;align-items:center;gap:3px;background:rgba(255,255,255,0.10);border-radius:8px;padding:6px 4px;text-align:center;">
             <svg viewBox="0 0 24 24" fill="none" stroke="#f29fc5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;flex-shrink:0;"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
             <span style="font-size:7px;font-weight:700;color:#ffffff;line-height:1.3;">Plantel docente<br>destacado</span>
           </div>
- 
           <div style="display:flex;flex-direction:column;align-items:center;gap:3px;background:rgba(255,255,255,0.10);border-radius:8px;padding:6px 4px;text-align:center;">
             <svg viewBox="0 0 24 24" fill="none" stroke="#f29fc5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;flex-shrink:0;"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
             <span style="font-size:7px;font-weight:700;color:#ffffff;line-height:1.3;">Maipú 71<br>CABA</span>
           </div>
+        </div>
  
+        <!-- FEATURES GRID PLANTILLA 8 — paleta bordó/rosa -->
+        <div id="features-grid-single" style="display:none;flex-direction:column;gap:3px;width:68%;">
+          <!-- Fila superior: 3 íconos -->
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:3px;width:100%;">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:2px;background:rgba(171,22,63,0.22);border-radius:7px;padding:5px 4px;text-align:center;border:1px solid rgba(194,96,135,0.30);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#f29fc5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px;flex-shrink:0;"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/><polyline points="9,11 12,14 15,11"/></svg>
+              <span id="sf-coneau" style="font-size:8.5px;font-weight:800;color:#f29fc5;line-height:1.2;letter-spacing:0.01em;">CONEAU<br>Acreditado</span>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:2px;background:rgba(171,22,63,0.22);border-radius:7px;padding:5px 4px;text-align:center;border:1px solid rgba(194,96,135,0.30);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#f29fc5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px;flex-shrink:0;"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <span id="sf-presencial" style="font-size:8.5px;font-weight:800;color:#f29fc5;line-height:1.2;">Presencial +<br>Remoto sincrónico</span>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:2px;background:rgba(171,22,63,0.22);border-radius:7px;padding:5px 4px;text-align:center;border:1px solid rgba(194,96,135,0.30);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#f29fc5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px;flex-shrink:0;"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+              <span id="sf-plantel" style="font-size:8.5px;font-weight:800;color:#f29fc5;line-height:1.2;">Plantel docente<br>destacado</span>
+            </div>
+          </div>
+          <!-- Fila inferior: Sede CABA ancho completo -->
+          <div style="display:flex;flex-direction:row;align-items:center;justify-content:center;gap:6px;background:rgba(171,22,63,0.22);border-radius:7px;padding:5px 10px;border:1px solid rgba(194,96,135,0.30);width:100%;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#f29fc5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;flex-shrink:0;"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            <span id="sf-sede" style="font-size:8.5px;font-weight:800;color:#f29fc5;line-height:1.2;letter-spacing:0.04em;">Sede Maipú 71 · CABA</span>
+          </div>
         </div>
       </div>
-      <!-- ── FIN FEATURES GRID ──────────────────────────────────── -->
  
-      <!-- ── PIE ───────────────────────────────────────────────── -->
+      <!-- PIE -->
       <div class="relative z-10 grid grid-cols-2 gap-1.5 pt-1.5 border-t border-white/10 w-full shrink-0" id="flyer-footer-border">
- 
-        <!-- Reunión -->
         <div id="badge-meeting" style="background-color:#ab163f;" class="flex flex-col items-center justify-center text-white p-1.5 rounded-lg shadow-md shrink-0 min-w-0 text-center">
           <p class="text-[6px] font-bold uppercase tracking-wider leading-none text-rose-200 w-full text-center">Reunión Informativa</p>
           <p class="text-[8px] font-black leading-tight mt-0.5 w-full text-center">
             <span id="flyer-meeting-date">Jueves 26 Feb</span> • <span id="flyer-meeting-time">18 hs.</span>
           </p>
         </div>
- 
- 
- 
-        <!-- Contacto -->
         <div id="badge-contact" style="background-color:#f29fc5;" class="flex flex-col items-center justify-center text-[#ab163f] p-1.5 rounded-lg shadow-md shrink-0 min-w-0 text-center">
           <p class="text-[6px] font-bold uppercase tracking-wider leading-none text-[#ab163f]/80 w-full text-center">Consultas</p>
           <p id="flyer-email" class="text-[10.5px] font-black leading-tight mt-0.5 w-full text-center">pae@untref.edu.ar</p>
         </div>
       </div>
-      <!-- ── FIN PIE ────────────────────────────────────────────── -->
  
     </div><!-- /flyer-inner -->
   </div><!-- /flyer-canvas -->
@@ -550,20 +632,16 @@
  
   <div class="mt-4 max-w-[500px] text-center text-xs text-slate-400 space-y-1">
     <p><i class="inline-block w-2 h-2 rounded-full bg-[#f29fc5] mr-1.5"></i> Diseñado con tipografía corporativa <strong>Lato</strong> y azul institucional <strong>#29649b</strong>.</p>
-    <p>Los botones inferiores conservan strictly la paleta <strong>Bordó/Rosa</strong> en las 7 plantillas.</p>
+    <p>Plantilla 8: un solo programa, nombre grande, badge de tipo, íconos de 2 palabras.</p>
   </div>
  
 </section>
 </main>
  
-<!-- ══════════════════════════════════════════════════════════════
-     JAVASCRIPT — ESTADO GLOBAL + FUNCIONES INDEPENDIENTES
-══════════════════════════════════════════════════════════════ -->
 <script>
-/* ─── ESTADO GLOBAL ─────────────────────────────────────────── */
 const STATE = {
-  template   : 'masters',
-  format     : 'square',   /* 'square' = 1:1  |  'portrait' = 4:5 */
+  template   : 'single',
+  format     : 'square',
   hookVis    : true,
   tagVis     : true,
   meetingVis : true,
@@ -571,16 +649,96 @@ const STATE = {
   bgOpacity  : 0.30,
   overlayOp  : 0.80,
   hookText   : 'Detrás de cada aula transformada hay una historia de liderazgo. Escribí la tuya.',
+  singleType  : 'maestria',
+  singleCareer: 'm1',
 };
  
-/* ─── FORMATO DEL CANVAS ────────────────────────────────────── */
-/*  1:1  → 520 × 520 px en pantalla  → exporta 1080 × 1080 px (scale 2.077)
-    4:5  → 520 × 650 px en pantalla  → exporta 1080 × 1350 px (scale 2.077) */
+const BG_IMAGES = {
+  students : 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&fit=crop&auto=format',
+  classroom: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1200&fit=crop&auto=format',
+  planning : 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&fit=crop&auto=format',
+};
+ 
+function $(id){ return document.getElementById(id); }
+function syncEl(id, val){ const el = $(id); if(el) el.innerText = val; }
+function syncTag(val){ syncEl('flyer-tag', val); syncEl('single-tag-text', val); }
+ 
+/* ─── PLANTILLA 8: badge tipo ─── */
+function setSingleType(type){
+  STATE.singleType = type;
+  const badge = $('single-badge-type');
+  if(badge) badge.innerText = type === 'maestria' ? 'MAESTRÍA' : 'ESPECIALIZACIÓN';
+ 
+  ['maestria','especializacion'].forEach(t => {
+    const b = $(`type-btn-${t}`);
+    if(!b) return;
+    if(t === type){
+      b.className = 'px-3 py-2 rounded-lg border-2 border-[#ab163f] bg-[#ab163f]/10 text-white text-xs font-bold transition';
+    } else {
+      b.className = 'px-3 py-2 rounded-lg border-2 border-slate-700 bg-slate-900 text-slate-400 text-xs font-bold transition hover:bg-slate-800';
+    }
+  });
+ 
+  /* Mostrar lista de carreras correspondiente */
+  const listM = $('single-careers-maestrias');
+  const listE = $('single-careers-especializaciones');
+  if(type === 'maestria'){
+    if(listM) listM.classList.remove('hidden');
+    if(listE) listE.classList.add('hidden');
+    /* Seleccionar la primera maestría por defecto */
+    selectSingleCareer('m1');
+  } else {
+    if(listM) listM.classList.add('hidden');
+    if(listE) listE.classList.remove('hidden');
+    /* Seleccionar la primera especialización por defecto */
+    selectSingleCareer('e1');
+  }
+}
+ 
+/* ─── PLANTILLA 8: seleccionar carrera específica ─── */
+const SINGLE_CAREERS = {
+  m1: 'Políticas y Administración de la Educación',
+  m2: 'Gestión y Evaluación de la Educación',
+  e1: 'Gestión y Evaluación de Instituciones Educativas',
+  e2: 'Planeamiento y Gestión de la Educación',
+};
+ 
+function selectSingleCareer(key){
+  STATE.singleCareer = key;
+  const name = SINGLE_CAREERS[key];
+ 
+  /* Actualizar nombre grande en el flyer */
+  syncEl('single-program-name', name);
+ 
+  /* Resaltar botón activo en la lista correspondiente */
+  const group = key.startsWith('m') ? ['m1','m2'] : ['e1','e2'];
+  group.forEach(k => {
+    const b = $(`sc-${k}`);
+    if(!b) return;
+    if(k === key){
+      b.className = 'w-full text-left text-[10.5px] px-3 py-2.5 rounded-lg border-2 border-[#ab163f] bg-[#ab163f]/10 text-white font-semibold transition leading-snug';
+    } else {
+      b.className = 'w-full text-left text-[10.5px] px-3 py-2.5 rounded-lg border-2 border-slate-700 bg-slate-900 text-slate-300 font-semibold transition hover:bg-slate-800 leading-snug';
+    }
+  });
+}
+ 
+/* Sincronizar programa con plantilla 8 */
+function syncProgramName(val){
+  syncEl('flyer-title', val);
+  syncEl('single-program-name', val);
+}
+ 
+/* Sobrescribir el handler del input-program */
+function initProgramInput(){
+  const inp = $('input-program');
+  if(inp) inp.oninput = function(){ syncProgramName(this.value); };
+}
+ 
+/* ─── FORMATO ─── */
 function setFormat(fmt){
   STATE.format = fmt;
   const canvas = $('flyer-canvas');
- 
-  /* Botones visuales */
   ['square','portrait'].forEach(f => {
     const btn = $('fmt-btn-' + f);
     if(!btn) return;
@@ -592,7 +750,6 @@ function setFormat(fmt){
       btn.classList.add('border-slate-700','bg-slate-900','text-slate-400');
     }
   });
- 
   const scaler = $('canvas-scaler');
   if(fmt === 'square'){
     canvas.style.width  = '520px';
@@ -602,85 +759,56 @@ function setFormat(fmt){
   } else {
     canvas.style.width  = '520px';
     canvas.style.height = '650px';
-    /* Escalar para que 650px entre cómodo en la sección de previsualización */
-    const sectionH = window.innerHeight - 73 - 48; /* 48 = padding sección */
+    const sectionH = window.innerHeight - 73 - 48;
     const scale    = Math.min(1, (sectionH - 40) / 650);
     if(scaler){
       scaler.style.transform  = 'scale(' + scale + ')';
-      /* Ajustar height real del espacio que ocupa el elemento escalado */
       scaler.style.marginBottom = Math.round((650 * scale) - 650 + 16) + 'px';
     }
     $('btn-export-label').innerText = 'Descargar PNG 1080×1350';
   }
 }
  
-/* Imágenes disponibles */
-const BG_IMAGES = {
-  /* Estudiantes de posgrado trabajando en grupo */
-  students : 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&fit=crop&auto=format',
-  /* Ceremonia de graduación / egresados de posgrado */
-  classroom: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1200&fit=crop&auto=format',
- 
-  /* Planificación educativa: análisis de documentos y datos */
-  planning : 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&fit=crop&auto=format',
-};
- 
-/* ─── HELPERS ───────────────────────────────────────────────── */
-function $(id){ return document.getElementById(id); }
- 
-/* Sincronizar texto de campo con elemento del flyer */
-function syncEl(id, val){ const el = $(id); if(el) el.innerText = val; }
- 
-/* Sincronizar tag (texto + botón) */
-function syncTag(val){ syncEl('flyer-tag', val); }
- 
-/* ─── VISIBILIDAD: HOOK ─────────────────────────────────────── */
-function toggleHookVis(){
-  STATE.hookVis = !STATE.hookVis;
-  applyHookVis();
-}
+/* ─── VISIBILIDADES ─── */
+function toggleHookVis(){ STATE.hookVis = !STATE.hookVis; applyHookVis(); }
 function applyHookVis(){
   const el  = $('flyer-hook');
+  const el2 = $('single-hook');
   const btn = $('btn-hook-vis');
-  if(!el || !btn) return;
+  if(!btn) return;
+  const disp = STATE.hookVis ? '' : 'none';
+  if(el)  el.style.display  = disp;
+  if(el2) el2.style.display = disp;
   if(STATE.hookVis){
-    el.style.display = '';
     btn.className = 'text-[11px] px-2.5 py-1 rounded border flex items-center gap-1.5 transition font-semibold toggle-on';
     btn.innerHTML = '<i data-lucide="eye" class="w-3.5 h-3.5"></i> Visible';
   } else {
-    el.style.display = 'none';
     btn.className = 'text-[11px] px-2.5 py-1 rounded border flex items-center gap-1.5 transition font-semibold toggle-off';
     btn.innerHTML = '<i data-lucide="eye-off" class="w-3.5 h-3.5"></i> Oculto';
   }
   lucide.createIcons();
 }
  
-/* ─── VISIBILIDAD: TAG ──────────────────────────────────────── */
-function toggleTagVis(){
-  STATE.tagVis = !STATE.tagVis;
-  applyTagVis();
-}
+function toggleTagVis(){ STATE.tagVis = !STATE.tagVis; applyTagVis(); }
 function applyTagVis(){
   const el  = $('flyer-tag-wrapper');
+  const el2 = $('single-tag-wrapper');
   const btn = $('btn-tag-vis');
-  if(!el || !btn) return;
+  if(!btn) return;
+  const disp = STATE.tagVis ? '' : 'none';
+  if(el)  el.style.display  = disp;
+  if(el2) el2.style.display = disp;
   if(STATE.tagVis){
-    el.style.display = '';
     btn.className = 'text-[11px] px-2.5 py-1 rounded border flex items-center gap-1.5 transition font-semibold toggle-on';
     btn.innerHTML = '<i data-lucide="eye" class="w-3.5 h-3.5"></i> Visible';
   } else {
-    el.style.display = 'none';
     btn.className = 'text-[11px] px-2.5 py-1 rounded border flex items-center gap-1.5 transition font-semibold toggle-off';
     btn.innerHTML = '<i data-lucide="eye-off" class="w-3.5 h-3.5"></i> Oculto';
   }
   lucide.createIcons();
 }
  
-/* ─── VISIBILIDAD: REUNIÓN ──────────────────────────────────── */
-function toggleMeetingVis(){
-  STATE.meetingVis = !STATE.meetingVis;
-  applyMeetingVis();
-}
+function toggleMeetingVis(){ STATE.meetingVis = !STATE.meetingVis; applyMeetingVis(); }
 function applyMeetingVis(){
   const badge  = $('badge-meeting');
   const footer = $('flyer-footer-border');
@@ -702,7 +830,7 @@ function applyMeetingVis(){
   lucide.createIcons();
 }
  
-/* ─── SELECTOR DE FRASES CONVOCANTES ───────────────────────── */
+/* ─── FRASES ─── */
 function selectHook(key){
   const texts = {
     a: 'Detrás de cada aula transformada hay una historia de liderazgo. Escribí la tuya.',
@@ -710,8 +838,7 @@ function selectHook(key){
   };
   STATE.hookText = texts[key];
   syncEl('flyer-hook', STATE.hookText);
- 
-  /* Resaltar botón activo */
+  syncEl('single-hook', STATE.hookText);
   ['a','b'].forEach(k => {
     const b = $(`hook-btn-${k}`);
     if(!b) return;
@@ -723,132 +850,131 @@ function selectHook(key){
   });
 }
  
-/* ─── IMAGEN DE FONDO ───────────────────────────────────────── */
+/* ─── IMAGEN DE FONDO ─── */
 function setBgImage(key){
   STATE.bgKey = key;
   const url = BG_IMAGES[key];
- 
-  /* Aplicar a todas las capas de imagen */
   ['dec-warm-img','dec-inspiration-img'].forEach(id => {
-    const el = $(id);
-    if(el) el.style.backgroundImage = `url('${url}')`;
+    const el = $(id); if(el) el.style.backgroundImage = `url('${url}')`;
   });
   const pb = $('flyer-photo-inner');
   if(pb) pb.style.backgroundImage = `url('${url}')`;
- 
-  /* Resaltar botón activo */
   document.querySelectorAll('.imgbtn').forEach(b => {
     b.classList.remove('imgbtn-active','border-[#ab163f]','text-white');
     b.classList.add('border-slate-700','text-slate-200');
   });
   const active = $(`imgbtn-${key}`);
-  if(active){
-    active.classList.add('imgbtn-active');
-    active.classList.remove('border-slate-700','text-slate-200');
-  }
+  if(active){ active.classList.add('imgbtn-active'); active.classList.remove('border-slate-700','text-slate-200'); }
 }
  
-/* ─── OPACIDADES ────────────────────────────────────────────── */
 function applyBgOpacity(val){
   STATE.bgOpacity = val / 100;
-  ['dec-warm-img','dec-inspiration-img'].forEach(id => {
-    const el = $(id); if(el) el.style.opacity = STATE.bgOpacity;
-  });
-  const pb = $('flyer-photo-inner');
-  if(pb) pb.style.opacity = STATE.bgOpacity;
+  ['dec-warm-img','dec-inspiration-img'].forEach(id => { const el = $(id); if(el) el.style.opacity = STATE.bgOpacity; });
+  const pb = $('flyer-photo-inner'); if(pb) pb.style.opacity = STATE.bgOpacity;
   $('lbl-bg-opacity').innerText = `${val}%`;
 }
- 
 function applyOverlayOpacity(val){
   STATE.overlayOp = val / 100;
-  ['dec-warm-overlay','dec-inspiration-overlay'].forEach(id => {
-    const el = $(id); if(el) el.style.opacity = STATE.overlayOp;
-  });
+  ['dec-warm-overlay','dec-inspiration-overlay'].forEach(id => { const el = $(id); if(el) el.style.opacity = STATE.overlayOp; });
   $('lbl-overlay-opacity').innerText = `${val}%`;
 }
  
-/* ─── TIPOGRAFÍA ────────────────────────────────────────────── */
+/* ─── TIPOGRAFÍA ─── */
 function changeFontVariant(cls){
   const inner = $('flyer-inner');
   if(!inner) return;
   inner.classList.remove('font-lato-regular','font-lato-bold','font-lato-black');
   inner.classList.add(cls);
+  const hs = $('header-single');
+  if(hs){
+    hs.classList.remove('font-lato-regular','font-lato-bold','font-lato-black');
+    hs.classList.add(cls);
+  }
 }
- 
 function applyTitleSize(val){
-  const el = $('flyer-title'); if(el) el.style.fontSize = `${val}px`;
+  const el  = $('flyer-title');         if(el)  el.style.fontSize  = `${val}px`;
+  const el2 = $('single-program-name'); if(el2) el2.style.fontSize = `${parseFloat(val)*1.55}px`; /* single usa base mayor */
   $('lbl-title-size').innerText = `${val}px`;
 }
 function applyHookSize(val){
-  const el = $('flyer-hook'); if(el) el.style.fontSize = `${val}px`;
+  const el  = $('flyer-hook');  if(el)  el.style.fontSize  = `${val}px`;
+  const el2 = $('single-hook'); if(el2) el2.style.fontSize = `${val}px`;
   const lbl = $('lbl-hook-size'); if(lbl) lbl.innerText = `${val}px`;
 }
 function applyListSize(val){
-  ['flyer-m1','flyer-m2','flyer-e1','flyer-e2'].forEach(id => {
-    const el = $(id); if(el) el.style.fontSize = `${val}px`;
-  });
-  ['title-maestrias','title-especializaciones'].forEach(id => {
-    const el = $(id); if(el) el.style.fontSize = `${parseFloat(val)+0.5}px`;
-  });
+  ['flyer-m1','flyer-m2','flyer-e1','flyer-e2'].forEach(id => { const el=$(id); if(el) el.style.fontSize=`${val}px`; });
+  ['title-maestrias','title-especializaciones'].forEach(id => { const el=$(id); if(el) el.style.fontSize=`${parseFloat(val)+0.5}px`; });
+  /* Plantilla 8: contexto del programa */
+  const pf = $('single-program-full'); if(pf) pf.style.fontSize = `${parseFloat(val)+2}px`;
   $('lbl-list-size').innerText = `${val}px`;
 }
 function applyCareersGap(val){
-  /* Cambia el gap entre el bloque de maestrías y el de especializaciones */
-  const careers = $('flyer-careers');
-  if(careers) careers.style.gap = `${val}px`;
-  /* También actualizar cuando el layout es grid (plantilla inspiración) */
-  const lbl = $('lbl-careers-gap');
-  if(lbl) lbl.innerText = `${val}px`;
+  const careers = $('flyer-careers'); if(careers) careers.style.gap = `${val}px`;
+  const lbl = $('lbl-careers-gap'); if(lbl) lbl.innerText = `${val}px`;
 }
 function applyBadgeSize(val){
   const sv = parseFloat(val);
+  /* Badges del pie — todas las plantillas */
   ['badge-meeting','badge-contact'].forEach(id => {
     const b = $(id); if(!b) return;
     const ps = b.querySelectorAll('p');
     if(ps[0]) ps[0].style.fontSize = `${sv-3.5}px`;
     if(ps[1]) ps[1].style.fontSize = `${sv}px`;
-    const py = sv < 8 ? '3px' : '5px', px = sv < 8 ? '4px' : '6px';
-    b.style.padding = `${py} ${px}`;
+    const py = sv < 8 ? '3px' : '5px', px2 = sv < 8 ? '4px' : '6px';
+    b.style.padding = `${py} ${px2}`;
+  });
+  /* Plantilla 8: botones de features por ID explícito */
+  ['sf-coneau','sf-presencial','sf-plantel','sf-sede'].forEach(id => {
+    const el = $(id); if(el) el.style.fontSize = `${sv}px`;
   });
   $('lbl-badge-size').innerText = `${val}px`;
 }
 function applyPadding(val){
-  const inner = $('flyer-inner');
-  if(inner) inner.style.padding = `${val*4}px`;
+  const inner = $('flyer-inner'); if(inner) inner.style.padding = `${val*4}px`;
   const labels = {'3':'Ultra Compacto (p-3)','4':'Súper Ajustado (p-4)','5':'Ajustado (p-5)','6':'Normal (p-6)','7':'Espacioso (p-7)'};
   $('lbl-padding').innerText = labels[String(val)] || 'Ajustado';
 }
  
-/* ─── CAMBIO DE PLANTILLA ───────────────────────────────────── */
-/*
-  Esta función SOLO cambia el fondo y las clases estructurales del canvas.
-  NUNCA toca la visibilidad de hook/tag/meeting ni las imágenes ni las opacidades.
-  Al final llama a reapplyState() para restaurar todo el estado guardado.
-*/
+/* ─── HELPER ─── */
+function resetListItems(els, color){
+  els.forEach(el => { if(!el) return; el.style.cssText = `color:${color};font-size:10px;font-weight:500;line-height:1.3;background:none;border:none;padding:0;border-radius:0;display:list-item;width:auto;text-align:left;`; });
+}
+ 
+/* ─── CAMBIO DE PLANTILLA ─── */
 function setTemplate(name){
   STATE.template = name;
  
-  /* Resaltar botón activo */
   document.querySelectorAll('.tpl-btn').forEach(b => {
     b.classList.remove('border-[#ab163f]','bg-[#ab163f]/10','text-white');
     b.classList.add('border-slate-800','bg-slate-900','text-slate-400');
   });
   const ab = $(`btn-${name}`);
-  if(ab){
-    ab.classList.remove('border-slate-800','bg-slate-900','text-slate-400');
-    ab.classList.add('border-[#ab163f]','bg-[#ab163f]/10','text-white');
-  }
+  if(ab){ ab.classList.remove('border-slate-800','bg-slate-900','text-slate-400'); ab.classList.add('border-[#ab163f]','bg-[#ab163f]/10','text-white'); }
  
-  /* Ocultar TODAS las capas de decoración */
-  ['dec-warm-wrap','dec-modern-wrap','dec-vanguard-wrap',
-   'dec-inspiration-wrap','dec-spec-wrap','dec-masters-wrap'].forEach(id => {
+  ['dec-warm-wrap','dec-modern-wrap','dec-vanguard-wrap','dec-inspiration-wrap','dec-spec-wrap','dec-masters-wrap','dec-single-wrap'].forEach(id => {
     const el = $(id); if(el) el.classList.add('hidden');
   });
  
-  /* Ocultar bloques opcionales */
+  /* Mostrar/ocultar cabeceras */
+  const hs = $('header-standard');
+  const h8 = $('header-single');
+  if(name === 'single'){
+    if(hs) hs.style.display = 'none';
+    if(h8) h8.classList.remove('hidden');
+    $('panel-single-type').classList.remove('hidden');
+  } else {
+    if(hs) hs.style.display = '';
+    if(h8) h8.classList.add('hidden');
+    $('panel-single-type').classList.add('hidden');
+  }
+ 
   $('block-maestrias').classList.remove('hidden');
   $('block-especializaciones').classList.remove('hidden');
   $('block-features').classList.add('hidden');
+ 
+  /* Ocultar/mostrar los dos grids de features */
+  const fgStd = $('features-grid-standard');
+  const fgSng = $('features-grid-single');
  
   const inner    = $('flyer-inner');
   const careers  = $('flyer-careers');
@@ -860,237 +986,123 @@ function setTemplate(name){
   const titleE   = $('title-especializaciones');
   const bullet1  = $('bullet-color-1');
   const bullet2  = $('bullet-color-2');
-  const svgLogo  = $('untref-svg-logo');
+  const svgLogo  = $('untref-svg-logo');  /* solo existe en header-standard */
   const flyTitle = $('flyer-title');
   const flyHdr   = $('flyer-header');
   const m1=$('flyer-m1'), m2=$('flyer-m2'), e1=$('flyer-e1'), e2=$('flyer-e2');
  
-  /* Reset a clases base comunes */
-  careers.className = 'col-span-12 w-full'; careers.style.cssText='display:flex;flex-direction:column;gap:' + ($('sl-careers-gap')?$('sl-careers-gap').value:8) + 'px;';
-  listM.className   = 'space-y-0.5 pl-3 list-disc list-inside text-white/90 font-lato-regular';
-  listE.className   = 'space-y-0.5 pl-3 list-disc list-inside text-white/90 font-lato-regular';
-  headerM.className = 'flex items-center gap-1.5';
-  headerE.className = 'flex items-center gap-1.5';
+  if(careers){ careers.className = 'col-span-12 w-full'; careers.style.cssText='display:flex;flex-direction:column;gap:' + ($('sl-careers-gap')?$('sl-careers-gap').value:8) + 'px;'; }
+  if(listM) listM.className   = 'space-y-0.5 pl-3 list-disc list-inside text-white/90 font-lato-regular';
+  if(listE) listE.className   = 'space-y-0.5 pl-3 list-disc list-inside text-white/90 font-lato-regular';
+  if(headerM) headerM.className = 'flex items-center gap-1.5';
+  if(headerE) headerE.className = 'flex items-center gap-1.5';
  
-  /* Reset estilos del título modificados en plantillas 6 y 7 */
-  flyTitle.style.textAlign    = '';
-  flyTitle.style.fontSize     = '';
-  flyTitle.style.fontWeight   = '';
-  flyTitle.style.lineHeight   = '';
-  flyTitle.style.letterSpacing= '';
-  flyTitle.style.marginTop    = '';
-  flyHdr.style.textAlign      = '';
-  flyHdr.style.fontSize       = '';
-  flyHdr.style.letterSpacing  = '';
-  /* Reset hook */
+  if(flyTitle){ flyTitle.style.textAlign=''; flyTitle.style.fontSize=''; flyTitle.style.fontWeight=''; flyTitle.style.lineHeight=''; flyTitle.style.letterSpacing=''; flyTitle.style.marginTop=''; }
+  if(flyHdr){ flyHdr.style.textAlign=''; flyHdr.style.fontSize=''; flyHdr.style.letterSpacing=''; }
   const hookEl = $('flyer-hook');
   if(hookEl){ hookEl.style.fontSize=''; hookEl.style.color=''; hookEl.style.marginTop='24px'; hookEl.style.borderLeftColor=''; hookEl.style.borderLeftWidth=''; hookEl.style.paddingLeft=''; hookEl.style.lineHeight=''; hookEl.style.maxWidth=''; }
  
-  /* Helper: resetear ítems de lista a texto plano sin tarjeta */
-  function resetListItems(els, color){
-    els.forEach(el => {
-      if(!el) return;
-      el.style.cssText = `color:${color};font-size:10px;font-weight:500;line-height:1.3;background:none;border:none;padding:0;border-radius:0;display:list-item;width:auto;text-align:left;`;
-    });
-  }
  
-  /* ── Configuraciones por plantilla ── */
   if(name === 'warm'){
-    inner.style.backgroundColor = '#0f172a'; /* slate-950 */
+    inner.style.backgroundColor = '#0f172a';
     $('dec-warm-wrap').classList.remove('hidden');
-    svgLogo.style.color = '#ffffff';
-    flyTitle.style.color = '#ffffff';
-    flyHdr.style.color   = '#c26087';
-    titleM.style.color   = '#cbd5e1';
-    titleE.style.color   = '#cbd5e1';
-    resetListItems([m1,m2,e1,e2], 'rgba(255,255,255,0.9)');
-    bullet1.style.backgroundColor = '#f29fc5';
-    bullet2.style.backgroundColor = '#c26087';
+    if(svgLogo) svgLogo.style.color = '#ffffff';
+    if(flyTitle) flyTitle.style.color='#ffffff';
+    if(flyHdr) flyHdr.style.color='#c26087';
+    if(titleM) titleM.style.color='#cbd5e1';
+    if(titleE) titleE.style.color='#cbd5e1';
+    resetListItems([m1,m2,e1,e2],'rgba(255,255,255,0.9)');
+    if(bullet1) bullet1.style.backgroundColor='#f29fc5';
+    if(bullet2) bullet2.style.backgroundColor='#c26087';
  
   } else if(name === 'modern'){
     inner.style.backgroundColor = '#0a1b2d';
     $('dec-modern-wrap').classList.remove('hidden');
-    svgLogo.style.color = '#ffffff';
-    flyTitle.style.color = '#ffffff';
-    flyHdr.style.color   = '#c26087';
-    titleM.style.color   = '#6ca8d8';
-    titleE.style.color   = '#6ca8d8';
-    resetListItems([m1,m2,e1,e2], '#ffffff');
-    bullet1.style.backgroundColor = '#f29fc5';
-    bullet2.style.backgroundColor = '#c26087';
- 
-  } else if(name === 'vanguard'){
-    inner.style.backgroundColor = '#020617'; /* near black */
-    $('dec-vanguard-wrap').classList.remove('hidden');
-    svgLogo.style.color = '#ffffff';
-    flyTitle.style.color = '#ffffff';
-    flyHdr.style.color   = '#c26087';
-    titleM.style.color   = '#e2e8f0';
-    titleE.style.color   = '#e2e8f0';
-    resetListItems([m1,m2,e1,e2], '#ffffff');
-    bullet1.style.backgroundColor = '#f29fc5';
-    bullet2.style.backgroundColor = '#c26087';
+    if(svgLogo) svgLogo.style.color = '#ffffff';
+    if(flyTitle) flyTitle.style.color='#ffffff';
+    if(flyHdr) flyHdr.style.color='#c26087';
+    if(titleM) titleM.style.color='#6ca8d8';
+    if(titleE) titleE.style.color='#6ca8d8';
+    resetListItems([m1,m2,e1,e2],'#ffffff');
+    if(bullet1) bullet1.style.backgroundColor='#f29fc5';
+    if(bullet2) bullet2.style.backgroundColor='#c26087';
  
   } else if(name === 'inspiration'){
     inner.style.backgroundColor = '#020617';
     $('dec-inspiration-wrap').classList.remove('hidden');
-    careers.className = 'col-span-12 grid grid-cols-2 gap-4 my-1 border-l-2 border-[#c26087]/30 pl-3';
-    svgLogo.style.color = '#ffffff';
-    flyTitle.style.color = '#ffffff';
-    flyHdr.style.color   = '#c26087';
-    titleM.style.color   = '#f1f5f9';
-    titleE.style.color   = '#f1f5f9';
-    resetListItems([m1,m2,e1,e2], 'rgba(255,255,255,0.9)');
-    bullet1.style.backgroundColor = '#f29fc5';
-    bullet2.style.backgroundColor = '#c26087';
+    if(careers) careers.className = 'col-span-12 grid grid-cols-2 gap-4 my-1 border-l-2 border-[#c26087]/30 pl-3';
+    if(svgLogo) svgLogo.style.color = '#ffffff';
+    if(flyTitle) flyTitle.style.color='#ffffff';
+    if(flyHdr) flyHdr.style.color='#c26087';
+    if(titleM) titleM.style.color='#f1f5f9';
+    if(titleE) titleE.style.color='#f1f5f9';
+    resetListItems([m1,m2,e1,e2],'rgba(255,255,255,0.9)');
+    if(bullet1) bullet1.style.backgroundColor='#f29fc5';
+    if(bullet2) bullet2.style.backgroundColor='#c26087';
  
   } else if(name === 'specializations'){
     inner.style.backgroundColor = '#29649b';
     $('dec-spec-wrap').classList.remove('hidden');
     $('block-maestrias').classList.add('hidden');
     $('block-features').classList.remove('hidden');
- 
-    /* ── Jerarquía visual: carreras arriba pequeñas / word grande central ── */
-    svgLogo.style.color = '#ffffff';
- 
-    /* Tag */
-    flyHdr.style.color   = '#c26087';
-    flyHdr.style.textAlign = 'left';
-    flyHdr.style.fontSize  = '20px';
-    flyHdr.style.letterSpacing = '0.08em';
- 
-    /* Título programa */
-    flyTitle.style.color = '#ffffff';
-    flyTitle.style.fontSize   = '38px';
-    flyTitle.style.fontWeight = '900';
-    flyTitle.style.lineHeight = '1';
-    flyTitle.style.textAlign  = 'left';
-    flyTitle.style.marginTop  = '6px';
-    flyTitle.style.letterSpacing = '-0.5px';
- 
-    /* Frase convocante debajo del título grande */
-    const fhook = $('flyer-hook');
-    if(fhook){
-      fhook.style.fontSize        = '14px';
-      fhook.style.color           = '#ffffff';
-      fhook.style.marginTop       = '20px';
-      fhook.style.fontStyle       = 'italic';
-      fhook.style.fontWeight      = '700';
-      fhook.style.borderLeftColor = '#00a7e7';
-      fhook.style.borderLeftWidth = '3px';
-      fhook.style.paddingLeft     = '10px';
-      fhook.style.lineHeight      = '1.4';
-      fhook.style.maxWidth        = '75%';
-    }
- 
-    /* Carreras: lista compacta, izquierda, sin tarjeta */
-    careers.className = 'col-span-12 w-full';
-    careers.style.cssText = 'display:flex;flex-direction:column;gap:3px;';
-    headerE.className = 'flex items-center gap-1.5 mb-1';
-    listE.className   = 'w-full';
-    titleE.style.color      = '#00a7e7';
-    titleE.style.fontSize   = '9px';
-    titleE.style.fontWeight = '800';
-    titleE.style.letterSpacing = '0.12em';
-    bullet2.style.backgroundColor = '#00a7e7';
-    [e1,e2].forEach(el => {
-      if(!el) return;
-      el.style.cssText = 'font-size:9.5px;font-weight:500;color:#ffffff;background:none;border:none;padding:1px 0;display:block;width:100%;text-align:left;line-height:1.3;';
-    });
+    if(fgStd) fgStd.style.display='grid';
+    if(fgSng) fgSng.style.display='none';
+    if(svgLogo) svgLogo.style.color = '#ffffff';
+    if(flyHdr){ flyHdr.style.color='#c26087'; flyHdr.style.textAlign='left'; flyHdr.style.fontSize='20px'; flyHdr.style.letterSpacing='0.08em'; }
+    if(flyTitle){ flyTitle.style.color='#ffffff'; flyTitle.style.fontSize='38px'; flyTitle.style.fontWeight='900'; flyTitle.style.lineHeight='1'; flyTitle.style.textAlign='left'; flyTitle.style.marginTop='6px'; flyTitle.style.letterSpacing='-0.5px'; }
+    const fhookS=$('flyer-hook'); if(fhookS){ fhookS.style.fontSize='14px'; fhookS.style.color='#ffffff'; fhookS.style.marginTop='20px'; fhookS.style.fontStyle='italic'; fhookS.style.fontWeight='700'; fhookS.style.borderLeftColor='#00a7e7'; fhookS.style.borderLeftWidth='3px'; fhookS.style.paddingLeft='10px'; fhookS.style.lineHeight='1.4'; fhookS.style.maxWidth='75%'; }
+    if(careers){ careers.className='col-span-12 w-full'; careers.style.cssText='display:flex;flex-direction:column;gap:3px;'; }
+    if(headerE) headerE.className='flex items-center gap-1.5 mb-1';
+    if(listE) listE.className='w-full';
+    if(titleE){ titleE.style.color='#00a7e7'; titleE.style.fontSize='9px'; titleE.style.fontWeight='800'; titleE.style.letterSpacing='0.12em'; }
+    if(bullet2) bullet2.style.backgroundColor='#00a7e7';
+    [e1,e2].forEach(el => { if(!el) return; el.style.cssText='font-size:9.5px;font-weight:500;color:#ffffff;background:none;border:none;padding:1px 0;display:block;width:100%;text-align:left;line-height:1.3;'; });
  
   } else if(name === 'masters'){
     inner.style.backgroundColor = '#29649b';
     $('dec-masters-wrap').classList.remove('hidden');
     $('block-especializaciones').classList.add('hidden');
     $('block-features').classList.remove('hidden');
+    if(fgStd) fgStd.style.display='grid';
+    if(fgSng) fgSng.style.display='none';
+    if(svgLogo) svgLogo.style.color = '#ffffff';
+    if(flyHdr){ flyHdr.style.color='#c26087'; flyHdr.style.textAlign='left'; flyHdr.style.fontSize='16px'; flyHdr.style.letterSpacing='0.08em'; }
+    if(flyTitle){ flyTitle.style.color='#ffffff'; flyTitle.style.fontSize='38px'; flyTitle.style.fontWeight='900'; flyTitle.style.lineHeight='1'; flyTitle.style.textAlign='left'; flyTitle.style.marginTop='6px'; flyTitle.style.letterSpacing='-0.5px'; }
+    const fhookM=$('flyer-hook'); if(fhookM){ fhookM.style.fontSize='14px'; fhookM.style.color='#ffffff'; fhookM.style.marginTop='20px'; fhookM.style.fontStyle='italic'; fhookM.style.fontWeight='700'; fhookM.style.borderLeftColor='#00a7e7'; fhookM.style.borderLeftWidth='3px'; fhookM.style.paddingLeft='10px'; fhookM.style.lineHeight='1.4'; fhookM.style.maxWidth='75%'; }
+    if(careers){ careers.className='col-span-12 w-full'; careers.style.cssText='display:flex;flex-direction:column;gap:3px;'; }
+    if(headerM) headerM.className='flex items-center gap-1.5 mb-1';
+    if(listM) listM.className='w-full';
+    if(titleM){ titleM.style.color='#00a7e7'; titleM.style.fontSize='9px'; titleM.style.fontWeight='800'; titleM.style.letterSpacing='0.12em'; }
+    if(bullet1) bullet1.style.backgroundColor='#00a7e7';
+    [m1,m2].forEach(el => { if(!el) return; el.style.cssText='font-size:9.5px;font-weight:500;color:#ffffff;background:none;border:none;padding:1px 0;display:block;width:100%;text-align:left;line-height:1.3;'; });
  
-    /* ── Jerarquía visual: carreras arriba pequeñas / word grande central ── */
-    svgLogo.style.color = '#ffffff';
- 
-    /* Subtítulo superior */
-    flyHdr.style.color   = '#c26087';
-    flyHdr.style.textAlign = 'left';
-    flyHdr.style.fontSize  = '16px';
-    flyHdr.style.letterSpacing = '0.08em';
- 
-    /* Título programa */
-    flyTitle.style.color = '#ffffff';
-    flyTitle.style.fontSize   = '38px';
-    flyTitle.style.fontWeight = '900';
-    flyTitle.style.lineHeight = '1';
-    flyTitle.style.textAlign  = 'left';
-    flyTitle.style.marginTop  = '6px';
-    flyTitle.style.letterSpacing = '-0.5px';
- 
-    /* Frase convocante */
-    const fhook = $('flyer-hook');
-    if(fhook){
-      fhook.style.fontSize        = '14px';
-      fhook.style.color           = '#ffffff';
-      fhook.style.marginTop       = '20px';
-      fhook.style.fontStyle       = 'italic';
-      fhook.style.fontWeight      = '700';
-      fhook.style.borderLeftColor = '#00a7e7';
-      fhook.style.borderLeftWidth = '3px';
-      fhook.style.paddingLeft     = '10px';
-      fhook.style.lineHeight      = '1.4';
-      fhook.style.maxWidth        = '75%';
-    }
- 
-    /* Carreras: lista compacta izquierda sin tarjeta */
-    careers.className = 'col-span-12 w-full';
-    careers.style.cssText = 'display:flex;flex-direction:column;gap:3px;';
-    headerM.className = 'flex items-center gap-1.5 mb-1';
-    listM.className   = 'w-full';
-    titleM.style.color      = '#00a7e7';
-    titleM.style.fontSize   = '9px';
-    titleM.style.fontWeight = '800';
-    titleM.style.letterSpacing = '0.12em';
-    bullet1.style.backgroundColor = '#00a7e7';
-    [m1,m2].forEach(el => {
-      if(!el) return;
-      el.style.cssText = 'font-size:9.5px;font-weight:500;color:#ffffff;background:none;border:none;padding:1px 0;display:block;width:100%;text-align:left;line-height:1.3;';
-    });
+  } else if(name === 'single'){
+    inner.style.backgroundColor = '#1a0510';
+    $('dec-single-wrap').classList.remove('hidden');
+    $('block-maestrias').classList.add('hidden');
+    $('block-especializaciones').classList.add('hidden');
+    $('block-features').classList.remove('hidden');
+    if(fgStd) fgStd.style.display='none';
+    if(fgSng) fgSng.style.display='flex';
+    const progName = $('input-program') ? $('input-program').value : '';
+    syncEl('single-program-name', progName);
+    setSingleType(STATE.singleType);
   }
  
-  /* Colores fijos de los badges del pie — siempre */
-  $('badge-meeting').style.backgroundColor  = '#ab163f';
-  $('badge-meeting').style.color            = '#ffffff';
-  $('badge-contact').style.backgroundColor  = '#f29fc5';
-  $('badge-contact').style.color            = '#ab163f';
+  $('badge-meeting').style.backgroundColor='#ab163f'; $('badge-meeting').style.color='#ffffff';
+  $('badge-contact').style.backgroundColor='#f29fc5'; $('badge-contact').style.color='#ab163f';
  
-  /* Re-aplicar TODOS los controles independientes */
   reapplyState();
 }
  
-/*
-  reapplyState: restaura opacidades, imagen elegida, y visibilidades
-  sin tocar los colores/estructura de la plantilla.
-*/
 function reapplyState(){
-  /* Imagen de fondo */
   const url = BG_IMAGES[STATE.bgKey];
-  ['dec-warm-img','dec-inspiration-img'].forEach(id => {
-    const el = $(id);
-    if(el){ el.style.backgroundImage = `url('${url}')`; el.style.opacity = STATE.bgOpacity; }
-  });
-  const pb = $('flyer-photo-inner');
-  if(pb){ pb.style.backgroundImage = `url('${url}')`; pb.style.opacity = STATE.bgOpacity; }
- 
-  /* Overlay */
-  ['dec-warm-overlay','dec-inspiration-overlay'].forEach(id => {
-    const el = $(id); if(el) el.style.opacity = STATE.overlayOp;
-  });
- 
-  /* Visibilidades */
-  applyHookVis();
-  applyTagVis();
-  applyMeetingVis();
- 
-  /* Texto del hook */
+  ['dec-warm-img','dec-inspiration-img'].forEach(id => { const el=$(id); if(el){ el.style.backgroundImage=`url('${url}')`;el.style.opacity=STATE.bgOpacity; } });
+  const pb=$('flyer-photo-inner'); if(pb){ pb.style.backgroundImage=`url('${url}')`;pb.style.opacity=STATE.bgOpacity; }
+  ['dec-warm-overlay','dec-inspiration-overlay'].forEach(id => { const el=$(id); if(el) el.style.opacity=STATE.overlayOp; });
+  applyHookVis(); applyTagVis(); applyMeetingVis();
   syncEl('flyer-hook', STATE.hookText);
- 
-  /* Sliders tipográficos */
+  syncEl('single-hook', STATE.hookText);
   applyTitleSize($('sl-title-size').value);
   applyHookSize($('sl-hook-size').value);
   applyListSize($('sl-list-size').value);
@@ -1099,145 +1111,65 @@ function reapplyState(){
   applyPadding($('sl-padding').value);
 }
  
-/* ─── EXPORTAR PNG ──────────────────────────────────────────── */
+/* ─── EXPORTAR ─── */
 function exportFlyer(event){
-  const btn = event.currentTarget;
-  const origHTML = btn.innerHTML;
-  btn.disabled = true;
-  btn.innerHTML = '⏳ Generando imagen...';
- 
-  /* Elementos a ocultar/reemplazar temporalmente */
-  const toHide   = [];   /* { el, display } */
-  const toRestore = [];  /* funciones de restauración */
- 
-  /* 1. Reemplazar íconos Lucide SVG por spans de texto plano */
+  const btn=event.currentTarget; const origHTML=btn.innerHTML;
+  btn.disabled=true; btn.innerHTML='⏳ Generando imagen...';
+  const toRestore=[];
   $('flyer-canvas').querySelectorAll('i[data-lucide]').forEach(icon => {
-    const map = { calendar:'📅', globe:'🌐', mail:'✉' };
-    const txt = map[icon.getAttribute('data-lucide')] || '';
-    const sp  = document.createElement('span');
-    sp.textContent  = txt;
-    sp.style.cssText = 'font-size:11px;line-height:1;display:inline-block;vertical-align:middle;';
-    icon.parentNode.insertBefore(sp, icon);
-    const prevDisplay = icon.style.display;
-    icon.style.display = 'none';
-    toRestore.push(() => { icon.style.display = prevDisplay; sp.remove(); });
+    const map={calendar:'📅',globe:'🌐',mail:'✉'}; const txt=map[icon.getAttribute('data-lucide')]||'';
+    const sp=document.createElement('span'); sp.textContent=txt; sp.style.cssText='font-size:11px;line-height:1;display:inline-block;vertical-align:middle;';
+    icon.parentNode.insertBefore(sp,icon); const prev=icon.style.display; icon.style.display='none';
+    toRestore.push(()=>{ icon.style.display=prev; sp.remove(); });
   });
- 
-  /* 2. Precargar imagen de fondo activa como base64 para evitar bloqueo CORS */
   function doCapture(){
-    /* scale: 1080/520 ≈ 2.077 para ambos formatos (el alto varía con el canvas) */
-    const exportScale = 1080 / 520;
-    html2canvas($('flyer-canvas'), {
-      scale          : exportScale,
-      useCORS        : true,
-      allowTaint     : true,
-      logging        : false,
-      backgroundColor: '#ab163f',
-      onclone        : (doc) => {
-        /* En el clon, sustituir background-image con la versión base64 ya cargada */
-        if(STATE._bgBase64){
-          const b64url = STATE._bgBase64;
-          ['dec-warm-img','dec-inspiration-img'].forEach(id => {
-            const el = doc.getElementById(id);
-            if(el) el.style.backgroundImage = `url('${b64url}')`;
-          });
-          const pb = doc.getElementById('flyer-photo-inner');
-          if(pb) pb.style.backgroundImage = `url('${b64url}')`;
-        }
-      }
-    })
-    .then(canvas => {
-      /* Restaurar todo */
-      toRestore.forEach(fn => fn());
-      btn.disabled = false;
-      btn.innerHTML = origHTML;
-      lucide.createIcons();
- 
-      /* Descarga */
-      try {
-        const dataURL = canvas.toDataURL('image/png');
-        const a = document.createElement('a');
-        a.href     = dataURL;
-        a.download = 'Flyer_PAE_UNTREF_' + STATE.template + '_' + (STATE.format === 'portrait' ? '4x5' : '1x1') + '.png';
-        document.body.appendChild(a);
-        a.click();
-        setTimeout(() => document.body.removeChild(a), 500);
-      } catch(e){
-        /* Fallback: abrir en nueva pestaña */
-        const win = window.open();
-        if(win) win.document.write('<img src="' + canvas.toDataURL('image/png') + '" style="max-width:100%">');
-      }
-    })
-    .catch(err => {
-      console.error('Export error:', err);
-      toRestore.forEach(fn => fn());
-      btn.disabled = false;
-      btn.innerHTML = origHTML;
-      lucide.createIcons();
-      alert('No se pudo exportar. Probá usar Chrome o Firefox.');
-    });
+    html2canvas($('flyer-canvas'),{ scale:1080/520, useCORS:true, allowTaint:true, logging:false, backgroundColor:'#ab163f',
+      onclone:(doc)=>{ if(STATE._bgBase64){ const b64=STATE._bgBase64; ['dec-warm-img','dec-inspiration-img'].forEach(id=>{ const el=doc.getElementById(id); if(el) el.style.backgroundImage=`url('${b64}')`; }); const pb=doc.getElementById('flyer-photo-inner'); if(pb) pb.style.backgroundImage=`url('${b64}')`;} }
+    }).then(canvas=>{
+      toRestore.forEach(fn=>fn()); btn.disabled=false; btn.innerHTML=origHTML; lucide.createIcons();
+      try{ const a=document.createElement('a'); a.href=canvas.toDataURL('image/png'); a.download='Flyer_PAE_UNTREF_'+STATE.template+'_'+(STATE.format==='portrait'?'4x5':'1x1')+'.png'; document.body.appendChild(a); a.click(); setTimeout(()=>document.body.removeChild(a),500); }
+      catch(e){ const w=window.open(); if(w) w.document.write('<img src="'+canvas.toDataURL('image/png')+'" style="max-width:100%">'); }
+    }).catch(err=>{ toRestore.forEach(fn=>fn()); btn.disabled=false; btn.innerHTML=origHTML; lucide.createIcons(); alert('No se pudo exportar. Probá Chrome o Firefox.'); });
   }
- 
-  /* Cargar imagen activa como base64 antes de capturar */
-  const imgUrl = BG_IMAGES[STATE.bgKey];
-  const img    = new Image();
-  img.crossOrigin = 'anonymous';
-  img.onload = function(){
-    try {
-      const tmpCanvas = document.createElement('canvas');
-      tmpCanvas.width  = img.naturalWidth  || img.width;
-      tmpCanvas.height = img.naturalHeight || img.height;
-      tmpCanvas.getContext('2d').drawImage(img, 0, 0);
-      STATE._bgBase64 = tmpCanvas.toDataURL('image/jpeg', 0.9);
-    } catch(e){ STATE._bgBase64 = null; }
-    doCapture();
-  };
-  img.onerror = function(){ STATE._bgBase64 = null; doCapture(); };
-  /* Forzar recarga sin caché para CORS */
-  img.src = imgUrl + (imgUrl.includes('?') ? '&' : '?') + 'cb=' + Date.now();
+  const imgUrl=BG_IMAGES[STATE.bgKey]; const img=new Image(); img.crossOrigin='anonymous';
+  img.onload=function(){ try{ const c=document.createElement('canvas'); c.width=img.naturalWidth||img.width; c.height=img.naturalHeight||img.height; c.getContext('2d').drawImage(img,0,0); STATE._bgBase64=c.toDataURL('image/jpeg',0.9); }catch(e){ STATE._bgBase64=null; } doCapture(); };
+  img.onerror=function(){ STATE._bgBase64=null; doCapture(); };
+  img.src=imgUrl+(imgUrl.includes('?')?'&':'?')+'cb='+Date.now();
 }
  
-/* ─── COPIAR COPY SOCIAL ─────────────────────────────────────── */
+/* ─── COPY SOCIAL ─── */
 function copySocialCopy(){
-  const m1v = $('input-m1').value, m2v = $('input-m2').value;
-  const e1v = $('input-e1').value, e2v = $('input-e2').value;
-  const dt  = $('input-meeting-date').value, tm = $('input-meeting-time').value;
-  const em  = $('input-email').value, url = $('input-web-url').value;
-  const mtg = STATE.meetingVis ? `\n📅 REUNIÓN INFORMATIVA:\n🗓️ ${dt} a las ⏰ ${tm}\n` : '';
-  let txt = '';
-  if(STATE.template === 'specializations'){
-    txt = `🎓 Especializaciones de Posgrado UNTREF\n👉 "${STATE.hookText}"\n\n📚 Especializaciones:\n• ${e1v}\n• ${e2v}\n${mtg}\n🔗 ${url}\n📧 ${em}\n#EspecializacionesUNTREF #UNTREF`;
-  } else if(STATE.template === 'masters'){
-    txt = `🎓 Maestrías UNTREF\n👉 "${STATE.hookText}"\n\n📚 Maestrías:\n• ${m1v}\n• ${m2v}\n${mtg}\n🔗 ${url}\n📧 ${em}\n#MaestriasUNTREF #UNTREF`;
+  const m1v=$('input-m1').value, m2v=$('input-m2').value, e1v=$('input-e1').value, e2v=$('input-e2').value;
+  const dt=$('input-meeting-date').value, tm=$('input-meeting-time').value, em=$('input-email').value;
+  const mtg=STATE.meetingVis?`\n📅 REUNIÓN INFORMATIVA:\n🗓️ ${dt} a las ⏰ ${tm}\n`:'';
+  let txt='';
+  if(STATE.template==='single'){
+    const prog=$('input-program')?$('input-program').value:''; const tipo=STATE.singleType==='maestria'?'Maestría':'Especialización';
+    txt=`🎓 ${tipo} UNTREF\n👉 "${STATE.hookText}"\n\n📚 ${prog}\n${mtg}\n📧 ${em}\n#UNTREF #PosgradosUNTREF`;
+  } else if(STATE.template==='specializations'){
+    txt=`🎓 Especializaciones de Posgrado UNTREF\n👉 "${STATE.hookText}"\n\n📚 Especializaciones:\n• ${e1v}\n• ${e2v}\n${mtg}\n📧 ${em}\n#EspecializacionesUNTREF #UNTREF`;
+  } else if(STATE.template==='masters'){
+    txt=`🎓 Maestrías UNTREF\n👉 "${STATE.hookText}"\n\n📚 Maestrías:\n• ${m1v}\n• ${m2v}\n${mtg}\n📧 ${em}\n#MaestriasUNTREF #UNTREF`;
   } else {
-    txt = `🎓 Posgrados UNTREF\n👉 "${STATE.hookText}"\n\n📚 Maestrías:\n• ${m1v}\n• ${m2v}\n\n📚 Especializaciones:\n• ${e1v}\n• ${e2v}\n${mtg}\n🔗 ${url}\n📧 ${em}\n#PosgradosUNTREF #UNTREF`;
+    txt=`🎓 Posgrados UNTREF\n👉 "${STATE.hookText}"\n\n📚 Maestrías:\n• ${m1v}\n• ${m2v}\n\n📚 Especializaciones:\n• ${e1v}\n• ${e2v}\n${mtg}\n📧 ${em}\n#PosgradosUNTREF #UNTREF`;
   }
-  const ta = document.createElement('textarea');
-  ta.value = txt; document.body.appendChild(ta); ta.select();
-  try { document.execCommand('copy'); } catch(e){}
-  document.body.removeChild(ta);
+  const ta=document.createElement('textarea'); ta.value=txt; document.body.appendChild(ta); ta.select();
+  try{ document.execCommand('copy'); }catch(e){} document.body.removeChild(ta);
 }
  
-/* ─── INICIO ────────────────────────────────────────────────── */
+/* ─── INICIO ─── */
 window.onload = function(){
   lucide.createIcons();
-  setFormat('square');          /* formato inicial */
-  setBgImage('students');       /* imagen inicial */
-  setTemplate('masters');       /* plantilla inicial */
-  selectHook('a');              /* frase inicial */
-  applyTitleSize(17);
-  applyHookSize(8.5);
-  applyListSize(9.5);
-  applyCareersGap(8);
-  applyBadgeSize(8.5);
-  applyPadding(4);
-  $('sl-title-size').value   = 17;
-  $('sl-hook-size').value    = 8.5;
-  $('sl-list-size').value    = 9.5;
-  $('sl-careers-gap').value  = 8;
-  $('sl-badge-size').value   = 8.5;
-  $('sl-padding').value     = 4;
+  initProgramInput();
+  setFormat('square');
+  setBgImage('students');
+  setTemplate('single');
+  selectHook('a');
+  applyTitleSize(17); applyHookSize(8.5); applyListSize(9.5); applyCareersGap(8); applyBadgeSize(8.5); applyPadding(4);
+  $('sl-title-size').value=17; $('sl-hook-size').value=8.5; $('sl-list-size').value=9.5; $('sl-careers-gap').value=8; $('sl-badge-size').value=8.5; $('sl-padding').value=4;
   changeFontVariant('font-lato-bold');
+  /* Inicializar plantilla 8 con la primera maestría seleccionada */
+  selectSingleCareer('m1');
 };
 </script>
 </body>
