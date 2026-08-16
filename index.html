@@ -494,6 +494,35 @@
       </div>
       <!-- ── FIN CONTENIDO CENTRAL ──────────────────────────────── -->
  
+ 
+      <!-- ── FEATURES GRID — solo plantillas 6 y 7 ─────────────── -->
+      <div id="block-features" class="relative z-10 hidden w-full" style="margin-bottom:6px;">
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:4px;width:100%;">
+ 
+          <div style="display:flex;flex-direction:column;align-items:center;gap:3px;background:rgba(255,255,255,0.10);border-radius:8px;padding:6px 4px;text-align:center;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#f29fc5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;flex-shrink:0;"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/><polyline points="9,11 12,14 15,11"/></svg>
+            <span style="font-size:7px;font-weight:700;color:#ffffff;line-height:1.3;">Acreditados<br>CONEAU</span>
+          </div>
+ 
+          <div style="display:flex;flex-direction:column;align-items:center;gap:3px;background:rgba(255,255,255,0.10);border-radius:8px;padding:6px 4px;text-align:center;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#f29fc5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;flex-shrink:0;"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span style="font-size:7px;font-weight:700;color:#ffffff;line-height:1.3;">Presencial +<br>Remoto Sincrónico</span>
+          </div>
+ 
+          <div style="display:flex;flex-direction:column;align-items:center;gap:3px;background:rgba(255,255,255,0.10);border-radius:8px;padding:6px 4px;text-align:center;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#f29fc5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;flex-shrink:0;"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            <span style="font-size:7px;font-weight:700;color:#ffffff;line-height:1.3;">Plantel docente<br>destacado</span>
+          </div>
+ 
+          <div style="display:flex;flex-direction:column;align-items:center;gap:3px;background:rgba(255,255,255,0.10);border-radius:8px;padding:6px 4px;text-align:center;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#f29fc5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;flex-shrink:0;"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            <span style="font-size:7px;font-weight:700;color:#ffffff;line-height:1.3;">Maipú 71<br>CABA</span>
+          </div>
+ 
+        </div>
+      </div>
+      <!-- ── FIN FEATURES GRID ──────────────────────────────────── -->
+ 
       <!-- ── PIE ───────────────────────────────────────────────── -->
       <div class="relative z-10 grid grid-cols-2 gap-1.5 pt-1.5 border-t border-white/10 w-full shrink-0" id="flyer-footer-border">
  
@@ -819,6 +848,7 @@ function setTemplate(name){
   /* Ocultar bloques opcionales */
   $('block-maestrias').classList.remove('hidden');
   $('block-especializaciones').classList.remove('hidden');
+  $('block-features').classList.add('hidden');
  
   const inner    = $('flyer-inner');
   const careers  = $('flyer-careers');
@@ -918,6 +948,7 @@ function setTemplate(name){
     inner.style.backgroundColor = '#29649b';
     $('dec-spec-wrap').classList.remove('hidden');
     $('block-maestrias').classList.add('hidden');
+    $('block-features').classList.remove('hidden');
  
     /* ── Jerarquía visual: carreras arriba pequeñas / word grande central ── */
     svgLogo.style.color = '#ffffff';
@@ -971,6 +1002,7 @@ function setTemplate(name){
     inner.style.backgroundColor = '#29649b';
     $('dec-masters-wrap').classList.remove('hidden');
     $('block-especializaciones').classList.add('hidden');
+    $('block-features').classList.remove('hidden');
  
     /* ── Jerarquía visual: carreras arriba pequeñas / word grande central ── */
     svgLogo.style.color = '#ffffff';
