@@ -38,7 +38,7 @@
   </style>
 </head>
 <body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col font-lato">
-
+ 
 <!-- ══════════════════════════════════════════════════════════════
      HEADER
 ══════════════════════════════════════════════════════════════ -->
@@ -54,14 +54,14 @@
     <span class="w-2.5 h-2.5 rounded-full bg-[#f29fc5] animate-pulse"></span> Azul Institucional #29649b &amp; Logo UNTREF
   </span>
 </header>
-
+ 
 <main class="flex-1 lg:grid lg:grid-cols-12 overflow-hidden">
-
+ 
 <!-- ══════════════════════════════════════════════════════════════
      PANEL IZQUIERDO
 ══════════════════════════════════════════════════════════════ -->
 <section class="lg:col-span-5 p-6 bg-slate-950 border-r border-slate-800 overflow-y-auto max-h-[calc(100vh-73px)] space-y-6">
-
+ 
   <!-- 1. SELECTOR DE PLANTILLA -->
   <div>
     <h2 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-2">
@@ -80,7 +80,7 @@
         <span class="text-xs font-bold">3. Clara Institucional</span>
         <span class="text-[9px] text-slate-500">(Ref. d3.png)</span>
       </button>
-
+ 
       <button onclick="setTemplate('inspiration')"    id="btn-inspiration"    class="tpl-btn p-2.5 rounded-lg border-2 border-slate-800 bg-slate-900 text-slate-400 flex flex-col items-center justify-center gap-0.5 text-center hover:bg-slate-800 transition">
         <span class="text-xs font-bold text-[#6ca8d8]">5. Inspiración Azul</span>
         <span class="text-[9px] text-slate-500">(Doble Columna)</span>
@@ -99,7 +99,7 @@
       </button>
     </div>
   </div>
-
+ 
   <!-- 2. AJUSTES TIPOGRÁFICOS -->
   <div class="border border-slate-800 p-4 rounded-xl bg-slate-900/60 space-y-4">
     <h2 class="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
@@ -140,13 +140,13 @@
       </div>
     </div>
   </div>
-
+ 
   <!-- 3. CONTENIDO DEL FLYER -->
   <div class="space-y-4">
     <h2 class="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-2 border-b border-slate-800 pb-2">
       <i data-lucide="file-edit" class="w-4 h-4 text-[#ab163f]"></i> Editar Contenido del Flyer
     </h2>
-
+ 
     <!-- FRASE CONVOCANTE + visibilidad -->
     <div class="border border-slate-800 p-3 rounded-lg bg-slate-900/40 space-y-2">
       <div class="flex items-center justify-between">
@@ -170,7 +170,7 @@
         </button>
       </div>
     </div>
-
+ 
     <!-- TAG "Inscripciones Abiertas" + visibilidad -->
     <div class="border border-slate-800 p-3 rounded-lg bg-slate-900/40 space-y-2">
       <div class="flex items-center justify-between">
@@ -185,13 +185,13 @@
       <input type="text" id="input-tag" oninput="syncTag(this.value)" value="Inscripciones Abiertas"
         class="w-full bg-slate-900 border border-slate-800 rounded px-3 py-2 text-sm text-white focus:outline-none focus:ring-1 focus:ring-[#ab163f]">
     </div>
-
+ 
     <div>
       <label class="block text-xs font-medium text-slate-400 mb-1">Nombre del Programa</label>
       <input type="text" id="input-program" oninput="syncEl('flyer-title', this.value)" value="Políticas y Administración de la Educación"
         class="w-full bg-slate-900 border border-slate-800 rounded px-3 py-2 text-sm text-white focus:outline-none focus:ring-1 focus:ring-[#ab163f]">
     </div>
-
+ 
     <!-- Maestrías / Especializaciones -->
     <div class="border border-slate-800 p-3 rounded-lg bg-slate-900/40 space-y-3">
       <div class="text-xs font-bold text-[#f29fc5] flex items-center gap-1.5 uppercase">
@@ -211,9 +211,9 @@
         <input type="text" id="input-e2" oninput="syncEl('flyer-e2',this.value)" value="Planeamiento y Gestión de la Educación"            class="w-full bg-slate-900 border border-slate-800 rounded px-2.5 py-1.5 text-xs text-white">
       </div>
     </div>
-
-
-
+ 
+ 
+ 
     <!-- Reunión informativa -->
     <div class="border border-slate-800 p-3 rounded-lg bg-slate-900/40 space-y-3">
       <div class="flex items-center justify-between">
@@ -236,13 +236,13 @@
         </div>
       </div>
     </div>
-
+ 
     <div>
       <label class="block text-xs font-medium text-slate-400 mb-1">Email de Contacto</label>
       <input type="email" id="input-email" oninput="syncEl('flyer-email',this.value)" value="pae@untref.edu.ar" class="w-full bg-slate-900 border border-slate-800 rounded px-3 py-2 text-sm text-white focus:outline-none focus:ring-1 focus:ring-[#ab163f]">
     </div>
   </div>
-
+ 
   <!-- 4. IMAGEN DE FONDO + OPACIDADES -->
   <div class="space-y-3">
     <h2 class="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-2 border-b border-slate-800 pb-2">
@@ -252,7 +252,7 @@
     <div class="grid grid-cols-2 gap-2">
       <button id="imgbtn-students"  onclick="setBgImage('students')"  class="imgbtn px-3 py-2 rounded border-2 border-slate-700 bg-slate-800 text-xs text-slate-200 transition font-semibold hover:bg-slate-700">📚 Estudiantes posgrado</button>
       <button id="imgbtn-classroom" onclick="setBgImage('classroom')" class="imgbtn px-3 py-2 rounded border-2 border-slate-700 bg-slate-800 text-xs text-slate-200 transition font-semibold hover:bg-slate-700">📝 Docente planificando</button>
-
+ 
       <button id="imgbtn-planning"  onclick="setBgImage('planning')"  class="imgbtn px-3 py-2 rounded border-2 border-slate-700 bg-slate-800 text-xs text-slate-200 transition font-semibold hover:bg-slate-700">📋 Planificación / Gestión</button>
     </div>
     <!-- Opacidad imagen -->
@@ -277,7 +277,7 @@
       <p class="text-[9px] text-slate-500 mt-1">Menos overlay = imagen más visible.</p>
     </div>
   </div>
-
+ 
   <!-- 5. FORMATO + DESCARGA -->
   <div class="pt-4 space-y-3 border-t border-slate-800">
     <h2 class="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-2">
@@ -304,32 +304,32 @@
       <i data-lucide="copy" class="w-4 h-4"></i> Copiar Copy para Post (Instagram/FB)
     </button>
   </div>
-
+ 
 </section>
-
+ 
 <!-- ══════════════════════════════════════════════════════════════
      CANVAS DERECHO
 ══════════════════════════════════════════════════════════════ -->
 <section class="lg:col-span-7 p-4 bg-slate-900 flex flex-col items-center justify-start overflow-y-auto max-h-[calc(100vh-73px)]">
-
+ 
   <!-- Marco bordó exterior con firma UNTREF lateral — cuadrado 1:1 perfecto -->
   <!-- Wrapper que escala el canvas para que entre siempre en pantalla -->
   <div id="canvas-scaler" style="transform-origin:top center; transition: transform 0.3s; margin-bottom: 8px;">
   <div id="flyer-canvas" class="relative bg-[#ab163f] shadow-2xl flex overflow-hidden select-none" style="width:520px;height:520px;">
-
+ 
     <!-- Contenedor interno: margen uniforme 16px en los 4 lados -->
     <div id="flyer-inner" class="relative bg-slate-950 flex flex-col justify-between p-5 overflow-hidden font-lato-bold"
          style="margin:10px; flex:1;">
-
+ 
       <!-- ── CAPA DE DECORACIONES (fondo) ─────────────────────── -->
       <div id="decorations-layer" class="absolute inset-0 pointer-events-none z-0">
-
+ 
         <!-- WARM -->
         <div id="dec-warm-wrap" class="absolute inset-0 hidden">
           <div id="dec-warm-img"     class="absolute inset-0 bg-cover bg-center" style="background-image:url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&fit=crop&auto=format');opacity:0.30;"></div>
           <div id="dec-warm-overlay" class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-slate-950/50" style="opacity:0.80;"></div>
         </div>
-
+ 
         <!-- MODERN -->
         <div id="dec-modern-wrap" class="absolute inset-0 hidden bg-[#0f233b] bg-dots">
           <div class="absolute bottom-0 right-0 w-80 h-80 opacity-30 transform translate-x-10 translate-y-10">
@@ -343,20 +343,20 @@
             </svg>
           </div>
         </div>
-
+ 
         <!-- CLEAN -->
         <div id="dec-clean-wrap" class="absolute inset-0 hidden">
           <div id="dec-clean-img"     class="absolute inset-0 bg-cover bg-center" style="background-image:url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&fit=crop&auto=format');opacity:0.30;"></div>
           <div id="dec-clean-overlay" class="absolute inset-0 bg-white" style="opacity:0.80;"></div>
           <div class="absolute inset-0 bg-dots"></div>
         </div>
-
+ 
         <!-- VANGUARD -->
         <div id="dec-vanguard-wrap" class="absolute inset-0 hidden bg-gradient-to-br from-[#12283e] via-[#091728] to-[#1e050d] bg-grid-elegant">
           <div class="absolute top-1/4 right-1/4 w-72 h-72 bg-[#29649b]/25 rounded-full filter blur-[80px]"></div>
           <div class="absolute bottom-1/4 left-1/4 w-60 h-60 bg-[#ab163f]/20 rounded-full filter blur-[60px]"></div>
         </div>
-
+ 
         <!-- INSPIRATION -->
         <div id="dec-inspiration-wrap" class="absolute inset-0 hidden">
           <div class="absolute inset-0 bg-gradient-to-tr from-[#0a1b2d] via-[#15344a] to-[#1e050d]"></div>
@@ -366,14 +366,14 @@
           <div class="absolute top-0 right-0 w-96 h-96 bg-[#29649b]/20 rounded-full filter blur-[100px] transform translate-x-20 -translate-y-20"></div>
           <div class="absolute -bottom-16 -left-16 w-36 h-36 bg-[#ab163f]/15 rounded-lg transform rotate-45 border border-[#ab163f]/30"></div>
         </div>
-
+ 
         <!-- SPECIALIZATIONS -->
         <div id="dec-spec-wrap" class="absolute inset-0 hidden bg-gradient-to-br from-[#071322] via-[#0e2133] to-[#1a040b] bg-grid-elegant">
           <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_10%,rgba(194,96,135,0.12),transparent_65%)] pointer-events-none"></div>
           <div class="absolute top-10 left-10 w-48 h-48 bg-[#29649b]/20 rounded-full filter blur-3xl"></div>
           <div class="absolute bottom-10 right-10 w-48 h-48 bg-[#ab163f]/20 rounded-full filter blur-3xl"></div>
         </div>
-
+ 
         <!-- MASTERS -->
         <div id="dec-masters-wrap" class="absolute inset-0 hidden bg-gradient-to-tr from-[#030712] via-[#0d2238] to-[#1e050d] bg-grid-elegant">
           <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(171,22,63,0.3),transparent_70%)] pointer-events-none"></div>
@@ -381,29 +381,29 @@
         </div>
       </div>
       <!-- ── FIN DECORACIONES ───────────────────────────────────── -->
-
+ 
       <!-- ── CABECERA ──────────────────────────────────────────── -->
       <div class="relative z-10 flex justify-between items-start gap-4">
         <div class="flex-1 space-y-0">
-
+ 
           <!-- Tag "Inscripciones Abiertas" -->
           <div id="flyer-tag-wrapper" class="mb-0.5">
             <span id="flyer-tag" style="background-color:#f29fc5;color:#ab163f;"
               class="text-[8.5px] font-black tracking-widest uppercase px-2.5 py-0.5 rounded shadow-sm">Inscripciones Abiertas</span>
           </div>
-
+ 
           <!-- "Programa de Posgrados en" — línea propia, siempre separada -->
           <h3 id="flyer-header" class="text-[11px] font-bold tracking-wider text-[#f29fc5] uppercase block leading-tight">Programa de Posgrados en</h3>
-
+ 
           <!-- Nombre del programa -->
           <h1 id="flyer-title" class="text-[18px] font-black text-white leading-tight tracking-tight max-w-[95%] mt-0.5">Políticas y Administración de la Educación</h1>
-
+ 
           <!-- Frase convocante -->
           <p id="flyer-hook" class="text-[8.5px] text-[#f29fc5] font-semibold italic mt-4 border-l-2 border-[#c26087] pl-2 max-w-[95%] leading-snug">
             Detrás de cada aula transformada hay una historia de liderazgo. Escribí la tuya.
           </p>
         </div>
-
+ 
         <!-- Logo UNTREF SVG oficial -->
         <div id="untref-svg-logo" class="flex flex-col items-end text-white shrink-0 pt-0.5">
           <svg class="h-[37px] w-auto max-w-[138px] drop-shadow-sm" viewBox="49 49 471 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="UNTREF - Universidad Nacional de Tres de Febrero">
@@ -428,11 +428,11 @@
         </div>
       </div>
       <!-- ── FIN CABECERA ──────────────────────────────────────── -->
-
+ 
       <!-- ── CONTENIDO CENTRAL ─────────────────────────────────── -->
       <div class="relative z-10 grid grid-cols-12 gap-3 my-auto items-center w-full">
         <div id="flyer-careers" class="col-span-12 w-full" style="display:flex;flex-direction:column;gap:8px;">
-
+ 
           <!-- Maestrías -->
           <div class="space-y-0.5" id="block-maestrias">
             <div class="flex items-center gap-1.5" id="header-container-m">
@@ -444,7 +444,7 @@
               <li id="flyer-m2" class="text-[10px] font-medium leading-tight">Gestión y Evaluación de la Educación</li>
             </ul>
           </div>
-
+ 
           <!-- Especializaciones -->
           <div class="space-y-0.5" id="block-especializaciones">
             <div class="flex items-center gap-1.5" id="header-container-e">
@@ -457,17 +457,17 @@
             </ul>
           </div>
         </div>
-
+ 
         <!-- Foto box (solo plantilla Clean) -->
         <div id="flyer-photo-box" class="hidden col-span-5 relative h-24 rounded-xl overflow-hidden border border-slate-200 shadow-md">
           <div id="flyer-photo-inner" class="absolute inset-0 bg-cover bg-center" style="background-image:url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&fit=crop&auto=format');"></div>
         </div>
       </div>
       <!-- ── FIN CONTENIDO CENTRAL ──────────────────────────────── -->
-
+ 
       <!-- ── PIE ───────────────────────────────────────────────── -->
       <div class="relative z-10 grid grid-cols-2 gap-1.5 pt-1.5 border-t border-white/10 w-full shrink-0" id="flyer-footer-border">
-
+ 
         <!-- Reunión -->
         <div id="badge-meeting" style="background-color:#ab163f;" class="flex flex-col items-center justify-center text-white p-1.5 rounded-lg shadow-md shrink-0 min-w-0 text-center">
           <p class="text-[6px] font-bold uppercase tracking-wider leading-none text-rose-200 w-full text-center">Reunión Informativa</p>
@@ -475,9 +475,9 @@
             <span id="flyer-meeting-date">Jueves 26 Feb</span> • <span id="flyer-meeting-time">18 hs.</span>
           </p>
         </div>
-
-
-
+ 
+ 
+ 
         <!-- Contacto -->
         <div id="badge-contact" style="background-color:#f29fc5;" class="flex flex-col items-center justify-center text-[#ab163f] p-1.5 rounded-lg shadow-md shrink-0 min-w-0 text-center">
           <p class="text-[6px] font-bold uppercase tracking-wider leading-none text-[#ab163f]/80 w-full text-center">Consultas</p>
@@ -485,19 +485,19 @@
         </div>
       </div>
       <!-- ── FIN PIE ────────────────────────────────────────────── -->
-
+ 
     </div><!-- /flyer-inner -->
   </div><!-- /flyer-canvas -->
   </div><!-- /canvas-scaler -->
-
+ 
   <div class="mt-4 max-w-[500px] text-center text-xs text-slate-400 space-y-1">
     <p><i class="inline-block w-2 h-2 rounded-full bg-[#f29fc5] mr-1.5"></i> Diseñado con tipografía corporativa <strong>Lato</strong> y azul institucional <strong>#29649b</strong>.</p>
     <p>Los botones inferiores conservan strictly la paleta <strong>Bordó/Rosa</strong> en las 7 plantillas.</p>
   </div>
-
+ 
 </section>
 </main>
-
+ 
 <!-- ══════════════════════════════════════════════════════════════
      JAVASCRIPT — ESTADO GLOBAL + FUNCIONES INDEPENDIENTES
 ══════════════════════════════════════════════════════════════ -->
@@ -514,14 +514,14 @@ const STATE = {
   overlayOp  : 0.80,
   hookText   : 'Detrás de cada aula transformada hay una historia de liderazgo. Escribí la tuya.',
 };
-
+ 
 /* ─── FORMATO DEL CANVAS ────────────────────────────────────── */
 /*  1:1  → 520 × 520 px en pantalla  → exporta 1080 × 1080 px (scale 2.077)
     4:5  → 520 × 650 px en pantalla  → exporta 1080 × 1350 px (scale 2.077) */
 function setFormat(fmt){
   STATE.format = fmt;
   const canvas = $('flyer-canvas');
-
+ 
   /* Botones visuales */
   ['square','portrait'].forEach(f => {
     const btn = $('fmt-btn-' + f);
@@ -534,7 +534,7 @@ function setFormat(fmt){
       btn.classList.add('border-slate-700','bg-slate-900','text-slate-400');
     }
   });
-
+ 
   const scaler = $('canvas-scaler');
   if(fmt === 'square'){
     canvas.style.width  = '520px';
@@ -555,27 +555,27 @@ function setFormat(fmt){
     $('btn-export-label').innerText = 'Descargar PNG 1080×1350';
   }
 }
-
+ 
 /* Imágenes disponibles */
 const BG_IMAGES = {
   /* Estudiantes de posgrado trabajando en grupo */
   students : 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&fit=crop&auto=format',
   /* Ceremonia de graduación / egresados de posgrado */
   classroom: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1200&fit=crop&auto=format',
-
+ 
   /* Planificación educativa: análisis de documentos y datos */
   planning : 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&fit=crop&auto=format',
 };
-
+ 
 /* ─── HELPERS ───────────────────────────────────────────────── */
 function $(id){ return document.getElementById(id); }
-
+ 
 /* Sincronizar texto de campo con elemento del flyer */
 function syncEl(id, val){ const el = $(id); if(el) el.innerText = val; }
-
+ 
 /* Sincronizar tag (texto + botón) */
 function syncTag(val){ syncEl('flyer-tag', val); }
-
+ 
 /* ─── VISIBILIDAD: HOOK ─────────────────────────────────────── */
 function toggleHookVis(){
   STATE.hookVis = !STATE.hookVis;
@@ -596,7 +596,7 @@ function applyHookVis(){
   }
   lucide.createIcons();
 }
-
+ 
 /* ─── VISIBILIDAD: TAG ──────────────────────────────────────── */
 function toggleTagVis(){
   STATE.tagVis = !STATE.tagVis;
@@ -617,7 +617,7 @@ function applyTagVis(){
   }
   lucide.createIcons();
 }
-
+ 
 /* ─── VISIBILIDAD: REUNIÓN ──────────────────────────────────── */
 function toggleMeetingVis(){
   STATE.meetingVis = !STATE.meetingVis;
@@ -643,7 +643,7 @@ function applyMeetingVis(){
   }
   lucide.createIcons();
 }
-
+ 
 /* ─── SELECTOR DE FRASES CONVOCANTES ───────────────────────── */
 function selectHook(key){
   const texts = {
@@ -652,7 +652,7 @@ function selectHook(key){
   };
   STATE.hookText = texts[key];
   syncEl('flyer-hook', STATE.hookText);
-
+ 
   /* Resaltar botón activo */
   ['a','b'].forEach(k => {
     const b = $(`hook-btn-${k}`);
@@ -664,12 +664,12 @@ function selectHook(key){
     }
   });
 }
-
+ 
 /* ─── IMAGEN DE FONDO ───────────────────────────────────────── */
 function setBgImage(key){
   STATE.bgKey = key;
   const url = BG_IMAGES[key];
-
+ 
   /* Aplicar a todas las capas de imagen */
   ['dec-warm-img','dec-inspiration-img','dec-clean-img'].forEach(id => {
     const el = $(id);
@@ -677,7 +677,7 @@ function setBgImage(key){
   });
   const pb = $('flyer-photo-inner');
   if(pb) pb.style.backgroundImage = `url('${url}')`;
-
+ 
   /* Resaltar botón activo */
   document.querySelectorAll('.imgbtn').forEach(b => {
     b.classList.remove('imgbtn-active','border-[#ab163f]','text-white');
@@ -689,7 +689,7 @@ function setBgImage(key){
     active.classList.remove('border-slate-700','text-slate-200');
   }
 }
-
+ 
 /* ─── OPACIDADES ────────────────────────────────────────────── */
 function applyBgOpacity(val){
   STATE.bgOpacity = val / 100;
@@ -700,7 +700,7 @@ function applyBgOpacity(val){
   if(pb) pb.style.opacity = STATE.bgOpacity;
   $('lbl-bg-opacity').innerText = `${val}%`;
 }
-
+ 
 function applyOverlayOpacity(val){
   STATE.overlayOp = val / 100;
   ['dec-warm-overlay','dec-inspiration-overlay','dec-clean-overlay'].forEach(id => {
@@ -708,7 +708,7 @@ function applyOverlayOpacity(val){
   });
   $('lbl-overlay-opacity').innerText = `${val}%`;
 }
-
+ 
 /* ─── TIPOGRAFÍA ────────────────────────────────────────────── */
 function changeFontVariant(cls){
   const inner = $('flyer-inner');
@@ -716,7 +716,7 @@ function changeFontVariant(cls){
   inner.classList.remove('font-lato-regular','font-lato-bold','font-lato-black');
   inner.classList.add(cls);
 }
-
+ 
 function applyTitleSize(val){
   const el = $('flyer-title'); if(el) el.style.fontSize = `${val}px`;
   $('lbl-title-size').innerText = `${val}px`;
@@ -760,7 +760,7 @@ function applyPadding(val){
   const labels = {'3':'Ultra Compacto (p-3)','4':'Súper Ajustado (p-4)','5':'Ajustado (p-5)','6':'Normal (p-6)','7':'Espacioso (p-7)'};
   $('lbl-padding').innerText = labels[String(val)] || 'Ajustado';
 }
-
+ 
 /* ─── CAMBIO DE PLANTILLA ───────────────────────────────────── */
 /*
   Esta función SOLO cambia el fondo y las clases estructurales del canvas.
@@ -769,7 +769,7 @@ function applyPadding(val){
 */
 function setTemplate(name){
   STATE.template = name;
-
+ 
   /* Resaltar botón activo */
   document.querySelectorAll('.tpl-btn').forEach(b => {
     b.classList.remove('border-[#ab163f]','bg-[#ab163f]/10','text-white');
@@ -780,18 +780,18 @@ function setTemplate(name){
     ab.classList.remove('border-slate-800','bg-slate-900','text-slate-400');
     ab.classList.add('border-[#ab163f]','bg-[#ab163f]/10','text-white');
   }
-
+ 
   /* Ocultar TODAS las capas de decoración */
   ['dec-warm-wrap','dec-modern-wrap','dec-clean-wrap','dec-vanguard-wrap',
    'dec-inspiration-wrap','dec-spec-wrap','dec-masters-wrap'].forEach(id => {
     const el = $(id); if(el) el.classList.add('hidden');
   });
-
+ 
   /* Ocultar bloques opcionales */
   $('block-maestrias').classList.remove('hidden');
   $('block-especializaciones').classList.remove('hidden');
   $('flyer-photo-box').classList.add('hidden');
-
+ 
   const inner    = $('flyer-inner');
   const careers  = $('flyer-careers');
   const listM    = $('list-m');
@@ -806,18 +806,18 @@ function setTemplate(name){
   const flyTitle = $('flyer-title');
   const flyHdr   = $('flyer-header');
   const m1=$('flyer-m1'), m2=$('flyer-m2'), e1=$('flyer-e1'), e2=$('flyer-e2');
-
+ 
   /* Reset a clases base comunes */
   careers.className = 'col-span-12 w-full'; careers.style.cssText='display:flex;flex-direction:column;gap:' + ($('sl-careers-gap')?$('sl-careers-gap').value:8) + 'px;';
   listM.className   = 'space-y-0.5 pl-3 list-disc list-inside text-white/90 font-lato-regular';
   listE.className   = 'space-y-0.5 pl-3 list-disc list-inside text-white/90 font-lato-regular';
   headerM.className = 'flex items-center gap-1.5';
   headerE.className = 'flex items-center gap-1.5';
-
+ 
   /* Reset textAlign del título (plantillas 6 y 7 lo centran) */
   flyTitle.style.textAlign = '';
   flyHdr.style.textAlign   = '';
-
+ 
   /* Helper: resetear ítems de lista a texto plano sin tarjeta */
   function resetListItems(els, color){
     els.forEach(el => {
@@ -825,7 +825,7 @@ function setTemplate(name){
       el.style.cssText = `color:${color};font-size:10px;font-weight:500;line-height:1.3;background:none;border:none;padding:0;border-radius:0;display:list-item;width:auto;text-align:left;`;
     });
   }
-
+ 
   /* ── Configuraciones por plantilla ── */
   if(name === 'warm'){
     inner.style.backgroundColor = '#0f172a'; /* slate-950 */
@@ -838,7 +838,7 @@ function setTemplate(name){
     resetListItems([m1,m2,e1,e2], 'rgba(255,255,255,0.9)');
     bullet1.style.backgroundColor = '#f29fc5';
     bullet2.style.backgroundColor = '#c26087';
-
+ 
   } else if(name === 'modern'){
     inner.style.backgroundColor = '#0a1b2d';
     $('dec-modern-wrap').classList.remove('hidden');
@@ -850,7 +850,7 @@ function setTemplate(name){
     resetListItems([m1,m2,e1,e2], '#ffffff');
     bullet1.style.backgroundColor = '#f29fc5';
     bullet2.style.backgroundColor = '#c26087';
-
+ 
   } else if(name === 'clean'){
     inner.style.backgroundColor = '#fafbfc';
     $('dec-clean-wrap').classList.remove('hidden');
@@ -864,7 +864,7 @@ function setTemplate(name){
     resetListItems([m1,m2,e1,e2], '#475569');
     bullet1.style.backgroundColor = '#ab163f';
     bullet2.style.backgroundColor = '#c26087';
-
+ 
   } else if(name === 'vanguard'){
     inner.style.backgroundColor = '#020617'; /* near black */
     $('dec-vanguard-wrap').classList.remove('hidden');
@@ -876,7 +876,7 @@ function setTemplate(name){
     resetListItems([m1,m2,e1,e2], '#ffffff');
     bullet1.style.backgroundColor = '#f29fc5';
     bullet2.style.backgroundColor = '#c26087';
-
+ 
   } else if(name === 'inspiration'){
     inner.style.backgroundColor = '#020617';
     $('dec-inspiration-wrap').classList.remove('hidden');
@@ -889,7 +889,7 @@ function setTemplate(name){
     resetListItems([m1,m2,e1,e2], 'rgba(255,255,255,0.9)');
     bullet1.style.backgroundColor = '#f29fc5';
     bullet2.style.backgroundColor = '#c26087';
-
+ 
   } else if(name === 'specializations'){
     inner.style.backgroundColor = '#071322';
     $('dec-spec-wrap').classList.remove('hidden');
@@ -908,7 +908,7 @@ function setTemplate(name){
       if(!el) return;
       el.style.cssText = 'font-size:9.5px;font-weight:700;color:#fff;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.1);border-left:4px solid #29649b;padding:8px 14px;border-radius:8px;display:block;width:100%;text-align:left;line-height:1.35;';
     });
-
+ 
   } else if(name === 'masters'){
     inner.style.backgroundColor = '#030712';
     $('dec-masters-wrap').classList.remove('hidden');
@@ -928,17 +928,17 @@ function setTemplate(name){
       el.style.cssText = 'font-size:9.5px;font-weight:800;color:#fff;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.1);border-left:4px solid #ab163f;padding:10px 16px;border-radius:8px;display:block;width:100%;text-align:left;line-height:1.35;';
     });
   }
-
+ 
   /* Colores fijos de los badges del pie — siempre */
   $('badge-meeting').style.backgroundColor  = '#ab163f';
   $('badge-meeting').style.color            = '#ffffff';
   $('badge-contact').style.backgroundColor  = '#f29fc5';
   $('badge-contact').style.color            = '#ab163f';
-
+ 
   /* Re-aplicar TODOS los controles independientes */
   reapplyState();
 }
-
+ 
 /*
   reapplyState: restaura opacidades, imagen elegida, y visibilidades
   sin tocar los colores/estructura de la plantilla.
@@ -952,20 +952,20 @@ function reapplyState(){
   });
   const pb = $('flyer-photo-inner');
   if(pb){ pb.style.backgroundImage = `url('${url}')`; pb.style.opacity = STATE.bgOpacity; }
-
+ 
   /* Overlay */
   ['dec-warm-overlay','dec-inspiration-overlay','dec-clean-overlay'].forEach(id => {
     const el = $(id); if(el) el.style.opacity = STATE.overlayOp;
   });
-
+ 
   /* Visibilidades */
   applyHookVis();
   applyTagVis();
   applyMeetingVis();
-
+ 
   /* Texto del hook */
   syncEl('flyer-hook', STATE.hookText);
-
+ 
   /* Sliders tipográficos */
   applyTitleSize($('sl-title-size').value);
   applyHookSize($('sl-hook-size').value);
@@ -974,18 +974,18 @@ function reapplyState(){
   applyBadgeSize($('sl-badge-size').value);
   applyPadding($('sl-padding').value);
 }
-
+ 
 /* ─── EXPORTAR PNG ──────────────────────────────────────────── */
 function exportFlyer(event){
   const btn = event.currentTarget;
   const origHTML = btn.innerHTML;
   btn.disabled = true;
   btn.innerHTML = '⏳ Generando imagen...';
-
+ 
   /* Elementos a ocultar/reemplazar temporalmente */
   const toHide   = [];   /* { el, display } */
   const toRestore = [];  /* funciones de restauración */
-
+ 
   /* 1. Reemplazar íconos Lucide SVG por spans de texto plano */
   $('flyer-canvas').querySelectorAll('i[data-lucide]').forEach(icon => {
     const map = { calendar:'📅', globe:'🌐', mail:'✉' };
@@ -998,7 +998,7 @@ function exportFlyer(event){
     icon.style.display = 'none';
     toRestore.push(() => { icon.style.display = prevDisplay; sp.remove(); });
   });
-
+ 
   /* 2. Precargar imagen de fondo activa como base64 para evitar bloqueo CORS */
   function doCapture(){
     /* scale: 1080/520 ≈ 2.077 para ambos formatos (el alto varía con el canvas) */
@@ -1028,7 +1028,7 @@ function exportFlyer(event){
       btn.disabled = false;
       btn.innerHTML = origHTML;
       lucide.createIcons();
-
+ 
       /* Descarga */
       try {
         const dataURL = canvas.toDataURL('image/png');
@@ -1053,7 +1053,7 @@ function exportFlyer(event){
       alert('No se pudo exportar. Probá usar Chrome o Firefox.');
     });
   }
-
+ 
   /* Cargar imagen activa como base64 antes de capturar */
   const imgUrl = BG_IMAGES[STATE.bgKey];
   const img    = new Image();
@@ -1072,7 +1072,7 @@ function exportFlyer(event){
   /* Forzar recarga sin caché para CORS */
   img.src = imgUrl + (imgUrl.includes('?') ? '&' : '?') + 'cb=' + Date.now();
 }
-
+ 
 /* ─── COPIAR COPY SOCIAL ─────────────────────────────────────── */
 function copySocialCopy(){
   const m1v = $('input-m1').value, m2v = $('input-m2').value;
@@ -1093,7 +1093,7 @@ function copySocialCopy(){
   try { document.execCommand('copy'); } catch(e){}
   document.body.removeChild(ta);
 }
-
+ 
 /* ─── INICIO ────────────────────────────────────────────────── */
 window.onload = function(){
   lucide.createIcons();
