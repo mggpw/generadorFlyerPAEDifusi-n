@@ -76,10 +76,7 @@
         <span class="text-xs font-bold">2. Líneas Tecnológicas</span>
         <span class="text-[9px] text-slate-500">(Ref. 7.png)</span>
       </button>
-      <button onclick="setTemplate('clean')"          id="btn-clean"          class="tpl-btn p-2.5 rounded-lg border-2 border-slate-800 bg-slate-900 text-slate-400 flex flex-col items-center justify-center gap-0.5 text-center hover:bg-slate-800 transition">
-        <span class="text-xs font-bold">3. Clara Institucional</span>
-        <span class="text-[9px] text-slate-500">(Ref. d3.png)</span>
-      </button>
+ 
  
       <button onclick="setTemplate('inspiration')"    id="btn-inspiration"    class="tpl-btn p-2.5 rounded-lg border-2 border-slate-800 bg-slate-900 text-slate-400 flex flex-col items-center justify-center gap-0.5 text-center hover:bg-slate-800 transition">
         <span class="text-xs font-bold text-[#6ca8d8]">5. Inspiración Azul</span>
@@ -120,7 +117,7 @@
       </div>
       <div>
         <div class="flex justify-between text-xs mb-1"><span class="text-slate-400">Tamaño Frase Convocante</span><span id="lbl-hook-size" class="text-slate-200 font-bold">8.5px</span></div>
-        <input type="range" id="sl-hook-size" min="7" max="14" value="8.5" step="0.5" oninput="applyHookSize(this.value)" class="w-full h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer">
+        <input type="range" id="sl-hook-size" min="7" max="28" value="8.5" step="0.5" oninput="applyHookSize(this.value)" class="w-full h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer">
       </div>
       <div>
         <div class="flex justify-between text-xs mb-1"><span class="text-slate-400">Tamaño de Carreras</span><span id="lbl-list-size" class="text-slate-200 font-bold">10px</span></div>
@@ -344,12 +341,7 @@
           </div>
         </div>
  
-        <!-- CLEAN -->
-        <div id="dec-clean-wrap" class="absolute inset-0 hidden">
-          <div id="dec-clean-img"     class="absolute inset-0 bg-cover bg-center" style="background-image:url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&fit=crop&auto=format');opacity:0.30;"></div>
-          <div id="dec-clean-overlay" class="absolute inset-0 bg-white" style="opacity:0.80;"></div>
-          <div class="absolute inset-0 bg-dots"></div>
-        </div>
+ 
  
         <!-- VANGUARD -->
         <div id="dec-vanguard-wrap" class="absolute inset-0 hidden bg-gradient-to-br from-[#12283e] via-[#091728] to-[#1e050d] bg-grid-elegant">
@@ -368,16 +360,52 @@
         </div>
  
         <!-- SPECIALIZATIONS -->
-        <div id="dec-spec-wrap" class="absolute inset-0 hidden bg-gradient-to-br from-[#071322] via-[#0e2133] to-[#1a040b] bg-grid-elegant">
-          <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_10%,rgba(194,96,135,0.12),transparent_65%)] pointer-events-none"></div>
-          <div class="absolute top-10 left-10 w-48 h-48 bg-[#29649b]/20 rounded-full filter blur-3xl"></div>
-          <div class="absolute bottom-10 right-10 w-48 h-48 bg-[#ab163f]/20 rounded-full filter blur-3xl"></div>
+        <div id="dec-spec-wrap" class="absolute inset-0 hidden" style="background-color:#29649b;">
+          <!-- Sutil degradado oscuro en esquina superior izquierda para dar profundidad -->
+          <div class="absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,rgba(0,0,0,0.35),transparent_55%)] pointer-events-none"></div>
+          <!-- Chevrons decorativos esquina inferior derecha -->
+          <div class="absolute bottom-0 right-0 pointer-events-none" style="width:65%;height:80%;overflow:hidden;">
+            <svg viewBox="0 0 400 420" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMaxYMax meet" style="width:100%;height:100%;opacity:0.97;">
+              <!-- Línea 1 - blanco, más exterior, brazos largos -->
+              <polyline points="400,0  210,200 400,400" fill="none" stroke="#ffffff"  stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"/>
+              <!-- Línea 2 - azul claro #00a7e7 -->
+              <polyline points="400,30 240,200 400,370" fill="none" stroke="#00a7e7"  stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter"/>
+              <!-- Línea 3 - azul medio #5c79bb -->
+              <polyline points="400,58 268,200 400,342" fill="none" stroke="#5c79bb"  stroke-width="9"  stroke-linecap="butt" stroke-linejoin="miter"/>
+              <!-- Línea 4 - azul claro #00a7e7 -->
+              <polyline points="400,84 294,200 400,316" fill="none" stroke="#00a7e7"  stroke-width="8"  stroke-linecap="butt" stroke-linejoin="miter"/>
+              <!-- Línea 5 - blanco -->
+              <polyline points="400,108 318,200 400,292" fill="none" stroke="#ffffff"  stroke-width="7"  stroke-linecap="butt" stroke-linejoin="miter"/>
+              <!-- Línea 6 - azul medio #5c79bb -->
+              <polyline points="400,130 340,200 400,270" fill="none" stroke="#5c79bb"  stroke-width="6"  stroke-linecap="butt" stroke-linejoin="miter"/>
+              <!-- Línea 7 - azul claro #00a7e7, más interior -->
+              <polyline points="400,150 360,200 400,250" fill="none" stroke="#00a7e7"  stroke-width="5"  stroke-linecap="butt" stroke-linejoin="miter"/>
+            </svg>
+          </div>
         </div>
  
         <!-- MASTERS -->
-        <div id="dec-masters-wrap" class="absolute inset-0 hidden bg-gradient-to-tr from-[#030712] via-[#0d2238] to-[#1e050d] bg-grid-elegant">
-          <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(171,22,63,0.3),transparent_70%)] pointer-events-none"></div>
-          <div class="absolute -top-10 left-1/4 w-72 h-72 bg-[#29649b]/25 rounded-full filter blur-3xl"></div>
+        <div id="dec-masters-wrap" class="absolute inset-0 hidden" style="background-color:#29649b;">
+          <div class="absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,rgba(0,0,0,0.35),transparent_55%)] pointer-events-none"></div>
+          <!-- Chevrons decorativos esquina inferior derecha -->
+          <div class="absolute bottom-0 right-0 pointer-events-none" style="width:65%;height:80%;overflow:hidden;">
+            <svg viewBox="0 0 400 420" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMaxYMax meet" style="width:100%;height:100%;opacity:0.97;">
+              <!-- Línea 1 - blanco, más exterior, brazos largos -->
+              <polyline points="400,0  210,200 400,400" fill="none" stroke="#ffffff"  stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"/>
+              <!-- Línea 2 - azul claro #00a7e7 -->
+              <polyline points="400,30 240,200 400,370" fill="none" stroke="#00a7e7"  stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter"/>
+              <!-- Línea 3 - azul medio #5c79bb -->
+              <polyline points="400,58 268,200 400,342" fill="none" stroke="#5c79bb"  stroke-width="9"  stroke-linecap="butt" stroke-linejoin="miter"/>
+              <!-- Línea 4 - azul claro #00a7e7 -->
+              <polyline points="400,84 294,200 400,316" fill="none" stroke="#00a7e7"  stroke-width="8"  stroke-linecap="butt" stroke-linejoin="miter"/>
+              <!-- Línea 5 - blanco -->
+              <polyline points="400,108 318,200 400,292" fill="none" stroke="#ffffff"  stroke-width="7"  stroke-linecap="butt" stroke-linejoin="miter"/>
+              <!-- Línea 6 - azul medio #5c79bb -->
+              <polyline points="400,130 340,200 400,270" fill="none" stroke="#5c79bb"  stroke-width="6"  stroke-linecap="butt" stroke-linejoin="miter"/>
+              <!-- Línea 7 - azul claro #00a7e7, más interior -->
+              <polyline points="400,150 360,200 400,250" fill="none" stroke="#00a7e7"  stroke-width="5"  stroke-linecap="butt" stroke-linejoin="miter"/>
+            </svg>
+          </div>
         </div>
       </div>
       <!-- ── FIN DECORACIONES ───────────────────────────────────── -->
@@ -393,13 +421,13 @@
           </div>
  
           <!-- "Programa de Posgrados en" — línea propia, siempre separada -->
-          <h3 id="flyer-header" class="text-[11px] font-bold tracking-wider text-[#f29fc5] uppercase block leading-tight">Programa de Posgrados en</h3>
+          <h3 id="flyer-header" class="text-[16px] font-bold tracking-wider text-[#f29fc5] uppercase block leading-tight">Programa de Posgrados en</h3>
  
           <!-- Nombre del programa -->
           <h1 id="flyer-title" class="text-[18px] font-black text-white leading-tight tracking-tight max-w-[95%] mt-0.5">Políticas y Administración de la Educación</h1>
  
           <!-- Frase convocante -->
-          <p id="flyer-hook" class="text-[8.5px] text-[#f29fc5] font-semibold italic mt-4 border-l-2 border-[#c26087] pl-2 max-w-[95%] leading-snug">
+          <p id="flyer-hook" class="text-[8.5px] text-[#f29fc5] font-semibold italic border-l-2 border-[#c26087] pl-2 max-w-[95%] leading-snug" style="margin-top:24px;">
             Detrás de cada aula transformada hay una historia de liderazgo. Escribí la tuya.
           </p>
         </div>
@@ -430,6 +458,7 @@
       <!-- ── FIN CABECERA ──────────────────────────────────────── -->
  
       <!-- ── CONTENIDO CENTRAL ─────────────────────────────────── -->
+ 
       <div class="relative z-10 grid grid-cols-12 gap-3 my-auto items-center w-full">
         <div id="flyer-careers" class="col-span-12 w-full" style="display:flex;flex-direction:column;gap:8px;">
  
@@ -671,7 +700,7 @@ function setBgImage(key){
   const url = BG_IMAGES[key];
  
   /* Aplicar a todas las capas de imagen */
-  ['dec-warm-img','dec-inspiration-img','dec-clean-img'].forEach(id => {
+  ['dec-warm-img','dec-inspiration-img'].forEach(id => {
     const el = $(id);
     if(el) el.style.backgroundImage = `url('${url}')`;
   });
@@ -693,7 +722,7 @@ function setBgImage(key){
 /* ─── OPACIDADES ────────────────────────────────────────────── */
 function applyBgOpacity(val){
   STATE.bgOpacity = val / 100;
-  ['dec-warm-img','dec-inspiration-img','dec-clean-img'].forEach(id => {
+  ['dec-warm-img','dec-inspiration-img'].forEach(id => {
     const el = $(id); if(el) el.style.opacity = STATE.bgOpacity;
   });
   const pb = $('flyer-photo-inner');
@@ -703,7 +732,7 @@ function applyBgOpacity(val){
  
 function applyOverlayOpacity(val){
   STATE.overlayOp = val / 100;
-  ['dec-warm-overlay','dec-inspiration-overlay','dec-clean-overlay'].forEach(id => {
+  ['dec-warm-overlay','dec-inspiration-overlay'].forEach(id => {
     const el = $(id); if(el) el.style.opacity = STATE.overlayOp;
   });
   $('lbl-overlay-opacity').innerText = `${val}%`;
@@ -782,7 +811,7 @@ function setTemplate(name){
   }
  
   /* Ocultar TODAS las capas de decoración */
-  ['dec-warm-wrap','dec-modern-wrap','dec-clean-wrap','dec-vanguard-wrap',
+  ['dec-warm-wrap','dec-modern-wrap','dec-vanguard-wrap',
    'dec-inspiration-wrap','dec-spec-wrap','dec-masters-wrap'].forEach(id => {
     const el = $(id); if(el) el.classList.add('hidden');
   });
@@ -790,7 +819,6 @@ function setTemplate(name){
   /* Ocultar bloques opcionales */
   $('block-maestrias').classList.remove('hidden');
   $('block-especializaciones').classList.remove('hidden');
-  $('flyer-photo-box').classList.add('hidden');
  
   const inner    = $('flyer-inner');
   const careers  = $('flyer-careers');
@@ -814,9 +842,19 @@ function setTemplate(name){
   headerM.className = 'flex items-center gap-1.5';
   headerE.className = 'flex items-center gap-1.5';
  
-  /* Reset textAlign del título (plantillas 6 y 7 lo centran) */
-  flyTitle.style.textAlign = '';
-  flyHdr.style.textAlign   = '';
+  /* Reset estilos del título modificados en plantillas 6 y 7 */
+  flyTitle.style.textAlign    = '';
+  flyTitle.style.fontSize     = '';
+  flyTitle.style.fontWeight   = '';
+  flyTitle.style.lineHeight   = '';
+  flyTitle.style.letterSpacing= '';
+  flyTitle.style.marginTop    = '';
+  flyHdr.style.textAlign      = '';
+  flyHdr.style.fontSize       = '';
+  flyHdr.style.letterSpacing  = '';
+  /* Reset hook */
+  const hookEl = $('flyer-hook');
+  if(hookEl){ hookEl.style.fontSize=''; hookEl.style.color=''; hookEl.style.marginTop='24px'; hookEl.style.borderLeftColor=''; hookEl.style.borderLeftWidth=''; hookEl.style.paddingLeft=''; hookEl.style.lineHeight=''; hookEl.style.maxWidth=''; }
  
   /* Helper: resetear ítems de lista a texto plano sin tarjeta */
   function resetListItems(els, color){
@@ -832,7 +870,7 @@ function setTemplate(name){
     $('dec-warm-wrap').classList.remove('hidden');
     svgLogo.style.color = '#ffffff';
     flyTitle.style.color = '#ffffff';
-    flyHdr.style.color   = '#f29fc5';
+    flyHdr.style.color   = '#c26087';
     titleM.style.color   = '#cbd5e1';
     titleE.style.color   = '#cbd5e1';
     resetListItems([m1,m2,e1,e2], 'rgba(255,255,255,0.9)');
@@ -844,25 +882,11 @@ function setTemplate(name){
     $('dec-modern-wrap').classList.remove('hidden');
     svgLogo.style.color = '#ffffff';
     flyTitle.style.color = '#ffffff';
-    flyHdr.style.color   = '#f29fc5';
+    flyHdr.style.color   = '#c26087';
     titleM.style.color   = '#6ca8d8';
     titleE.style.color   = '#6ca8d8';
     resetListItems([m1,m2,e1,e2], '#ffffff');
     bullet1.style.backgroundColor = '#f29fc5';
-    bullet2.style.backgroundColor = '#c26087';
- 
-  } else if(name === 'clean'){
-    inner.style.backgroundColor = '#fafbfc';
-    $('dec-clean-wrap').classList.remove('hidden');
-    $('flyer-photo-box').classList.remove('hidden');
-    careers.className = 'col-span-7'; careers.style.cssText='display:flex;flex-direction:column;gap:' + ($('sl-careers-gap')?$('sl-careers-gap').value:8) + 'px;';
-    svgLogo.style.color  = '#ab163f';
-    flyTitle.style.color = '#0a1526';
-    flyHdr.style.color   = '#f29fc5';
-    titleM.style.color   = '#334155';
-    titleE.style.color   = '#334155';
-    resetListItems([m1,m2,e1,e2], '#475569');
-    bullet1.style.backgroundColor = '#ab163f';
     bullet2.style.backgroundColor = '#c26087';
  
   } else if(name === 'vanguard'){
@@ -870,7 +894,7 @@ function setTemplate(name){
     $('dec-vanguard-wrap').classList.remove('hidden');
     svgLogo.style.color = '#ffffff';
     flyTitle.style.color = '#ffffff';
-    flyHdr.style.color   = '#f29fc5';
+    flyHdr.style.color   = '#c26087';
     titleM.style.color   = '#e2e8f0';
     titleE.style.color   = '#e2e8f0';
     resetListItems([m1,m2,e1,e2], '#ffffff');
@@ -883,7 +907,7 @@ function setTemplate(name){
     careers.className = 'col-span-12 grid grid-cols-2 gap-4 my-1 border-l-2 border-[#c26087]/30 pl-3';
     svgLogo.style.color = '#ffffff';
     flyTitle.style.color = '#ffffff';
-    flyHdr.style.color   = '#f29fc5';
+    flyHdr.style.color   = '#c26087';
     titleM.style.color   = '#f1f5f9';
     titleE.style.color   = '#f1f5f9';
     resetListItems([m1,m2,e1,e2], 'rgba(255,255,255,0.9)');
@@ -891,41 +915,109 @@ function setTemplate(name){
     bullet2.style.backgroundColor = '#c26087';
  
   } else if(name === 'specializations'){
-    inner.style.backgroundColor = '#071322';
+    inner.style.backgroundColor = '#29649b';
     $('dec-spec-wrap').classList.remove('hidden');
     $('block-maestrias').classList.add('hidden');
-    careers.className = 'col-span-12 w-full my-auto'; careers.style.cssText='display:flex;flex-direction:column;gap:' + ($('sl-careers-gap')?$('sl-careers-gap').value:8) + 'px;';
-    headerE.className = 'flex items-center gap-1.5 mb-1 justify-center';
-    listE.className   = 'grid grid-cols-1 gap-2 w-full';
+ 
+    /* ── Jerarquía visual: carreras arriba pequeñas / word grande central ── */
     svgLogo.style.color = '#ffffff';
+ 
+    /* Tag */
+    flyHdr.style.color   = '#c26087';
+    flyHdr.style.textAlign = 'left';
+    flyHdr.style.fontSize  = '20px';
+    flyHdr.style.letterSpacing = '0.08em';
+ 
+    /* Título programa */
     flyTitle.style.color = '#ffffff';
-    flyTitle.style.textAlign = 'center';
-    flyHdr.style.color   = '#f29fc5';
-    flyHdr.style.textAlign = 'center';
-    titleE.style.color   = '#f29fc5';
-    bullet2.style.backgroundColor = '#f29fc5';
+    flyTitle.style.fontSize   = '38px';
+    flyTitle.style.fontWeight = '900';
+    flyTitle.style.lineHeight = '1';
+    flyTitle.style.textAlign  = 'left';
+    flyTitle.style.marginTop  = '6px';
+    flyTitle.style.letterSpacing = '-0.5px';
+ 
+    /* Frase convocante debajo del título grande */
+    const fhook = $('flyer-hook');
+    if(fhook){
+      fhook.style.fontSize        = '14px';
+      fhook.style.color           = '#ffffff';
+      fhook.style.marginTop       = '20px';
+      fhook.style.fontStyle       = 'italic';
+      fhook.style.fontWeight      = '700';
+      fhook.style.borderLeftColor = '#00a7e7';
+      fhook.style.borderLeftWidth = '3px';
+      fhook.style.paddingLeft     = '10px';
+      fhook.style.lineHeight      = '1.4';
+      fhook.style.maxWidth        = '75%';
+    }
+ 
+    /* Carreras: lista compacta, izquierda, sin tarjeta */
+    careers.className = 'col-span-12 w-full';
+    careers.style.cssText = 'display:flex;flex-direction:column;gap:3px;';
+    headerE.className = 'flex items-center gap-1.5 mb-1';
+    listE.className   = 'w-full';
+    titleE.style.color      = '#00a7e7';
+    titleE.style.fontSize   = '9px';
+    titleE.style.fontWeight = '800';
+    titleE.style.letterSpacing = '0.12em';
+    bullet2.style.backgroundColor = '#00a7e7';
     [e1,e2].forEach(el => {
       if(!el) return;
-      el.style.cssText = 'font-size:9.5px;font-weight:700;color:#fff;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.1);border-left:4px solid #29649b;padding:8px 14px;border-radius:8px;display:block;width:100%;text-align:left;line-height:1.35;';
+      el.style.cssText = 'font-size:9.5px;font-weight:500;color:#ffffff;background:none;border:none;padding:1px 0;display:block;width:100%;text-align:left;line-height:1.3;';
     });
  
   } else if(name === 'masters'){
-    inner.style.backgroundColor = '#030712';
+    inner.style.backgroundColor = '#29649b';
     $('dec-masters-wrap').classList.remove('hidden');
     $('block-especializaciones').classList.add('hidden');
-    careers.className = 'col-span-12 w-full my-auto'; careers.style.cssText='display:flex;flex-direction:column;gap:' + ($('sl-careers-gap')?$('sl-careers-gap').value:8) + 'px;';
-    headerM.className = 'flex items-center gap-1.5 mb-1.5 justify-center';
-    listM.className   = 'grid grid-cols-1 gap-2.5 w-full';
+ 
+    /* ── Jerarquía visual: carreras arriba pequeñas / word grande central ── */
     svgLogo.style.color = '#ffffff';
+ 
+    /* Subtítulo superior */
+    flyHdr.style.color   = '#c26087';
+    flyHdr.style.textAlign = 'left';
+    flyHdr.style.fontSize  = '16px';
+    flyHdr.style.letterSpacing = '0.08em';
+ 
+    /* Título programa */
     flyTitle.style.color = '#ffffff';
-    flyTitle.style.textAlign = 'center';
-    flyHdr.style.color   = '#f29fc5';
-    flyHdr.style.textAlign = 'center';
-    titleM.style.color   = '#ff7195';
-    bullet1.style.backgroundColor = '#ff7195';
+    flyTitle.style.fontSize   = '38px';
+    flyTitle.style.fontWeight = '900';
+    flyTitle.style.lineHeight = '1';
+    flyTitle.style.textAlign  = 'left';
+    flyTitle.style.marginTop  = '6px';
+    flyTitle.style.letterSpacing = '-0.5px';
+ 
+    /* Frase convocante */
+    const fhook = $('flyer-hook');
+    if(fhook){
+      fhook.style.fontSize        = '14px';
+      fhook.style.color           = '#ffffff';
+      fhook.style.marginTop       = '20px';
+      fhook.style.fontStyle       = 'italic';
+      fhook.style.fontWeight      = '700';
+      fhook.style.borderLeftColor = '#00a7e7';
+      fhook.style.borderLeftWidth = '3px';
+      fhook.style.paddingLeft     = '10px';
+      fhook.style.lineHeight      = '1.4';
+      fhook.style.maxWidth        = '75%';
+    }
+ 
+    /* Carreras: lista compacta izquierda sin tarjeta */
+    careers.className = 'col-span-12 w-full';
+    careers.style.cssText = 'display:flex;flex-direction:column;gap:3px;';
+    headerM.className = 'flex items-center gap-1.5 mb-1';
+    listM.className   = 'w-full';
+    titleM.style.color      = '#00a7e7';
+    titleM.style.fontSize   = '9px';
+    titleM.style.fontWeight = '800';
+    titleM.style.letterSpacing = '0.12em';
+    bullet1.style.backgroundColor = '#00a7e7';
     [m1,m2].forEach(el => {
       if(!el) return;
-      el.style.cssText = 'font-size:9.5px;font-weight:800;color:#fff;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.1);border-left:4px solid #ab163f;padding:10px 16px;border-radius:8px;display:block;width:100%;text-align:left;line-height:1.35;';
+      el.style.cssText = 'font-size:9.5px;font-weight:500;color:#ffffff;background:none;border:none;padding:1px 0;display:block;width:100%;text-align:left;line-height:1.3;';
     });
   }
  
@@ -946,7 +1038,7 @@ function setTemplate(name){
 function reapplyState(){
   /* Imagen de fondo */
   const url = BG_IMAGES[STATE.bgKey];
-  ['dec-warm-img','dec-inspiration-img','dec-clean-img'].forEach(id => {
+  ['dec-warm-img','dec-inspiration-img'].forEach(id => {
     const el = $(id);
     if(el){ el.style.backgroundImage = `url('${url}')`; el.style.opacity = STATE.bgOpacity; }
   });
@@ -954,7 +1046,7 @@ function reapplyState(){
   if(pb){ pb.style.backgroundImage = `url('${url}')`; pb.style.opacity = STATE.bgOpacity; }
  
   /* Overlay */
-  ['dec-warm-overlay','dec-inspiration-overlay','dec-clean-overlay'].forEach(id => {
+  ['dec-warm-overlay','dec-inspiration-overlay'].forEach(id => {
     const el = $(id); if(el) el.style.opacity = STATE.overlayOp;
   });
  
@@ -1013,7 +1105,7 @@ function exportFlyer(event){
         /* En el clon, sustituir background-image con la versión base64 ya cargada */
         if(STATE._bgBase64){
           const b64url = STATE._bgBase64;
-          ['dec-warm-img','dec-inspiration-img','dec-clean-img'].forEach(id => {
+          ['dec-warm-img','dec-inspiration-img'].forEach(id => {
             const el = doc.getElementById(id);
             if(el) el.style.backgroundImage = `url('${b64url}')`;
           });
